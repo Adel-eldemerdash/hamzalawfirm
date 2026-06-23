@@ -1,0 +1,21 @@
+.articleTagesContainer {
+    gap: 10px;
+    white-space: nowrap;
+  }
+  
+  .articleTagContainer {
+    padding: 8px;
+    border-radius: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 14px;
+    padding-left: 14px;
+    border-style: solid;
+    border-color: #b38f54;
+  }
+  
+  .articleTagContainer p {
+    margin-bottom: 0px;
+    color: #222222;
+    font-size: 14px;
+  }

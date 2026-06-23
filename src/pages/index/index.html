@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta
+      name="description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <link rel="canonical" href="<%= htmlWebpackPlugin.options.canonical %>" />
+    <meta
+      property="og:title"
+      content="<%= htmlWebpackPlugin.options.title %>"
+    />
+    <meta
+      property="og:description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>" />
+    <meta
+      name="twitter:title"
+      content="<%= htmlWebpackPlugin.options.title %>"
+    />
+    <meta
+      name="twitter:description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+  </head>
+
+  <body style="overflow: hidden; background-color: #1f1f63">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Archivo:100,200,300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Bai+Jamjuree:200,300,400,500,600,700&amp;display=swap"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <img
+      id="homeBackground"
+      class="object-fit-cover"
+      src="./assets/images/homeBackground.webp"
+      style="height: 100vh; width: 100vw; position: absolute; z-index: -1"
+      width="1496"
+      height="1344"
+      alt="homeBackground"
+    />
+
+    <nav></nav>
+
+    <!-- Start: Page Content -->
+
+    <!-- Section One -->
+    <div class="firstSectionContainer">
+      <div class="firstSectionHeaderContainer">
+        <h1 class="display-1">Hamza &amp; Partners</h1>
+        <h2 class="display-4">LAW FIRM</h2>
+        <p>ONE STOP LEGAL SHOP</p>
+        <div class="d-flex flex-row justify-content-start align-items-center">
+          <a
+            href="https://www.facebook.com/Hamzalawfirm/"
+            target="_blank"
+            rel="noopener noreferrer"
+            alt="facebook Icon"
+            aria-label="Facebook - Hamza & Partners"
+            ><img
+              src="./assets/images/facebook.svg"
+              width="26px"
+              alt="facebook icon" /></a
+          ><a
+            href="https://www.linkedin.com/company/hamza-partners-law-firm-egy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            alt="linkedin Icon"
+            aria-label="linkedin - Hamza & Partners"
+            ><img
+              src="./assets/images/linkedin.svg"
+              width="26px"
+              alt="linkedin icon" /></a
+          ><a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            alt="youtube Icon"
+            aria-label="youtube - Hamza & Partners"
+            ><img
+              src="./assets/images/youtube.svg"
+              width="36px"
+              alt="youtube icon"
+          /></a>
+        </div>
+      </div>
+      <div class="slider-container">
+        <div
+          class="d-flex flex-column justify-content-center align-items-center slider-control left inactive"
+        >
+          <div style="font-size: 90px; color: rgb(221, 221, 221)">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </div>
+        </div>
+        <div
+          class="d-flex flex-column justify-content-center align-items-center slider-control right"
+        >
+          <div style="font-size: 90px; color: rgb(221, 221, 221)">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="slider">
+          <div class="slide slide-0 active">
+            <div class="slide__bg">
+              <img
+                src="./assets/images/homeSliderImage(1).webp"
+                style="animation: title 2s ease 0s 1 normal forwards"
+                lat="homeSliderImage"
+                width="100%"
+              />
+            </div>
+            <div class="slide__content">
+              <svg
+                class="slide__overlay"
+                viewBox="0 0 720 405"
+                preserveAspectRatio="xMaxYMax slice"
+              >
+                <path
+                  class="slide__overlay-path"
+                  d="M0,0 150,0 500,405 0,405"
+                ></path>
+              </svg>
+              <div class="slide__text">
+                <h3 class="slide__text-heading">HAMZA & PARTNER LAW FIRM</h3>
+                <p
+                  class="slide__text-desc"
+                  style="font-family: 'Bai Jamjuree', sans-serif"
+                ></p>
+              </div>
+            </div>
+          </div>
+          <div class="slide slide-1">
+            <div class="slide__bg">
+              <img
+                src="./assets/images/homeSliderImage(1).webp"
+                style="animation: title 2s ease 0s 1 normal forwards"
+                lat="homeSliderImage"
+                width="100%"
+                loading="lazy"
+              />
+            </div>
+            <div class="slide__content">
+              <svg
+                class="slide__overlay"
+                viewBox="0 0 720 405"
+                preserveAspectRatio="xMaxYMax slice"
+              >
+                <path
+                  class="slide__overlay-path"
+                  d="M0,0 150,0 500,405 0,405"
+                ></path>
+              </svg>
+              <div class="slide__text">
+                <h2 class="slide__text-heading">HAMZA & PARTNER LAW FIRM</h2>
+                <p class="slide__text-desc"></p>
+              </div>
+            </div>
+          </div>
+          <div class="slide slide-2">
+            <div class="slide__bg">
+              <img
+                src="./assets/images/homeSliderImage(1).webp"
+                style="animation: title 2s ease 0s 1 normal forwards"
+                lat="homeSliderImage"
+                width="100%"
+                loading="lazy"
+              />
+            </div>
+            <div class="slide__content">
+              <svg
+                class="slide__overlay"
+                viewBox="0 0 720 405"
+                preserveAspectRatio="xMaxYMax slice"
+              >
+                <path
+                  class="slide__overlay-path"
+                  d="M0,0 150,0 500,405 0,405"
+                ></path>
+              </svg>
+              <div class="slide__text">
+                <h2 class="slide__text-heading">HAMZA & PARTNER LAW FIRM</h2>
+                <p class="slide__text-desc"></p>
+              </div>
+            </div>
+          </div>
+          <div class="slide slide-3">
+            <div class="slide__bg">
+              <img
+                src="./assets/images/homeSliderImage(1).webp"
+                style="animation: title 2s ease 0s 1 normal forwards"
+                lat="homeSliderImage"
+                width="100%"
+                loading="lazy"
+              />
+            </div>
+            <div class="slide__content">
+              <svg
+                class="slide__overlay"
+                viewBox="0 0 720 405"
+                preserveAspectRatio="xMaxYMax slice"
+              >
+                <path
+                  class="slide__overlay-path"
+                  d="M0,0 150,0 500,405 0,405"
+                ></path>
+              </svg>
+              <div class="slide__text">
+                <h2 class="slide__text-heading">HAMZA & PARTNER LAW FIRM</h2>
+                <p class="slide__text-desc"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section Two -->
+    <div class="container-fluid" data-aos="fade-down" data-aos-duration="1000">
+      <div class="row secoundSectionRowOneContainer">
+        <div class="col">
+          <div
+            class="row justify-content-evenly flex-nowrap overflow-auto"
+            style="overflow-y: hidden !important"
+          >
+            <div class="col-auto align-self-end col-xs-4 pillarsContainer">
+              <a
+                href="/ourFirm#corePrinciples_section"
+                style="text-decoration: none"
+              >
+                <h4 class="pillarstext">Innovation</h4>
+                <img
+                  class="pillarsImage"
+                  alt="Pillars"
+                  src="./assets/images/Pillars.webp"
+                />
+              </a>
+            </div>
+            <div class="col-auto align-self-end col-xs-4 pillarsContainer">
+              <a
+                href="/ourFirm#corePrinciples_section"
+                style="text-decoration: none"
+              >
+                <h4 class="pillarstext">Opportunity</h4>
+                <img
+                  class="pillarsImage"
+                  alt="Pillars"
+                  src="./assets/images/Pillars.webp"
+                />
+              </a>
+            </div>
+            <div class="col-auto align-self-end col-xs-4 pillarsContainer">
+              <a
+                href="/ourFirm#corePrinciples_section"
+                style="text-decoration: none"
+              >
+                <h4 class="pillarstext">TIME</h4>
+                <img
+                  class="pillarsImage"
+                  src="./assets/images/Pillars.webp"
+                  alt="Pillars"
+                />
+              </a>
+            </div>
+            <div class="col-auto align-self-end col-xs-4 pillarsContainer">
+              <a
+                href="/ourFirm#corePrinciples_section"
+                style="text-decoration: none"
+              >
+                <h4 class="pillarstext">Learning</h4>
+                <img
+                  class="pillarsImage"
+                  alt="Pillars"
+                  src="./assets/images/Pillars.webp"
+                />
+              </a>
+            </div>
+            <div class="col-auto align-self-end col-xs-4 pillarsContainer">
+              <a
+                href="/ourFirm#corePrinciples_section"
+                style="text-decoration: none"
+              >
+                <h4 class="pillarstext">Integration</h4>
+                <img
+                  class="pillarsImage"
+                  alt="Pillars"
+                  src="./assets/images/Pillars.webp"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="background: #ffffff">
+        <div
+          class="col"
+          style="
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-bottom: 30px;
+            margin-top: 15px;
+          "
+        >
+          <h2 class="mainMessageTitle">Welcome To Hamza &amp; Partners</h2>
+          <h5 class="mainMessageContent">
+            Our message is quite simple and clear: We never sell words, we
+            provide a guaranteed product that will enhance your business. We do
+            not only want to settle an issue, we are here to drive your business
+            forward at full speed. Thus, we can truly claim to be actual success
+            partner In Hamza &amp; Partners we are very selective when it comes
+            to our clients. Thus, being one of our clients, we guarantee a
+            difference in your business. That’s what makes the difference
+            compared to us. We are your trustworthy legal partner.
+          </h5>
+          <div class="d-flex flex-row justify-content-start align-items-center">
+            <img class="mrAhmedImg" src="./assets/images/ceo-img.webp"
+            alt="ahmad hamza - ceo and Managing Partner at hamza & partners law
+            firm""/>
+            <div>
+              <h5 class="mrAhmedname">Mr. AHMAD HAMZA</h5>
+              <h6 class="mrAhmedTitle">Managing Partner</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" style="padding-right: 0px; padding-left: 0px">
+          <div
+            class="ag-maecenas_title"
+            style="transform: rotate(180deg)"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <!-- Section three -->
+    <div
+      class="container-fluid"
+      style="
+        background: url('./assets/images/ourClient background.webp') no-repeat;
+        margin-top: -200px;
+        padding-top: 200px;
+        margin-bottom: -200px;
+        padding-bottom: 200px;
+        background-size: cover;
+      "
+    >
+      <div class="row">
+        <div class="col">
+          <h1 class="display-5 sectionTitle">OUR SERVICES</h1>
+        </div>
+      </div>
+      <div class="row g-0 justify-content-around align-items-center">
+        <div
+          class="col-auto serviceCardColumn"
+          data-aos="fade-up"
+          data-aos-offset="300"
+        >
+          <div
+            class="d-flex flex-column justify-content-center align-items-center servicesCardContainer"
+          >
+            <div class="mask1">
+              <div
+                class="servicesCardImg"
+                style="
+                  background: url('./assets/images/Corporate-Structuring.webp')
+                    top / cover no-repeat;
+                "
+              ></div>
+            </div>
+            <h2 class="servicesCardTitle">
+              <br />Restructuring <br />Bankruptcy<br /><br />
+            </h2>
+          </div>
+        </div>
+        <div
+          class="col-auto serviceCardColumn"
+          data-aos="fade-up"
+          data-aos-offset="300"
+        >
+          <div
+            class="d-flex flex-column justify-content-center align-items-center servicesCardContainer"
+          >
+            <div class="mask1">
+              <div
+                class="servicesCardImg"
+                style="
+                  background: url('./assets/images/corporateservices.webp') top /
+                    cover no-repeat;
+                "
+              ></div>
+            </div>
+            <h2 class="servicesCardTitle">
+              <br />Corporate<br />Services<br /><br />
+            </h2>
+          </div>
+        </div>
+        <div
+          class="col-auto serviceCardColumn"
+          data-aos="fade-up"
+          data-aos-offset="300"
+        >
+          <div
+            class="d-flex flex-column justify-content-center align-items-center servicesCardContainer"
+          >
+            <div class="mask1">
+              <div
+                class="servicesCardImg"
+                style="
+                  background: url('./assets/images/Employment-and-Global-Corporate-Control.webp')
+                    top / cover no-repeat;
+                "
+              ></div>
+            </div>
+            <h2 class="servicesCardTitle">
+              Employment,<br /> and Global<br />Corporate<br />Control
+            </h2>
+          </div>
+        </div>
+        <div
+          class="col-auto serviceCardColumn"
+          data-aos="fade-up"
+          data-aos-offset="300"
+        >
+          <div
+            class="d-flex flex-column justify-content-center align-items-center servicesCardContainer"
+          >
+            <div class="mask1">
+              <div
+                class="servicesCardImg"
+                style="
+                  background: url('./assets/images/Dispute-Resolution-and-Litigation.webp')
+                    top / cover no-repeat;
+                "
+              ></div>
+            </div>
+            <h2 class="servicesCardTitle">
+              Dispute<br />
+              Resolution,<br />and Litigation<br /><br />
+            </h2>
+          </div>
+        </div>
+        <div
+          class="col-auto serviceCardColumn"
+          data-aos="fade-up"
+          data-aos-offset="300"
+        >
+          <div
+            class="d-flex flex-column justify-content-center align-items-center servicesCardContainer"
+          >
+            <div class="mask1">
+              <div
+                class="servicesCardImg"
+                style="
+                  background: url('./assets/images/Criminal-Corporate.webp') top /
+                    cover no-repeat;
+                "
+              ></div>
+            </div>
+            <h2 class="servicesCardTitle">
+              <br />Criminal<br />
+              Corporate<br /><br />
+            </h2>
+          </div>
+        </div>
+        <div
+          class="col-auto serviceCardColumn"
+          data-aos="fade-up"
+          data-aos-offset="300"
+        >
+          <div
+            class="d-flex flex-column justify-content-center align-items-center servicesCardContainer"
+          >
+            <div class="mask1">
+              <div
+                class="servicesCardImg"
+                style="
+                  background: url('./assets/images/Real-Estate-and-notarization-services.webp')
+                    top / cover no-repeat;
+                "
+              ></div>
+            </div>
+            <h2 class="servicesCardTitle">
+              Real Estate,<br />and<br />notarization<br />services
+            </h2>
+          </div>
+        </div>
+        <div
+          class="col-auto serviceCardColumn"
+          data-aos="fade-up"
+          data-aos-offset="300"
+        >
+          <div
+            class="d-flex flex-column justify-content-center align-items-center servicesCardContainer"
+          >
+            <div class="mask1">
+              <div
+                class="servicesCardImg"
+                style="
+                  background: url('./assets/images/Governmental-Processes-Facilities.webp')
+                    top / cover no-repeat;
+                "
+              ></div>
+            </div>
+            <h2 class="servicesCardTitle">
+              Governmental<br />Processes<br />Facilities<br /><br />
+            </h2>
+          </div>
+        </div>
+        <div class="col-12">
+          <a href="/services" style="text-decoration: none">
+            <div
+              id="viewAllService_btn"
+              class="d-flex flex-row justify-content-center align-items-center viewAllServiceButton"
+            >
+              <h1>VIEW ALL SERVICES >></h1>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col" style="padding-right: 0px; padding-left: 0px">
+          <div class="ag-maecenas_title"></div>
+        </div>
+      </div>
+      <div class="row fourthSectionTitleContainer">
+        <div class="col">
+          <h1 class="display-5 fourthSectionTitle">OUR CLIENTS</h1>
+        </div>
+      </div>
+      <div class="row" style="background: #ffffff">
+        <div
+          class="col-12"
+          data-aos="zoom-out-down"
+          data-aos-easing="ease-out-cubic"
+          data-aos-offset="250"
+        >
+          <div class="text-rotator-container">
+            <div class="text-rotator-wrapper">
+              <div class="d-flex flex-row text-rotator">
+                <img
+                  class="fourthSectionclientItem"
+                  alt="Egypt Education Platform"
+                  src="./assets/images/clients (4).svg"
+                  width="250px"
+                /><img
+                  class="fourthSectionclientItem"
+                  alt="Bulk whiz"
+                  src="./assets/images/clients (5).svg"
+                  alt="bulk whiz"
+                  width="170px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (1).svg"
+                  alt="reckitt benckiser"
+                  width="250px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (10).svg"
+                  alt="ejada - اجادة"
+                  width="210px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (11).svg"
+                  alt="froneri"
+                  width="240px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (12).svg"
+                  alt="kraft heinz"
+                  width="260px"
+                />
+              </div>
+              <div class="d-flex flex-row text-rotator">
+                <img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (4).svg"
+                  alt="Egypt Education Platform"
+                  width="250px"
+                /><img
+                  class="fourthSectionclientItem"
+                  alt="Bulk whiz"
+                  src="./assets/images/clients (5).svg"
+                  width="170px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (1).svg"
+                  alt="reckitt benckiser"
+                  width="250px"
+                /><img
+                  class="fourthSectionclientItem"
+                  alt="ejada - اجادة"
+                  src="./assets/images/clients (10).svg"
+                  width="210px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (11).svg"
+                  alt="froneri"
+                  width="240px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (12).svg"
+                  alt="kraft heinz"
+                  width="260px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-12"
+          data-aos="zoom-out-up"
+          data-aos-easing="ease-out-cubic"
+          data-aos-offset="300"
+          style="direction: rtl"
+        >
+          <div class="text-rotator-container">
+            <div class="text-rotator-wrapper2">
+              <div class="d-flex flex-row text-rotator">
+                <img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (6).svg"
+                  alt="defacto"
+                  width="270px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (7).svg"
+                  alt="Samir & aly - سمير وعلي"
+                  width="250px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (8).svg"
+                  alt="hamza associates - حمزة ومشاركوه"
+                  width="370px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (9).svg"
+                  alt="decathlon"
+                  width="320px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (2).svg"
+                  alt="kuwait energy"
+                  width="250px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (3).svg"
+                  alt="education egypt"
+                  width="260px"
+                />
+              </div>
+              <div class="d-flex flex-row text-rotator">
+                <img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (6).svg"
+                  alt="defacto"
+                  width="270px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (7).svg"
+                  alt="Samir & aly - سمير وعلي"
+                  width="250px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (8).svg"
+                  alt="hamza associates - حمزة ومشاركوه"
+                  width="370px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (9).svg"
+                  alt="decathlon"
+                  width="320px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (2).svg"
+                  alt="kuwait energy"
+                  width="250px"
+                /><img
+                  class="fourthSectionclientItem"
+                  src="./assets/images/clients (3).svg"
+                  alt="education egypt"
+                  width="260px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col" style="padding-right: 0px; padding-left: 0px">
+              <div
+                class="ag-maecenas_title"
+                style="
+                  transform: rotate(
+                    180deg
+                  ); /*padding-top: 0px;*/ /*padding-bottom: 0px;*/
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section four -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col" style="padding: 0px">
+          <div
+            id="contactUs_Container"
+            class="contactInfoContainer"
+            data-aos="fade-right"
+            data-aos-offset="500"
+          >
+            <h4 class="contactInfoTitle">CONTACT INFO</h4>
+            <div
+              style="
+                background: #ffffff;
+                height: 0.5px;
+                margin-top: 12px;
+                margin-bottom: 12px;
+              "
+            ></div>
+            <div
+              class="d-flex flex-row justify-content-start align-items-center contactInfoDataContainer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="1em"
+                viewBox="0 0 24 24"
+                width="1em"
+                fill="currentColor"
+              >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                ></path>
+              </svg>
+              <a
+                href="https://maps.app.goo.gl/o9V6wopQntspGjav6"
+                target="_blank"
+                rel="noopener noreferrer"
+                >48 Fareed Semeika Street, Hegaz Square, Nozha, Cairo, Egypt</a
+              >
+            </div>
+            <div
+              class="d-flex flex-row justify-content-start align-items-center contactInfoDataContainer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="1em"
+                viewBox="0 0 24 24"
+                width="1em"
+                fill="currentColor"
+              >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+                ></path>
+              </svg>
+              <a href="callto:+20 1001 7070 74">(+2)01001707074</a>
+            </div>
+            <div
+              class="d-flex flex-row justify-content-start align-items-center contactInfoDataContainer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="1em"
+                viewBox="0 0 24 24"
+                width="1em"
+                fill="currentColor"
+              >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                ></path>
+              </svg>
+              <a href="mailto:ahmad.hamza@hamzalawfirm.com"
+                >ahmad.hamza@hamzalawfirm.com</a
+              >
+            </div>
+          </div>
+          <div
+            style="border-radius: 12px; padding: 12px; overflow: clip"
+            data-aos="zoom-in-down"
+            data-aos-offset="500"
+          >
+            <div>
+              <iframe
+                title="Office Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d305.0540975356511!2d31.344444813211535!3d30.1144243991334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145815c2111466eb%3A0x7bcb614fc47e1179!2sHamza%20%26%20Partners%20Law%20Firm!5e0!3m2!1sen!2seg!4v1752970410780!5m2!1sen!2seg"
+                width="100%"
+                height="450"
+                style="border-radius: 30px; padding: 12px"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="row"
+        data-aos="fade-up"
+        data-aos-duration="1500"
+        data-aos-offset="500"
+      >
+        <div class="col">
+          <div class="contactUsFormContainer">
+            <h1 class="display-6 contactUsFormTitle">SEND MESSAGE</h1>
+            <div class="container-fluid">
+              <div class="row justify-content-between">
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="input-container">
+                    <input
+                      id="submitContact_name_input"
+                      class="input"
+                      type="text"
+                      name="text"
+                      placeholder="Your Name"
+                      style="width: 100%"
+                    />
+                    <div class="highlight"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="input-container">
+                    <input
+                      id="submitContact_phone_input"
+                      class="input"
+                      type="text"
+                      name="text"
+                      placeholder="Phone"
+                      style="width: 100%"
+                    />
+                    <div class="highlight"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="input-container">
+                    <input
+                      id="submitContact_email_input"
+                      class="input"
+                      type="text"
+                      name="text"
+                      placeholder="Email"
+                      style="width: 100%"
+                    />
+                    <div class="highlight"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-12">
+                  <div class="input-container">
+                    <input
+                      id="submitContact_subject_input"
+                      class="input"
+                      type="text"
+                      name="text"
+                      placeholder="Subject"
+                      style="width: 100%"
+                    />
+                    <div class="highlight"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 18px">
+                <div class="col">
+                  <div class="input-container" style="margin-top: 0px">
+                    <textarea
+                      id="submitContact_message_input"
+                      class="input"
+                      name="text"
+                      placeholder="Message"
+                      style="width: 100%"
+                      type="text"
+                    ></textarea>
+                    <div class="highlight"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-end">
+                <div class="col-auto" style="margin-top: 20px">
+                  <button id="submitContact_btn" class="custom-button">
+                    <span class="button-content"
+                      ><span class="button-text">Send the Message</span
+                      ><span class="button-icon">→</span></span
+                    ><span class="button-background"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End: Page Content -->
+    <footer></footer>
+  </body>
+</html>

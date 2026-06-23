@@ -1,0 +1,68 @@
+.ourFirmVisionTitle {
+  text-align: center;
+  font-family: "Abril Fatface", serif;
+  color: #b38f54;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.ourFirmVisionImge {
+  max-width: 150px;
+}
+
+.ourFirmVisionLogoContainer {
+  color: #b38f54;
+}
+
+.ourFirmVisionLogoContainer h3 {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ourFirmVisionLogoContainer p {
+  text-align: center;
+  font-size: 25px;
+}
+
+.ourFirmVisionLogoContainer div {
+  width: 100%;
+  height: 2px;
+}
+
+.ourFirmVisionParagraphsContainer {
+  gap: 20px;
+  margin-top: 24px;
+  margin-bottom: 0px;
+  font-family: "Bai Jamjuree", sans-serif;
+  color: #747474;
+  text-align: justify;
+}
+
+.ourFirmVisionParagraphsContainer h1 {
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 900;
+  color: #b38f54;
+  margin-bottom: 0px;
+  font-size: 64px;
+  margin-left: 10px;
+}
+
+.ourFirmVisionParagraphsContainer div {
+  width: 100%;
+}
+
+.ourFirmVisionParagraphsContainer div > h3 {
+  margin-bottom: 0px;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 600;
+  color: #b38f54;
+}
+
+.ourFirmVisionParagraphsContainer div > h4 {
+  margin-bottom: 0px;
+  font-family: "Bai Jamjuree", sans-serif;
+  color: #747474;
+}
+.ourFirmVisionParagraphsContainer h4 {
+  font-size: 20px;
+}

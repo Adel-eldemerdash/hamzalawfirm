@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta
+      name="description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <link rel="canonical" href="<%= htmlWebpackPlugin.options.canonical %>" />
+    <meta
+      property="og:title"
+      content="<%= htmlWebpackPlugin.options.title %>"
+    />
+    <meta
+      property="og:description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>" />
+    <meta
+      name="twitter:title"
+      content="<%= htmlWebpackPlugin.options.title %>"
+    />
+    <meta
+      name="twitter:description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+  </head>
+
+  <body style="overflow: hidden; background-color: white">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Archivo:100,200,300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Bai+Jamjuree:200,300,400,500,600,700&amp;display=swap"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <nav></nav>
+    <div class="container-fluid" style="flex: 1; overflow: auto; padding: 39px">
+      <div class="row">
+        <div class="col" style="border-bottom: 1px solid #b38f54">
+          <h3
+            style="margin-bottom: 0px; font-weight: 600; color: rgb(48, 48, 48)"
+          >
+            Services
+          </h3>
+          <p
+            id="serviceName_paragraph"
+            style="margin-bottom: 20px; font-weight: 400; font-size: 18px"
+          ></p>
+        </div>
+      </div>
+      <div class="row gy-5 serviceDetailsRow" style="margin-top: 0">
+        <div class="col-12 col-md-6 col-lg-4 text-center">
+          <img
+            id="serviceDetails_img"
+            width="100%"
+            style="border-radius: 8px"
+          />
+        </div>
+        <div class="col-12 col-md-6 col-lg-8" style="overflow: auto">
+          <h4 style="font-weight: 600; color: rgb(48, 48, 48)">
+            <strong>Service Details:</strong>
+          </h4>
+          <p
+            id="serviceDetails_paragraph"
+            style="font-size: 18px; margin-bottom: 22px"
+          ></p>
+          <h5
+            id="serviceDetailsTagsTitle"
+            style="
+              font-weight: 600;
+              margin-bottom: 12px;
+              color: rgb(48, 48, 48);
+            "
+          >
+            <strong>Tags:</strong>
+          </h5>
+          <div
+            id="serviceDetailsTagsContainer"
+            class="d-flex flex-row justify-content-start align-items-center articleTagesContainer"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <footer></footer>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+.fourthSectionTitle {
+    font-family: 'Abril Fatface', serif;
+    color: #b38f54;
+  }
+  
+  .fourthSectionBody {
+    background: #ffffff;
+    padding: 28px;
+  }
+  
+  .fourthSectionclientItem {
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    padding: 28px;
+  }
+  
+  .fourthSectionTitleContainer {
+    background: #ffffff;
+    text-align: right;
+    padding: 28px;
+    padding-bottom: 0px;
+  }

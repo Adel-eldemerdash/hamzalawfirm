@@ -1,0 +1,63 @@
+.ourFirmValueTitle {
+  font-family: 'Abril Fatface', serif;
+  color: #b38f54;
+  text-align: center;
+}
+
+.ourFirFirstSectionRightShape {
+  padding: 0px;
+}
+
+.ourFirFirstSectionLeftShape {
+  padding: 0px;
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0px;
+  height: 0px;
+  border-radius: 100%;
+  opacity: 0;
+  animation: pulse_4923 4s infinite linear;
+  border: 1px solid #B38F54;
+  box-shadow: 0px 0px 5px #B38F54;
+}
+
+.circle:nth-child(2) {
+  animation-delay: .4s;
+}
+
+.circle:nth-child(3) {
+  animation-delay: .8s;
+}
+
+.valusContainer {
+  border-radius: 50%;
+  color: rgb(255,255,255);
+  background: radial-gradient(#d3a964 0%, #b38f54 100%);
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+
+.valusMainContainer {
+  margin-top: 74px;
+}
+
+.valusMainTitle {
+  font-family: Archivo, sans-serif;
+  text-align: center;
+  color: #505050;
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+.valusContainer h1 {
+  text-align: center;
+  margin: 0px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: 500;
+}

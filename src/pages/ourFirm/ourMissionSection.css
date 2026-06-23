@@ -1,0 +1,31 @@
+.ourFirmMissionTitle {
+  text-align: center;
+  font-family: "Abril Fatface", serif;
+  color: #b38f54;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.ourMissionItemContainer {
+  background: url("../../img/homeBackground.webp") top / cover no-repeat;
+  color: rgb(255, 255, 255);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: -8px 8px rgba(31, 31, 99, 0.7);
+}
+
+.ourMissionTitle {
+  font-family: "Abril Fatface", serif;
+  font-size: 1.5rem;
+  margin: 0px;
+  color: #b38f54;
+}
+
+.ourMissionDescrption {
+  font-family: "Bai Jamjuree", sans-serif;
+  margin: 0px;
+  font-size: 18px;
+  margin-top: 8px;
+  font-weight: 300;
+  line-height: 28px;
+}

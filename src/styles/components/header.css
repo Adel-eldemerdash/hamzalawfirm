@@ -1,0 +1,96 @@
+.navContainer {
+  border-bottom: 1px solid #b38f54;
+  color: #b38f54;
+  font-family: Archivo, sans-serif;
+  padding: 16px;
+  z-index: 6;
+  position: sticky;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  user-select: none;
+  height: fit-content;
+}
+
+.navLogo img {
+  height: 3.5em;
+  display: block;
+}
+
+.site-title {
+  margin-bottom: 6px;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #b38f54;
+}
+
+.site-tagline {
+  margin-top: -4px;
+  margin-bottom: 0;
+  font-size: 1rem;
+  text-align: center;
+  color: #b38f54;
+}
+
+.navMainMenu {
+  align-self: center;
+}
+
+.navMainMenu ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navMainMenu a {
+  color: #b38f54;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease-in-out;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.navMainMenu a:hover,
+.navMainMenu a:focus {
+  color: #d4b375;
+  text-decoration: none;
+}
+
+.navLogo,
+.navMainMenu a,
+.phoneMenu button {
+  cursor: pointer;
+}
+
+.phoneMenu {
+  display: none;
+}
+
+@media (max-width: 940px) {
+  .navMainMenu {
+    display: none;
+  }
+
+  .phoneMenu {
+    display: block;
+  }
+
+  .phoneMenu button {
+    background: none;
+    border: none;
+    color: #b38f54;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .phoneMenu button:hover {
+    color: #d4b375;
+  }
+}

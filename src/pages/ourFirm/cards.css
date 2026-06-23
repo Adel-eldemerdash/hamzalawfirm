@@ -1,0 +1,105 @@
+.ourFirmPrinciplesCard {
+  width: 100%;
+  background: rgba(255,255,255,0);
+  position: relative;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  height: fit-content;
+}
+
+.ourFirmPrinciplesCard::before {
+  content: '';
+  position: absolute;
+  width: 220vh;
+  height: 77%;
+  animation: rotBGimg 8s linear infinite;
+  transition: all 0.2s linear;
+  background: linear-gradient(rgba(179,143,84,0) 0%, #b38f54 30%, rgb(179,143,84) 70%, rgba(255,255,255,0));
+}
+
+@keyframes rotBGimg {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ourFirmPrinciplesCard::after {
+  content: '';
+  position: absolute;
+  background: url("../../img/blueMarble.webp") no-repeat;
+  inset: 5px;
+  border-radius: 15px;
+  filter: blur(0px);
+  background-size: cover;
+}
+
+.ourFirmPrinciplesCardContainer img {
+  height: 34px;
+  margin-right: 8px;
+}
+
+.ourFirmPrinciplesCardContainer h2 {
+  z-index: 1;
+  color: #b38f54;
+  font-size: 2em;
+  margin-bottom: 0px;
+}
+
+.ourFirmPrinciplesCardContainer p {
+  color: rgb(255,255,255);
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.ourFirmPrinciplesCardContainer {
+  width: 100%;
+  z-index: 1;
+  padding: 16px;
+}
+
+.OurPolicyItemContainer {
+  background: url("../../img/108405.webp");
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: -1px 7px 8px rgb(85 85 85 / 44%);
+}
+
+.OurPolicyItemIneerContainer {
+  border-style: solid;
+  border-color: #b38f54;
+  border-radius: 5px;
+  padding: 16px;
+}
+
+.OurPolicyItemIneerContainer h2 {
+  text-align: center;
+  color: #b38f54;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.OurPolicyItemDividerContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.OurPolicyItemDivider {
+  height: 3px;
+  background: #b38f54;
+  width: 50%;
+}
+
+.OurPolicyItemIneerContainer p {
+  color: rgb(81,81,81);
+  font-size: 22px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  text-align: center;
+}

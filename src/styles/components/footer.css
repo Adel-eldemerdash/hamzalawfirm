@@ -1,0 +1,179 @@
+.footerContainer {
+    background: #1f1f63;
+    font-family: 'Bai Jamjuree', sans-serif;
+    color: #fff;
+    padding-bottom: 30px;
+  }
+  
+  .footerHeaderRow {
+    padding: 12px;
+    border-bottom: 1px solid #b38f54;
+    text-align: center;
+  }
+  
+  .footerLogoRow {
+    padding: 17px 50px;
+    text-align: center;
+  }
+  
+  .footerLogoRow img {
+    height: 3.5em;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .footerTitle {
+    color: #B38F54;
+    margin-bottom: 6px;
+    font-size: 1.3rem;
+  }
+  
+  .footerTagline {
+    color: #B38F54;
+    margin: -4px 0 0 0;
+    font-size: 1rem;
+  }
+  
+  .footerSeparator {
+    width: 50%;
+    height: 1px;
+    background: #b38f54;
+    margin: 4px auto 8px auto;
+  }
+  
+  .footerMessage {
+    color: #ffffff;
+    line-height: 1.8em;
+    font-weight: 300;
+    border-bottom: 1px solid #b38f54;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .footerContact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footerContact li {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+  }
+  
+  .footerContact ion-icon {
+    margin-right: 8px;
+    font-size: 24px;
+    color: #B38F54;
+  }
+  
+  .footerContact a {
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .footerContact a:hover,
+  .footerContact a:focus {
+    color: #b38f54;
+  }
+  
+  .footerSectionsContainer {
+    margin-top: 20px;
+  }
+  
+  .footerSectionsContainer h3 {
+    color: #B38F54;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  
+  .footerSectionsContainer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footerSectionsContainer li {
+    padding: 8px 0;
+  }
+  
+  .footerSectionsContainer a.footerLink {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .footerSectionsContainer a.footerLink:hover,
+  .footerSectionsContainer a.footerLink:focus {
+    color: #B38F54;
+  }
+  /* Social Icons */
+  .icon-button {
+    background-color: transparent;
+    border-radius: 3.6rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.8rem;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    margin: 0 5px;
+    position: relative;
+    text-align: center;
+    user-select: none;
+    width: 3.6rem;
+    transition: transform 0.2s ease-in-out, color 0.3s ease
+  }
+  
+  .icon-button:hover {
+    transform: scale(1.05);
+  }
+  
+  
+  .icon-button ion-icon {
+    color: #ededed;
+    transition: all 0.3s ease;
+  }
+  
+  .youtube:hover ion-icon {
+    color: #B38F54;
+  }
+  
+  .facebook:hover ion-icon {
+    color: #B38F54;
+  
+  }
+  
+  .linkedin:hover ion-icon {
+    color: #B38F54;
+  }
+  
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .footerLogoRow {
+      text-align: center;
+      padding-left: 0;
+    }
+  
+    .footerSectionsContainer {
+      text-align: center;
+    }
+  
+    .footerSectionsContainer ul {
+      padding-left: 0;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .footerMessage {
+      text-align: center;
+    }
+  
+    .footerSectionsContainer h3 {
+      margin-top: 16px;
+    }
+  }
+  
