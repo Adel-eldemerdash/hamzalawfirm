@@ -1,0 +1,21 @@
+.ourFirmPolicyContainer {
+  background: url("../../img/ourCultureBackground.webp") top / cover no-repeat;
+  padding: 18px;
+  margin-top: 24px;
+}
+
+.ourFirmPolicyTitle {
+  text-align: center;
+  color: #b38f54;
+  font-family: "Abril Fatface", serif;
+}
+
+.ourFirmContent {
+  text-align: center;
+  margin-right: 22px;
+  margin-left: 22px;
+  padding-top: 36px;
+  color: #b38f54;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-size: 24px;
+}

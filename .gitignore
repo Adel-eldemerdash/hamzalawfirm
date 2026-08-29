@@ -1,0 +1,15 @@
+# Dependencies
+/node_modules
+
+# Build output
+/dist
+/dist.zip
+
+# Build and tooling caches
+/.webpack_cache
+/.firebase
+
+# Local environment
+*.local
+.env
+.env.*

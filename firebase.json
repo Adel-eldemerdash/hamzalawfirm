@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "regex": "^/services/([\\w-&]+(?:%20[\\w-&]+)*)$",
+        "destination": "/serviceDetails/serviceDetails.html?service=$1"
+      }
+    ]
+  }
+}

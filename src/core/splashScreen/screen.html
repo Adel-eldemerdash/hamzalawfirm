@@ -1,0 +1,85 @@
+<div id="splash-screen" class="splashContainer">
+  <img
+    id="gif_logo"
+    src="/assets/images/logo_gif.gif"
+    alt="GIF LOGO"
+    style="width: 100px; opacity: 0; transition: opacity 2s"
+  />
+  <img id="svg_logo" alt="SVG LOGO" src="/assets/images/logoIntro.svg" />
+  <div
+    class="slide-top"
+    style="
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <h1 style="color: rgb(255, 255, 255)">HAMZA &amp; PARTNERS</h1>
+    <div style="height: 4px; background: #b38f54; width: 16%"></div>
+    <p style="color: rgb(255, 255, 255)">LAW FIRM</p>
+  </div>
+  <div id="lodingLoader" class="loader"></div>
+</div>
+<style>
+  #svg_logo {
+    width: 100px;
+    opacity: 1;
+    position: fixed;
+    margin-bottom: 198px;
+  }
+
+  .loader {
+    border-top: 2px solid #b38f54;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    transition: opacity 2s;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .slide-top {
+    animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @keyframes slide-top {
+    0% {
+      transform: translateY(100px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .splashContainer {
+    visibility: visible;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1f1f63;
+    z-index: 999;
+    flex-direction: column;
+  }
+</style>
+<script>
+  let gifElement = document.getElementById("gif_logo");
+  let loaderElement = document.getElementById("lodingLoader");
+  let svgElement = document.getElementById("svg_logo");
+  gifElement.addEventListener("load", () => {
+    gifElement.style.opacity = "1";
+    loaderElement.style.opacity = "0";
+    svgElement.style.opacity = "0";
+  });
+</script>

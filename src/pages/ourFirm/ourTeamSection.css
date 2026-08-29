@@ -1,0 +1,133 @@
+.ourFirmTeamTitleContainer {
+  margin-top: -38px;
+  background: #ffffff;
+  border-radius: 46%;
+  padding: 18px;
+}
+
+.ourFirmTeamRowTitle {
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 30px;
+}
+
+.ourFirmTeamRowTitle h1 {
+  font-family: "Bai Jamjuree", sans-serif;
+  color: #b38f54;
+}
+
+.ourFirmTeamRowTitle div {
+  height: 4px;
+  background: #b38f54;
+  width: 25%;
+}
+
+.ourFirmTeamItemContainer {
+  margin-top: 70px !important;
+}
+
+.ourFirmTeamItemBackground {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background: linear-gradient(#8f8f8f 1%, #555555 82%);
+  width: fit-content;
+  padding: 25px;
+  padding-bottom: 0px;
+  position: relative;
+}
+
+.ourFirmTeamItemImg {
+  width: 133px;
+  margin-top: -79px;
+}
+
+.ourFirmTeamItemtitleContainer {
+  padding: 8px;
+  background: rgba(152, 152, 152, 0.25);
+  backdrop-filter: blur(11px);
+  bottom: 0;
+  height: fit-content;
+  border-radius: 8px;
+  font-family: "Bai Jamjuree", sans-serif;
+  color: rgb(214, 214, 214);
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+  margin-bottom: 14px;
+}
+
+.ourFirmTeamItemtitleContainer h5 {
+  margin-bottom: 8px;
+  color: rgb(232, 232, 232);
+  font-size: 17px;
+}
+
+.ourFirmTeamItemtitleContainer h6 {
+  margin-bottom: 0px;
+  color: rgb(232, 232, 232);
+  margin-top: 4px;
+}
+
+.ourFirmTeamItemtitleContainer div {
+  width: 50%;
+  height: 1px;
+  background: #b38f54;
+}
+
+.ourFirmJoinTeamContainer {
+  background: #b38f54;
+  padding: 14px;
+  margin: 14px !important;
+  border-radius: 8px;
+  margin-top: 38px;
+}
+
+.ourFirmJoinTeamRequiresContainer {
+  color: rgb(255, 255, 255);
+}
+
+.ourFirmJoinTeamFormContainer {
+  background: #ffffff;
+  padding: 31px;
+  border-radius: 12px;
+}
+
+.ourFirmJoinTeamFormInputTitle {
+  margin-bottom: 0px;
+  margin-top: 20px;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+
+.ourFirmAboutUsParagraph {
+  font-family: "Bai Jamjuree", sans-serif;
+  text-align: center;
+  padding: 12px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #575757;
+  padding-top: 0px;
+  text-align: justify;
+}
+
+.ourFirmTitles {
+  text-align: center;
+  font-family: "Abril Fatface", serif;
+  color: #b38f54;
+  margin-top: 40px;
+  margin-bottom: 8px;
+  font-size: 40px;
+}
+
+.ourFirmTitlesUnderLineContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.ourFirmTitlesUnderLineContainer div {
+  width: 40%;
+  height: 4px;
+  background: #b38f54;
+  border-radius: 14px;
+}

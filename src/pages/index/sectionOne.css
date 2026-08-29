@@ -1,0 +1,78 @@
+
+.firstSectionContainer {
+    color: #fff;
+  }
+  
+  .firstSectionHeaderContainer {
+    margin-top: 36px;
+    margin-bottom: 36px;
+    margin-left: 16px;
+  }
+  
+  .firstSectionHeaderContainer h1 {
+    font-family: 'Abril Fatface', serif;
+    color: #b38f54;
+    margin-bottom: 0px;
+    animation-name: title;
+    animation-duration: 2s;
+  }
+  
+  .firstSectionHeaderContainer h2 {
+    font-family: 'Abril Fatface', serif;
+    animation-name: suptitle;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+  }
+  
+  .firstSectionHeaderContainer p {
+    font-family: 'Bai Jamjuree', sans-serif;
+    margin-bottom: 0px;
+    font-size: 23px;
+    animation-name: slogan;
+    animation-duration: 4s;
+    padding-bottom: 16px;
+  }
+  
+  .firstSectionHeaderContainer div {
+    gap: 40px;
+    /*margin-right: 18px;*/
+  }
+  
+  .firstSectionHeaderContainer svg {
+    font-size: 26px;
+    color: #b38f54;
+    margin: 8px;
+  }
+
+  @keyframes suptitle {
+    from {
+      transform: translate(-100%, 0px);
+      opacity: 0;
+    }
+    to {
+      transform: translate(0px, 0px);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes title {
+    0% {
+      opacity: 0;
+      transform: scale(1.4);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes slogan {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

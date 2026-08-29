@@ -1,0 +1,49 @@
+.text-rotator-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+    position: relative;
+  }
+  
+  .text-rotator-wrapper {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 20s linear infinite;
+  }
+  
+  .text-rotator-wrapper2 {
+    display: flex;
+    width: max-content;
+    animation: scroll-right 20s linear infinite;
+  }
+  
+  .text-rotator {
+    display: flex;
+  }
+  
+  .text-rotator span {
+    display: inline-block;
+    margin: 0 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap;
+  }
+  
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  @keyframes scroll-right {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(50%);
+    }
+  }

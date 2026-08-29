@@ -1,0 +1,65 @@
+.sectionTitle {
+    font-family: 'Abril Fatface', serif;
+    color: #b38f54;
+    text-align: right;
+    margin-bottom: 44px;
+    margin-right: 28px;
+  }
+  
+  .servicesCardContainer {
+    background: #ffffff;
+    padding-bottom: 14px;
+    border-radius: 20px;
+    overflow: clip;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .servicesCardImg {
+    mix-blend-mode: luminosity;
+    height: 180px;
+    width: 262px;
+  }
+  
+  .servicesCardTitle {
+    font-family: 'Bai Jamjuree', sans-serif;
+    color: #b38f54;
+    margin: 24px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin-top: 14px;
+    font-weight: 600;
+  }
+  
+  .viewAllServiceButton {
+    padding: 14px;
+    margin: 19px;
+    text-align: center;
+    color: #b38f54;
+    transition: 1s;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .viewAllServiceButton svg {
+    font-size: 43px;
+  }
+  
+  .viewAllServiceButton h1 {
+    font-size: 24px;
+    margin-bottom: 0px;
+  }
+  
+  .viewAllServiceButton:hover {
+    background: #b38f54;
+    color: rgb(255,255,255);
+  }
+
+  .mask1 {
+    -webkit-mask-image: url(../../img/serviceVector.webp);
+    mask-image: url(../../img/serviceVector.webp);
+    -webkit-mask-size: 100% 100%;
+    background: #b38f54;
+  } 
