@@ -3,3 +3,7 @@
 *.jpg binary
 *.gif binary
 *.zip binary
+
+# Apache refuses to parse some directives when the file has CRLF line
+# endings, and this file is copied verbatim into dist/ and uploaded.
+.htaccess text eol=lf
