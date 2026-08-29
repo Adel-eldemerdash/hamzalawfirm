@@ -82,13 +82,14 @@
 
         "answers": {
           "$questionId": {
-            ".validate": "$questionId.matches(/^Q[0-9]{1,2}\\.[0-9]{1,2}(:[A-Za-z0-9]{1,24})?$/) && (newData.isString() || newData.hasChildren())",
+            ".validate": "$questionId.matches(/^Q[0-9]{1,2}_[0-9]{1,2}(:[A-Za-z0-9]{1,24})?$/) && (newData.isString() || newData.hasChildren())",
             "$index": { ".validate": "newData.isString() && newData.val().length <= 200" }
           }
         },
 
         "result": {
-          ".validate": "newData.hasChildren(['role','primary','supplementary','registrations','documents','unresolved'])",
+          "//": "Only role and primary are required. An empty array is stored as null by the Realtime Database, which removes the key entirely, so requiring supplementary, registrations, documents, or unresolved would reject every assessment that happens to have none of one of them.",
+          ".validate": "newData.hasChildren(['role','primary'])",
           "role": { ".validate": "newData.isString() && newData.val().length <= 16" },
           "primary": { ".validate": "newData.isString() && newData.val().length <= 16" },
           "supplementary": { "$i": { ".validate": "newData.isString() && newData.val().length <= 24" } },

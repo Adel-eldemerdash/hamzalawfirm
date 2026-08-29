@@ -33,6 +33,9 @@ manualSplashScreen();
 let answers: Answers = {};
 let screenIndex = 0;
 
+/** Exposed for diagnostics only; never read by the page. */
+let lastStorageError: unknown = null;
+
 const RETENTION_MONTHS = 24;
 const CONSENT_RETENTION_YEARS = 3;
 
@@ -411,9 +414,19 @@ function validateContact(): boolean {
       };
       return saveAssessment(record);
     })
-    .catch(function () {
-      // Deliberately silent to the visitor: the result is already on screen and
-      // a storage failure is ours to solve, not theirs.
+    .then(function () {
+      lastStorageError = null;
+      (window as unknown as { __pdplStored?: boolean }).__pdplStored = true;
+    })
+    .catch(function (error) {
+      // Silent to the visitor — the result is already on screen and a storage
+      // failure is ours to solve, not theirs. Not silent to us: swallowing
+      // this entirely is how a write that never succeeded went unnoticed.
+      // eslint-disable-next-line no-console
+      console.error("PDPL assessment was not stored:", error);
+      lastStorageError = error;
+      (window as unknown as { __pdplStored?: boolean; __pdplError?: string }).__pdplStored = false;
+      (window as unknown as { __pdplError?: string }).__pdplError = String(error);
     });
 });
 

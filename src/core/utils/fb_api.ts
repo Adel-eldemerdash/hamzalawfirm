@@ -83,12 +83,48 @@ export interface AssessmentRecord {
 }
 
 /**
+ * Realtime Database keys may not contain `.`, `#`, `$`, `/`, `[`, or `]`.
+ * Every question identifier contains a period — Q0.1, Q12.2 — so using them
+ * as keys makes the whole write fail before it reaches the network.
+ *
+ * The period becomes an underscore. The transformation is total and
+ * reversible: Q0.1 <-> Q0_1. A free-text answer keeps its `:option` suffix,
+ * because a colon is a legal key character.
+ */
+export function encodeAnswerKey(questionId: string): string {
+  return questionId.replace(/\./g, "_");
+}
+
+export function decodeAnswerKey(key: string): string {
+  return key.replace(/_/g, ".");
+}
+
+/**
  * Write-only from the client. Nothing here is ever read back by the browser.
  * The caller has already signed in, because the record carries that uid.
  */
 export function saveAssessment(record: AssessmentRecord) {
+  const answers: { [key: string]: string | string[] } = {};
+  Object.keys(record.answers).forEach(function (questionId) {
+    answers[encodeAnswerKey(questionId)] = record.answers[questionId];
+  });
+
+  const stored = {
+    submittedAt: record.submittedAt,
+    uid: record.uid,
+    locale: record.locale,
+    contact: record.contact,
+    marketingConsent: record.marketingConsent,
+    consentRecord: record.consentRecord,
+    questionSetVersion: record.questionSetVersion,
+    ruleSetVersion: record.ruleSetVersion,
+    answers: answers,
+    result: record.result,
+    retentionUntil: record.retentionUntil,
+  };
+
   const id = push(ref(db, "pdplAssessments/")).key;
-  return set(ref(db, "pdplAssessments/" + id), record);
+  return set(ref(db, "pdplAssessments/" + id), stored);
 }
 
 interface serviceData {
