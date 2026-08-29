@@ -198,12 +198,12 @@
 
 .pdpl__cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 1rem 0; }
 .pdpl__card { border: 1px solid var(--pdpl-rule); border-radius: 8px; padding: 16px; background: #fff; }
-.pdpl__card h4 { font-size: 0.98rem; font-weight: 600; margin: 0 0 0.4rem; }
+.pdpl__card h3 { font-size: 0.98rem; font-weight: 600; margin: 0 0 0.4rem; }
 .pdpl__card p { margin: 0; font-size: 0.9rem; color: var(--pdpl-muted); }
 .pdpl__card--done { opacity: 0.75; border-style: dashed; }
 
 .pdpl__fee { background: #fff; border: 1px solid var(--pdpl-rule); border-radius: 8px; padding: 16px; margin: 1rem 0; }
-.pdpl__fee h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pdpl-muted); margin: 0 0 0.35rem; }
+.pdpl__label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pdpl-muted); margin: 0 0 0.35rem; }
 .pdpl__fee p { margin: 0; font-size: 1.05rem; font-weight: 600; }
 .pdpl__fee--unresolved { background: var(--pdpl-warnbg); }
 
@@ -225,7 +225,7 @@
   font-size: 0.85rem;
   color: var(--pdpl-muted);
 }
-.pdpl__disclaimerbox h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 0.5rem; color: var(--pdpl-ink); }
+.pdpl__disclaimerbox .pdpl__label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 0.5rem; color: var(--pdpl-ink); }
 .pdpl__disclaimerbox p { margin: 0 0 0.6rem; }
 .pdpl__disclaimerbox p:last-child { margin-bottom: 0; }
 
@@ -238,3 +238,15 @@
 @media (prefers-reduced-motion: reduce) {
   .pdpl__progressfill { transition: none; }
 }
+
+/* Section labels: styled like a heading, deliberately not one, so the
+   document outline runs h1 -> h2 -> h3 without skipping a level. */
+.pdpl__label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pdpl-muted);
+  font-weight: 600;
+  margin: 1rem 0 0.35rem;
+}
+.pdpl__fee .pdpl__label { margin-top: 0; }

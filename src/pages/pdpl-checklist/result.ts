@@ -29,7 +29,7 @@ import {
 
 export function disclaimerHtml(): string {
   return (
-    '<div class="pdpl__disclaimerbox"><h4>Disclaimer</h4>' +
+    '<div class="pdpl__disclaimerbox"><p class="pdpl__label">Disclaimer</p>' +
     DISCLAIMER_PARAGRAPHS.map(function (p) { return "<p>" + p + "</p>"; }).join("") +
     "</div>"
   );
@@ -38,7 +38,7 @@ export function disclaimerHtml(): string {
 function card(item: Item, extraClass?: string): string {
   return (
     '<article class="pdpl__card' + (extraClass ? " " + extraClass : "") + '">' +
-    "<h4>" + item.title + "</h4>" +
+    "<h3>" + item.title + "</h3>" +
     (item.body ? "<p>" + item.body + "</p>" : "") +
     (item.source ? '<p class="pdpl__source">' + item.source + "</p>" : "") +
     "</article>"
@@ -58,7 +58,7 @@ function noticeBlock(codes: string[], heading: string): string {
     .filter(function (i) { return !!i; });
   if (!items.length) return "";
   return (
-    '<div class="pdpl__notices"><h4 class="pdpl__noticesheading">' + heading + "</h4>" +
+    '<div class="pdpl__notices"><p class="pdpl__noticesheading">' + heading + "</p>" +
     items.map(function (i) {
       return (
         '<div class="pdpl__notice"><strong>' + i.title + "</strong>" +
@@ -104,7 +104,7 @@ export function renderResult(root: HTMLElement, r: Result, answers: Answers): st
       '<p class="pdpl__headline">' + primary.title + "</p>" +
       "<p>" + primary.body + "</p>" +
       '<div class="pdpl__fee' + (fee.unresolved ? " pdpl__fee--unresolved" : "") + '">' +
-      "<h4>Official fee</h4><p>" + fee.amount + "</p>" +
+      "<p class=\"pdpl__label\">Official fee</p><p>" + fee.amount + "</p>" +
       (fee.qualifier ? '<p class="pdpl__hedge">' + fee.qualifier + "</p>" : "") +
       (band === "b1" && r.primary.indexOf("BAS-L") === 0
         ? "<p>Exemption from the fee is not exemption from the license, nor from any other obligation.</p>"
@@ -141,12 +141,12 @@ export function renderResult(root: HTMLElement, r: Result, answers: Answers): st
   html +=
     '<section class="pdpl__section pdpl__section--feature">' +
     '<h2 class="pdpl__h2">5. Your document and obligation map</h2>' +
-    "<h3>Required</h3>" +
+    '<p class="pdpl__label">Required</p>' +
     (r.documents.length ? list(r.documents, DOCUMENTS) : "<p>Nothing further identified.</p>");
 
   if (r.alreadyInPlace.length) {
     html +=
-      "<h3>Already in place</h3>" +
+      '<p class="pdpl__label">Already in place</p>' +
       '<p class="pdpl__source">Deducted from the scope of work on your answers. What remains is to review each against the requirements, not to produce it anew.</p>' +
       list(r.alreadyInPlace, DOCUMENTS, "pdpl__card--done");
   }
