@@ -1,0 +1,135 @@
+# Hamza & Partners Law Firm — Apache configuration
+#
+# The live site is served by Apache on Bluehost shared hosting, not by
+# Firebase Hosting, so this file — not firebase.json — is what governs
+# routing, redirects, caching, and compression in production.
+#
+# It is committed to the repository and copied into dist/ by the build, so a
+# manual upload of dist/ carries it. Do not edit it only on the server.
+#
+# Every block is wrapped in <IfModule>. If a module is missing on the host the
+# block is skipped rather than returning a 500 for the whole site.
+
+Options -Indexes
+
+# ---------------------------------------------------------------------------
+# Error pages
+#
+# The server currently escalates every 404 into a 500 because its
+# ErrorDocument target does not resolve. 404.html is emitted into the site
+# root by the build.
+# ---------------------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # -------------------------------------------------------------------------
+  # 301 redirects from the legacy service URLs.
+  #
+  # Those URLs carried raw spaces and commas, encoded as %20 and %2C. Apache
+  # matches the decoded path, so the patterns below contain literal spaces and
+  # are quoted for that reason. Keeping these is what preserves the existing
+  # search rankings; do not remove them.
+  # -------------------------------------------------------------------------
+  RewriteRule "^services/Banking and Finance/?$" "/services/banking-and-finance" [R=301,L]
+  RewriteRule "^services/Capital Markets/?$" "/services/capital-markets" [R=301,L]
+  RewriteRule "^services/Corporate Governance and Mergers & Acquisitions/?$" "/services/corporate-governance-and-mergers-acquisitions" [R=301,L]
+  RewriteRule "^services/Corporate and Project Services/?$" "/services/corporate-and-project-services" [R=301,L]
+  RewriteRule "^services/Cybercrimes/?$" "/services/cybercrimes" [R=301,L]
+  RewriteRule "^services/Drafting of Agreements in Light of Investment Flows and Their Administration/?$" "/services/drafting-of-agreements-in-light-of-investment-flows-and-their-administration" [R=301,L]
+  RewriteRule "^services/Financial and Corporate Crimes/?$" "/services/financial-and-corporate-crimes" [R=301,L]
+  RewriteRule "^services/Healthcare Sector/?$" "/services/healthcare-sector" [R=301,L]
+  RewriteRule "^services/Hospitality and Tourism/?$" "/services/hospitality-and-tourism" [R=301,L]
+  RewriteRule "^services/Intellectual Property/?$" "/services/intellectual-property" [R=301,L]
+  RewriteRule "^services/Litigation/?$" "/services/litigation" [R=301,L]
+  RewriteRule "^services/Mediation, Arbitration, and Dispute Resolution/?$" "/services/mediation-arbitration-and-dispute-resolution" [R=301,L]
+  RewriteRule "^services/Real Estate Sector/?$" "/services/real-estate-sector" [R=301,L]
+  RewriteRule "^services/Restructuring and Insolvency/?$" "/services/restructuring-and-insolvency" [R=301,L]
+  RewriteRule "^services/Tax Transactions/?$" "/services/tax-transactions" [R=301,L]
+
+  # -------------------------------------------------------------------------
+  # Service detail pages.
+  #
+  # /services/<slug> is served by the single serviceDetails document, which
+  # reads the slug from the path and resolves it against the database.
+  #
+  # The slugs are listed explicitly rather than matched by shape. A generic
+  # pattern would answer 200 for any well-formed slug, so a mistyped URL would
+  # return a "not found" page under a success status — a soft 404 that search
+  # engines index. Listing them means an unknown slug reaches the 404 above
+  # with the right status.
+  #
+  # Regenerate this list together with src/data/service-routes.json whenever a
+  # service is added, removed, or renamed in the database.
+  # -------------------------------------------------------------------------
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule "^services/(banking-and-finance|capital-markets|corporate-and-project-services|corporate-governance-and-mergers-acquisitions|cybercrimes|drafting-of-agreements-in-light-of-investment-flows-and-their-administration|financial-and-corporate-crimes|healthcare-sector|hospitality-and-tourism|intellectual-property|litigation|mediation-arbitration-and-dispute-resolution|real-estate-sector|restructuring-and-insolvency|tax-transactions)/?$" "/serviceDetails/index.html" [L]
+
+  # -------------------------------------------------------------------------
+  # Canonical host.
+  #
+  # The apex and the www host both serve the site today, which splits ranking
+  # signals between two hostnames. Every canonical tag on the site already
+  # names the www host, so enabling this only enforces what the pages claim.
+  # Left commented because it changes host behavior and cannot be tested from
+  # the repository. Enable deliberately, then verify.
+  # -------------------------------------------------------------------------
+  # RewriteCond %{HTTP_HOST} !^www\. [NC]
+  # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Compression
+#
+# The host already gzips, but at a low level. The compression level itself is
+# a server-config directive and cannot be set from .htaccess, so this block
+# only widens the set of types that get compressed at all.
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml application/rss+xml
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Caching
+#
+# No asset currently carries Cache-Control, Expires, or ETag, so every return
+# visit revalidates everything.
+#
+# JavaScript and CSS filenames carry a content hash, so a new build produces a
+# new filename and a one-year lifetime is safe. Images do not carry a hash, so
+# they get a shorter lifetime. HTML must always be revalidated or a deploy
+# would not reach anyone.
+# ---------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css                 "access plus 1 year"
+  ExpiresByType application/javascript   "access plus 1 year"
+  ExpiresByType text/javascript          "access plus 1 year"
+  ExpiresByType image/webp               "access plus 30 days"
+  ExpiresByType image/png                "access plus 30 days"
+  ExpiresByType image/jpeg               "access plus 30 days"
+  ExpiresByType image/gif                "access plus 30 days"
+  ExpiresByType image/svg+xml            "access plus 30 days"
+  ExpiresByType font/woff2               "access plus 1 year"
+  ExpiresByType text/html                "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(webp|png|jpe?g|gif|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  Header set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

@@ -1,4 +1,7 @@
 {
+  "database": {
+    "rules": "database.rules.json"
+  },
   "hosting": {
     "public": "dist",
     "ignore": [
@@ -8,8 +11,8 @@
     ],
     "rewrites": [
       {
-        "regex": "^/services/([\\w-&]+(?:%20[\\w-&]+)*)$",
-        "destination": "/serviceDetails/serviceDetails.html?service=$1"
+        "regex": "^/services/([a-z0-9]+(?:-[a-z0-9]+)*)$",
+        "destination": "/serviceDetails/index.html"
       }
     ]
   }

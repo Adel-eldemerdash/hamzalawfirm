@@ -8,6 +8,7 @@ const ESlintPlugin = require("eslint-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const fs = require("fs");
 const SitemapPlugin = require("sitemap-webpack-plugin").default;
+const serviceRoutes = require("./src/data/service-routes.json");
 
 function headerInjection(targetPage, options = {}) {
   let template = fs.readFileSync(
@@ -99,9 +100,10 @@ const paths = [
   {
     path:"/profile"
   },
-  {
-    path:"/service/TEST"
-  }
+  // Real service routes, replacing the "/service/TEST" placeholder that used
+  // to sit here. The slugs come from src/data/service-routes.json, which is
+  // generated from the database keys with slugify() in src/core/utils/slug.ts.
+  ...serviceRoutes.slugs.map((slug) => ({ path: `/services/${slug}` }))
 ];
 
 
@@ -129,6 +131,10 @@ module.exports = {
   optimization: {
     minimize: true,
     minimizer: [
+      // "..." keeps webpack's default minimizer, which is Terser. Assigning
+      // this array without it replaces the defaults instead of extending
+      // them, which is how the JavaScript came to ship unminified.
+      "...",
       new ImageMinimizerPlugin({
         test: /\.(webp)$/i,
 
@@ -287,6 +293,21 @@ module.exports = {
           from: path.resolve(__dirname, "src/robots.txt"),
           to: path.resolve(__dirname, "dist"),
         },
+        {
+          // Apache serves the live site, so .htaccess is what actually routes
+          // it. Shipping it inside dist/ means a manual upload carries the
+          // routing with the build instead of leaving it to drift on the
+          // server.
+          from: path.resolve(__dirname, "src/.htaccess"),
+          to: path.resolve(__dirname, "dist/.htaccess"),
+          toType: "file",
+        },
+        {
+          // Referenced by ErrorDocument in .htaccess.
+          from: path.resolve(__dirname, "src/404.html"),
+          to: path.resolve(__dirname, "dist/404.html"),
+          toType: "file",
+        },
       ],
     }),
     new SitemapPlugin({
@@ -368,12 +389,10 @@ module.exports = {
     historyApiFallback: {
       rewrites: [
         {
-          from: /^\/services\/([a-zA-Z0-9\-\%20\&\,]+)$/,
-          to: function (context) {
-            const serviceSlug = context.match[1];
-            const decodedServiceSlug = serviceSlug.replace(/\%20/g, " ");
-            return `/serviceDetails/index.html?service=${decodedServiceSlug}`;
-          },
+          // Mirrors the production rewrite in src/.htaccess. The slug is read
+          // from the path by serviceDetails.ts, so no query string is added.
+          from: /^\/services\/[a-z0-9]+(?:-[a-z0-9]+)*$/,
+          to: "/serviceDetails/index.html",
         },
       ],
     },

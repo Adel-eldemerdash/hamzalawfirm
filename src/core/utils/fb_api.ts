@@ -1,4 +1,5 @@
-import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import { getDatabase, ref, set, push, onValue, get } from "firebase/database";
+import { findNameBySlug } from "./slug";
 const db = getDatabase();
 
 export function sentContactData(
@@ -40,30 +41,14 @@ interface serviceData {
   tages: string;
 }
 
-export function getServiceDetails(
-  serviceName: string,
-  requestedData: (data: serviceData) => void
-) {
-  const starCountRef = ref(db, "serviceData/" + serviceName);
-  onValue(starCountRef, (snapshot) => {
-    const descripton = snapshot.child("description").val();
-    const image = snapshot.child("image").val();
-    const tages: string = snapshot.child("tages").val();
-    requestedData({
-      name: serviceName,
-      description: descripton,
-      image: image,
-      tages: tages,
-    });
-  });
-}
-
 export function getAllServiceData(
   requestedData: (data: serviceData[]) => void
 ) {
   const starCountRef = ref(db, "serviceData/");
-  let data: serviceData[] = [];
   onValue(starCountRef, (snapshot) => {
+    // Built fresh on every snapshot. Hoisting this out of the callback made
+    // each subsequent fire append a second copy of every service.
+    const data: serviceData[] = [];
     snapshot.forEach((childSnapshot) => {
       const serviceName = childSnapshot.key;
       const serviceDescription = childSnapshot.child("description").val();
@@ -77,5 +62,40 @@ export function getAllServiceData(
       });
     });
     requestedData(data);
+  });
+}
+
+/**
+ * Resolves a URL slug to a service.
+ *
+ * The database is keyed by display name, and those keys are not being renamed.
+ * So the index is read once, each key is slugged, and the requested slug is
+ * matched against the result. A slug that matches nothing yields null, which
+ * the caller renders as a not-found state rather than an empty page.
+ *
+ * A one-shot `get` is used rather than `onValue`: this runs once on page load
+ * and must not re-render behind the visitor.
+ */
+export function getServiceBySlug(slug: string): Promise<serviceData | null> {
+  return get(ref(db, "serviceData/")).then((snapshot) => {
+    const names: string[] = [];
+    snapshot.forEach((child) => {
+      if (child.key) {
+        names.push(child.key);
+      }
+    });
+
+    const name = findNameBySlug(slug, names);
+    if (!name) {
+      return null;
+    }
+
+    const service = snapshot.child(name);
+    return {
+      name: name,
+      description: service.child("description").val(),
+      image: service.child("image").val(),
+      tages: service.child("tages").val(),
+    };
   });
 }

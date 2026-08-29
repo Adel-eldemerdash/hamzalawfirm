@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page Not Found | Hamza &amp; Partners Law Firm</title>
+    <meta name="robots" content="noindex, follow" />
+    <!--
+      Deliberately self-contained: no web fonts, no scripts, no stylesheet
+      requests. This page is what the server falls back to when something has
+      already gone wrong, so it must not depend on anything that can fail.
+    -->
+    <style>
+      :root {
+        --ink: #12233b;
+        --muted: #5b6b80;
+        --rule: #e3e8ee;
+        --bg: #ffffff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+      }
+      main {
+        max-width: 34rem;
+        width: 100%;
+      }
+      .code {
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 0.75rem;
+      }
+      h1 {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        margin: 0 0 0.75rem;
+        font-weight: 600;
+      }
+      p {
+        margin: 0 0 1.5rem;
+        color: var(--muted);
+      }
+      nav {
+        border-top: 1px solid var(--rule);
+        padding-top: 1.25rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+      }
+      a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 2px;
+      }
+      a:hover,
+      a:focus-visible {
+        border-bottom-color: var(--ink);
+      }
+      a:focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 3px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ink: #eef2f7;
+          --muted: #9aa8ba;
+          --rule: #2a3646;
+          --bg: #101822;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="code">Error 404</p>
+      <h1>We could not find that page.</h1>
+      <p>
+        The address may have changed, or the page may no longer exist. The links
+        below will take you back to the site.
+      </p>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/ourFirm">Our Firm</a>
+        <a href="/profile">Profile</a>
+      </nav>
+    </main>
+  </body>
+</html>
