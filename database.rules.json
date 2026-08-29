@@ -1,0 +1,32 @@
+{
+  "rules": {
+    ".read": false,
+      ".write": false,
+    "heroSection": {
+        ".write": false,
+        ".read": true
+    },
+		"contactReq": {
+      "$uniqueKey": {
+        ".write": "newData.exists() && !data.exists()",
+        ".read": false
+      }
+    }
+    ,"hiringReq": {
+      "$uniqueKey": {
+        ".write": "newData.exists() && !data.exists()",
+        ".read": false
+      }
+    }
+    ,"serviceData": {
+        ".write": false,
+        ".read": true
+    }
+    ,"vistors": {
+      "$uniqueKey": {
+        ".write": "auth.uid !== null && auth.uid === $uniqueKey",
+        ".read": false
+      }
+    }
+  }
+}
