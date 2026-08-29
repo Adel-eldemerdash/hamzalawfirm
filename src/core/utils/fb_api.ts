@@ -1,6 +1,23 @@
 import { getDatabase, ref, set, push, onValue, get } from "firebase/database";
 import { findNameBySlug } from "./slug";
+import { getTsysUID } from "./T_sys";
 const db = getDatabase();
+
+/**
+ * Every write to a node holding personal data signs in anonymously first.
+ *
+ * The database rules on contactReq/, hiringReq/, and pdplAssessments/ require
+ * `auth != null`. Without an authenticated principal those rules cannot be
+ * expressed at all, which would leave the write path open to anyone who reads
+ * the Firebase config out of the shipped bundle. Reads of public content —
+ * serviceData/ — do not go through this.
+ */
+function authenticatedWrite(path: string, value: object): Promise<void> {
+  return getTsysUID().then(function () {
+    const id = push(ref(db, path)).key;
+    return set(ref(db, path + id), value);
+  });
+}
 
 export function sentContactData(
   name: string,
@@ -9,8 +26,7 @@ export function sentContactData(
   subject: string,
   phone: string
 ) {
-  const uninqeID = push(ref(db, "contactReq/")).key;
-  return set(ref(db, "contactReq/" + uninqeID), {
+  return authenticatedWrite("contactReq/", {
     name: name,
     email: email,
     message: message,
@@ -25,8 +41,7 @@ export function sendHiringRequest(
   phone: string,
   cv: string
 ) {
-  const uninqeID = push(ref(db, "hiringReq/")).key;
-  return set(ref(db, "hiringReq/" + uninqeID), {
+  return authenticatedWrite("hiringReq/", {
     name: name,
     email: email,
     phone: phone,
@@ -67,7 +82,10 @@ export interface AssessmentRecord {
   retentionUntil: number;
 }
 
-/** Write-only from the client. Nothing here is ever read back by the browser. */
+/**
+ * Write-only from the client. Nothing here is ever read back by the browser.
+ * The caller has already signed in, because the record carries that uid.
+ */
 export function saveAssessment(record: AssessmentRecord) {
   const id = push(ref(db, "pdplAssessments/")).key;
   return set(ref(db, "pdplAssessments/" + id), record);
