@@ -28,6 +28,16 @@ export interface Option {
   exclusive?: boolean;
   /** Renders an accompanying free-text field. */
   freeText?: string;
+  /**
+   * Concrete examples shown beneath the option.
+   *
+   * NOT part of the approved copy in 02-QUESTION-BANK.md. Added at the
+   * client's instruction on August 30, 2026 because the abstract category
+   * names were being read too narrowly — "financial data" in particular was
+   * not being recognized as covering employee payroll. Back-port these to the
+   * source of record.
+   */
+  example?: string;
 }
 
 export interface Question {
@@ -180,13 +190,13 @@ export const QUESTIONS: Question[] = [
     note: "This list mirrors the definition of sensitive personal data in Article 1 of the PDPL. Children’s data is sensitive personal data in all cases.",
     type: "multi",
     options: [
-      { value: "health", label: "Data revealing physical, mental, psychological, or genetic health" },
-      { value: "biometric", label: "Biometric data (fingerprint, facial recognition, voiceprint, and the like)" },
-      { value: "financial", label: "Financial data" },
-      { value: "religion", label: "Religious beliefs" },
-      { value: "political", label: "Political opinions" },
-      { value: "security", label: "Security status" },
-      { value: "children", label: "Data relating to children under 18" },
+      { value: "health", label: "Data revealing physical, mental, psychological, or genetic health", example: "Includes sick leave records and medical certificates, health insurance files for staff and their dependants, pre-employment medical examinations, occupational injury reports, and any disability accommodation on file." },
+      { value: "biometric", label: "Biometric data (fingerprint, facial recognition, voiceprint, and the like)", example: "Includes fingerprint or face-scan attendance devices, facial recognition on entry gates or cameras, voiceprints captured in a call center, and iris or palm scanners used for access control." },
+      { value: "financial", label: "Financial data", example: "Includes employee payroll and salary records, bank account and IBAN details, salary transfer files sent to a bank, end-of-service and bonus calculations, customer card or payment data, invoices and payment histories, and credit or installment applications. Payroll alone puts almost every employer in this category." },
+      { value: "religion", label: "Religious beliefs", example: "Includes the religion field carried on a national ID copy held in an HR file, religious holiday or pilgrimage leave entitlements, and any record of place of worship or religious affiliation." },
+      { value: "political", label: "Political opinions", example: "Includes political party or syndicate membership recorded in a file, records of candidacy or political activity, and any note of political affiliation in a personnel or customer record." },
+      { value: "security", label: "Security status", example: "Includes criminal record certificates required on hiring, background and security screening results, security clearance files, and military service status records." },
+      { value: "children", label: "Data relating to children under 18", example: "Includes employees’ children listed on medical insurance or family allowances, trainees or students under 18, any account or profile opened for a minor, and children appearing in photographs or on a school, club, or learning platform." },
       { value: "none", label: "None of the above", exclusive: true },
       { value: "unsure", label: "Not sure", exclusive: true },
     ],

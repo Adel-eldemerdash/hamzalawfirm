@@ -71,13 +71,18 @@ function optionHtml(q: Question, o: Option, idx: number): string {
     ? current.indexOf(o.value) !== -1
     : current === o.value;
 
+  // The whole highlighted block is the label, so the entire area that lights
+  // up on hover is also the area that toggles the choice.
   let html =
     '<div class="pdpl__option">' +
+    '<label class="pdpl__optionmain" for="' + id + '">' +
     '<input type="' + inputType + '" id="' + id + '" name="' + q.id + '" value="' + o.value + '"' +
     (selected ? " checked" : "") +
     (o.exclusive ? ' data-exclusive="true"' : "") +
     " />" +
-    '<label for="' + id + '">' + o.label + "</label>";
+    '<span class="pdpl__optiontext">' + o.label +
+    (o.example ? '<span class="pdpl__example">' + o.example + "</span>" : "") +
+    "</span></label>";
 
   if (o.freeText) {
     const ftId = id + "_text";
@@ -360,6 +365,12 @@ function validateContact(): boolean {
 
   const result = infer(answers);
   const consent = ($("pdplConsent") as HTMLInputElement).checked;
+  const contact = {
+    company: ($("pdplCompany") as HTMLInputElement).value.trim(),
+    fullName: ($("pdplName") as HTMLInputElement).value.trim(),
+    email: ($("pdplEmail") as HTMLInputElement).value.trim(),
+    phone: ($("pdplPhone") as HTMLInputElement).value.trim(),
+  };
   const now = Date.now();
   const retention = new Date(now);
   retention.setMonth(retention.getMonth() + RETENTION_MONTHS);
@@ -368,7 +379,7 @@ function validateContact(): boolean {
 
   // The result is rendered from local state, so a failed write never costs the
   // visitor the answer they came for.
-  renderResult($("pdplResultBody"), result, answers);
+  renderResult($("pdplResultBody"), result, answers, contact);
   show("pdplResult");
 
   getTsysUID()
@@ -377,12 +388,7 @@ function validateContact(): boolean {
         submittedAt: now,
         uid: uid,
         locale: "en",
-        contact: {
-          company: ($("pdplCompany") as HTMLInputElement).value.trim(),
-          fullName: ($("pdplName") as HTMLInputElement).value.trim(),
-          email: ($("pdplEmail") as HTMLInputElement).value.trim(),
-          phone: ($("pdplPhone") as HTMLInputElement).value.trim(),
-        },
+        contact: contact,
         marketingConsent: consent,
         consentRecord: {
           givenAt: now,

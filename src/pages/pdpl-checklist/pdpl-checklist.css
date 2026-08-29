@@ -7,7 +7,10 @@
   --pdpl-rule: #dde3ea;
   --pdpl-bg: #ffffff;
   --pdpl-soft: #f5f7fa;
-  --pdpl-accent: #9c7c38;
+  --pdpl-brand: #6c5735;
+  --pdpl-brand-soft: #f3efe7;
+  --pdpl-brand-line: #d8cbb2;
+  --pdpl-accent: #6c5735;
   --pdpl-warn: #7a4a00;
   --pdpl-warnbg: #fdf6e8;
 
@@ -85,7 +88,8 @@
   text-decoration: none;
   min-height: 44px;
 }
-.pdpl__btn--primary { background: var(--pdpl-ink); border-color: var(--pdpl-ink); color: #fff; }
+.pdpl__btn--primary { background: var(--pdpl-brand); border-color: var(--pdpl-brand); color: #fff; }
+.pdpl__btn--primary:hover { background: #5c4a2d; border-color: #5c4a2d; }
 .pdpl__btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .pdpl__btn:focus-visible,
 .pdpl input:focus-visible,
@@ -96,7 +100,7 @@
 /* ---- progress ---- */
 .pdpl__progress { margin-bottom: 1.75rem; }
 .pdpl__progressbar { height: 6px; background: var(--pdpl-rule); border-radius: 999px; overflow: hidden; }
-.pdpl__progressfill { height: 100%; width: 0; background: var(--pdpl-accent); transition: width 0.25s ease; }
+.pdpl__progressfill { height: 100%; width: 0; background: var(--pdpl-brand); transition: width 0.25s ease; }
 .pdpl__progresstext { font-size: 0.85rem; color: var(--pdpl-muted); margin: 0.5rem 0 0; }
 
 /* ---- questions ---- */
@@ -114,22 +118,50 @@
 }
 
 .pdpl__options { display: flex; flex-direction: column; gap: 2px; }
-.pdpl__option {
+.pdpl__option { border-radius: 8px; }
+
+/* The label fills the block, so every pixel that highlights on hover also
+   toggles the choice. */
+.pdpl__optionmain {
   display: flex;
   align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 6px;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
 }
-.pdpl__option:hover { background: var(--pdpl-soft); }
-.pdpl__option input[type="radio"],
-.pdpl__option input[type="checkbox"] { margin-top: 0.35rem; width: 18px; height: 18px; flex: none; }
-.pdpl__option label { margin: 0; cursor: pointer; flex: 1 1 12rem; }
+.pdpl__optionmain:hover { background: var(--pdpl-brand-soft); border-color: var(--pdpl-brand-line); }
+.pdpl__optionmain:has(input:checked) { background: var(--pdpl-brand-soft); border-color: var(--pdpl-brand); }
+.pdpl__optionmain:focus-within { outline: 3px solid var(--pdpl-brand); outline-offset: 2px; }
+
+.pdpl__optionmain input[type="radio"],
+.pdpl__optionmain input[type="checkbox"] {
+  margin: 0.3rem 0 0;
+  width: 19px;
+  height: 19px;
+  flex: none;
+  accent-color: var(--pdpl-brand);
+  cursor: pointer;
+}
+.pdpl__optiontext { flex: 1; display: block; }
+
+/* Concrete examples beneath an option. Slate rather than the body grey, so it
+   reads as guidance and not as part of the option itself. */
+.pdpl__example {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: #42566e;
+}
 
 .pdpl__freetext {
-  flex: 1 1 100%;
-  margin-left: 28px;
+  display: block;
+  width: calc(100% - 45px);
+  margin: 4px 0 8px 45px;
   padding: 8px 10px;
   border: 1px solid var(--pdpl-rule);
   border-radius: 5px;
@@ -144,6 +176,7 @@
 .pdpl__field label { display: block; font-weight: 600; margin-bottom: 0.35rem; }
 .pdpl__field input {
   width: 100%;
+  accent-color: var(--pdpl-brand);
   padding: 11px 12px;
   border: 1px solid var(--pdpl-rule);
   border-radius: 6px;
@@ -162,7 +195,8 @@
   padding: 16px;
   margin: 1.75rem 0;
 }
-.pdpl__consent input { margin-top: 0.3rem; width: 18px; height: 18px; flex: none; }
+.pdpl__consent input { margin-top: 0.3rem; width: 19px; height: 19px; flex: none; accent-color: var(--pdpl-brand); cursor: pointer; }
+.pdpl__consent label { cursor: pointer; }
 .pdpl__consent label { margin: 0; font-size: 0.95rem; }
 
 /* ---- privacy notice ---- */
@@ -177,7 +211,7 @@
   font-size: 0.9rem;
   min-height: 38px;
 }
-.pdpl__tab--active { background: var(--pdpl-ink); color: #fff; border-color: var(--pdpl-ink); }
+.pdpl__tab--active { background: var(--pdpl-brand); color: #fff; border-color: var(--pdpl-brand); }
 .pdpl__privacybody { max-height: 22rem; overflow-y: auto; font-size: 0.9rem; }
 .pdpl__privacybody--ar { text-align: right; }
 .pdpl__privacyitem { margin-bottom: 1rem; }
@@ -189,9 +223,10 @@
 .pdpl__section { padding: 24px 0; border-top: 1px solid var(--pdpl-rule); }
 .pdpl__section--feature { background: var(--pdpl-soft); border-radius: 10px; padding: 24px; border-top: 0; margin: 1.5rem 0; }
 .pdpl__section--unresolved { background: var(--pdpl-warnbg); border-radius: 10px; padding: 24px; border-top: 0; margin: 1.5rem 0; }
-.pdpl__section--cta { background: var(--pdpl-ink); color: #fff; border-radius: 10px; padding: 28px; border-top: 0; margin: 1.5rem 0; }
+.pdpl__section--cta { background: var(--pdpl-brand); color: #fff; border-radius: 10px; padding: 28px; border-top: 0; margin: 1.5rem 0; }
 .pdpl__section--cta .pdpl__source { color: rgba(255, 255, 255, 0.75); }
-.pdpl__section--cta .pdpl__btn--primary { background: #fff; color: var(--pdpl-ink); border-color: #fff; }
+.pdpl__section--cta .pdpl__btn--primary { background: #fff; color: var(--pdpl-brand); border-color: #fff; }
+.pdpl__section--cta .pdpl__btn--primary:hover { background: var(--pdpl-brand-soft); border-color: var(--pdpl-brand-soft); }
 
 .pdpl__headline { font-size: 1.2rem; font-weight: 600; margin: 0 0 0.5rem; }
 .pdpl__hedge { color: var(--pdpl-warn); font-size: 0.92rem; margin: 0.35rem 0; }
@@ -209,7 +244,7 @@
 
 .pdpl__notices { margin-top: 1.25rem; }
 .pdpl__noticesheading { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pdpl-muted); margin: 0 0 0.6rem; }
-.pdpl__notice { border-left: 3px solid var(--pdpl-accent); padding-left: 12px; margin-bottom: 0.9rem; }
+.pdpl__notice { border-left: 3px solid var(--pdpl-brand); padding-left: 12px; margin-bottom: 0.9rem; }
 .pdpl__notice p { margin: 0.2rem 0 0; font-size: 0.9rem; color: var(--pdpl-muted); }
 
 .pdpl__tablewrap { overflow-x: auto; }
@@ -250,3 +285,10 @@
   margin: 1rem 0 0.35rem;
 }
 .pdpl__fee .pdpl__label { margin-top: 0; }
+
+.pdpl__ctanote {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0.75rem 0 0;
+  max-width: 34rem;
+}
