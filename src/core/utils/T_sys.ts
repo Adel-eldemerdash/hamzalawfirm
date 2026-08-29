@@ -25,7 +25,14 @@ const database = getDatabase();
 let currentScrollDepth = 0;
 const SESSION_START_TIME = Date.now();
 
-function getTsysUID(): Promise<string> {
+/**
+ * Anonymous sign-in, giving every submission a stable principal.
+ *
+ * This is not cosmetic. Without an authenticated principal the database rules
+ * cannot express `auth != null`, which would leave the write path open to
+ * anyone who reads the Firebase config out of the shipped bundle.
+ */
+export function getTsysUID(): Promise<string> {
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
       unsubscribe();

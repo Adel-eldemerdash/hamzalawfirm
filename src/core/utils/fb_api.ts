@@ -34,6 +34,45 @@ export function sendHiringRequest(
   });
 }
 
+export interface AssessmentRecord {
+  submittedAt: number;
+  uid: string;
+  locale: string;
+  contact: { company: string; fullName: string; email: string; phone: string };
+  marketingConsent: boolean;
+  consentRecord: {
+    givenAt: number;
+    method: string;
+    noticeVersion: string;
+    /**
+     * Three years from the last message, per PDPL Art. 18. Separate from the
+     * 24-month retention on the submission itself: a person who gave no
+     * marketing consent has no purpose served by keeping their data longer
+     * than the assessment, and PDPL Art. 3 requires erasure once the purpose
+     * has been served.
+     */
+    retentionUntil: number | null;
+  };
+  questionSetVersion: string;
+  ruleSetVersion: string;
+  answers: { [questionId: string]: string | string[] };
+  result: {
+    role: string;
+    primary: string;
+    supplementary: string[];
+    registrations: string[];
+    documents: string[];
+    unresolved: string[];
+  };
+  retentionUntil: number;
+}
+
+/** Write-only from the client. Nothing here is ever read back by the browser. */
+export function saveAssessment(record: AssessmentRecord) {
+  const id = push(ref(db, "pdplAssessments/")).key;
+  return set(ref(db, "pdplAssessments/" + id), record);
+}
+
 interface serviceData {
   name: string;
   description: string;

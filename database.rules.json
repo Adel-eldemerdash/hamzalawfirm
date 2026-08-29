@@ -1,31 +1,104 @@
 {
   "rules": {
     ".read": false,
-      ".write": false,
+    ".write": false,
+
     "heroSection": {
-        ".write": false,
-        ".read": true
+      ".read": true,
+      ".write": false
     },
-		"contactReq": {
+
+    "serviceData": {
+      ".read": true,
+      ".write": false
+    },
+
+    "contactReq": {
       "$uniqueKey": {
-        ".write": "newData.exists() && !data.exists()",
-        ".read": false
+        ".read": false,
+        ".write": "auth != null && newData.exists() && !data.exists()",
+        ".validate": "newData.hasChildren(['name','email','message','subject','phone'])",
+        "name": { ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 120" },
+        "email": { ".validate": "newData.isString() && newData.val().length <= 160 && newData.val().matches(/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/)" },
+        "message": { ".validate": "newData.isString() && newData.val().length <= 5000" },
+        "subject": { ".validate": "newData.isString() && newData.val().length <= 200" },
+        "phone": { ".validate": "newData.isString() && newData.val().length <= 20" },
+        "$other": { ".validate": false }
       }
-    }
-    ,"hiringReq": {
+    },
+
+    "hiringReq": {
       "$uniqueKey": {
-        ".write": "newData.exists() && !data.exists()",
-        ".read": false
+        ".read": false,
+        ".write": "auth != null && newData.exists() && !data.exists()",
+        ".validate": "newData.hasChildren(['name','email','phone','cv'])",
+        "name": { ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 120" },
+        "email": { ".validate": "newData.isString() && newData.val().length <= 160 && newData.val().matches(/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/)" },
+        "phone": { ".validate": "newData.isString() && newData.val().length <= 20" },
+        "cv": { ".validate": "newData.isString() && newData.val().length <= 500" },
+        "$other": { ".validate": false }
       }
-    }
-    ,"serviceData": {
-        ".write": false,
-        ".read": true
-    }
-    ,"vistors": {
+    },
+
+    "vistors": {
       "$uniqueKey": {
-        ".write": "auth.uid !== null && auth.uid === $uniqueKey",
-        ".read": false
+        ".read": false,
+        ".write": "auth != null && auth.uid === $uniqueKey"
+      }
+    },
+
+    "pdplAssessments": {
+      ".read": false,
+      "$submissionId": {
+        ".read": false,
+        ".write": "auth != null && newData.exists() && !data.exists()",
+        ".validate": "newData.hasChildren(['submittedAt','uid','locale','contact','marketingConsent','consentRecord','questionSetVersion','ruleSetVersion','answers','result','retentionUntil']) && newData.child('uid').val() === auth.uid && newData.child('submittedAt').val() <= now + 300000 && newData.child('submittedAt').val() >= now - 3600000",
+
+        "submittedAt": { ".validate": "newData.isNumber()" },
+        "uid": { ".validate": "newData.isString() && newData.val() === auth.uid" },
+        "locale": { ".validate": "newData.isString() && newData.val() === 'en'" },
+        "marketingConsent": { ".validate": "newData.isBoolean()" },
+        "questionSetVersion": { ".validate": "newData.isString() && newData.val().length <= 32" },
+        "ruleSetVersion": { ".validate": "newData.isString() && newData.val().length <= 32" },
+        "retentionUntil": { ".validate": "newData.isNumber() && newData.val() > newData.parent().child('submittedAt').val()" },
+
+        "contact": {
+          ".validate": "newData.hasChildren(['company','fullName','email','phone'])",
+          "company": { ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 120" },
+          "fullName": { ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 120" },
+          "email": { ".validate": "newData.isString() && newData.val().length <= 160 && newData.val().matches(/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/)" },
+          "phone": { ".validate": "newData.isString() && newData.val().length >= 8 && newData.val().length <= 20" },
+          "$other": { ".validate": false }
+        },
+
+        "consentRecord": {
+          ".validate": "newData.hasChildren(['givenAt','method','noticeVersion'])",
+          "givenAt": { ".validate": "newData.isNumber()" },
+          "method": { ".validate": "newData.isString() && newData.val() === 'web-form'" },
+          "noticeVersion": { ".validate": "newData.isString() && newData.val().length <= 16" },
+          "retentionUntil": { ".validate": "newData.isNumber()" },
+          "$other": { ".validate": false }
+        },
+
+        "answers": {
+          "$questionId": {
+            ".validate": "$questionId.matches(/^Q[0-9]{1,2}\\.[0-9]{1,2}(:[A-Za-z0-9]{1,24})?$/) && (newData.isString() || newData.hasChildren())",
+            "$index": { ".validate": "newData.isString() && newData.val().length <= 200" }
+          }
+        },
+
+        "result": {
+          ".validate": "newData.hasChildren(['role','primary','supplementary','registrations','documents','unresolved'])",
+          "role": { ".validate": "newData.isString() && newData.val().length <= 16" },
+          "primary": { ".validate": "newData.isString() && newData.val().length <= 16" },
+          "supplementary": { "$i": { ".validate": "newData.isString() && newData.val().length <= 24" } },
+          "registrations": { "$i": { ".validate": "newData.isString() && newData.val().length <= 24" } },
+          "documents": { "$i": { ".validate": "newData.isString() && newData.val().length <= 24" } },
+          "unresolved": { "$i": { ".validate": "newData.isString() && newData.val().length <= 12" } },
+          "$other": { ".validate": false }
+        },
+
+        "$other": { ".validate": false }
       }
     }
   }

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="description" content="<%= htmlWebpackPlugin.options.description %>" />
+    <link rel="canonical" href="<%= htmlWebpackPlugin.options.canonical %>" />
+    <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
+    <meta property="og:description" content="<%= htmlWebpackPlugin.options.description %>" />
+    <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>" />
+    <meta name="twitter:title" content="<%= htmlWebpackPlugin.options.title %>" />
+    <meta name="twitter:description" content="<%= htmlWebpackPlugin.options.description %>" />
+  </head>
+
+  <body>
+    <nav></nav>
+
+    <main id="pdpl" class="pdpl">
+      <!-- ---------------- Landing ---------------- -->
+      <section id="pdplLanding" class="pdpl__step">
+        <div class="pdpl__wrap">
+          <p class="pdpl__eyebrow">Self-assessment</p>
+          <h1 class="pdpl__title">
+            What does Egypt&rsquo;s Personal Data Protection Law require of your
+            organization?
+          </h1>
+          <p class="pdpl__lede">
+            Answer factual questions about how your organization handles data.
+            No legal knowledge is needed. This tool performs the legal
+            characterization for you and shows the result on screen
+            immediately.
+          </p>
+
+          <div class="pdpl__promise">
+            <h2 class="pdpl__h2">What you will get</h2>
+            <ul class="pdpl__list">
+              <li>
+                <strong>Your legal role</strong> under the law — controller,
+                processor, or both.
+              </li>
+              <li>
+                <strong>The primary license or permit you need</strong>, its
+                category, and its official fee band.
+              </li>
+              <li>
+                <strong>Every supplementary license or permit that applies</strong>,
+                with the fee percentage for each.
+              </li>
+              <li>
+                <strong>Your document and obligation map</strong> — what is
+                required, what you already have, and what needs verification.
+              </li>
+            </ul>
+          </div>
+
+          <dl class="pdpl__facts">
+            <div><dt>Time needed</dt><dd>10 to 15 minutes</dd></div>
+            <div><dt>Questions</dt><dd>Between 26 and 47, depending on your answers</dd></div>
+            <div><dt>Your result</dt><dd>Shown on this page, immediately</dd></div>
+          </dl>
+
+          <p class="pdpl__note">
+            Contact details are required in order to produce your result. They
+            are collected after the questions, and before the result is shown.
+          </p>
+
+          <button type="button" class="pdpl__btn pdpl__btn--primary" id="pdplStart">
+            Begin the assessment
+          </button>
+
+          <div class="pdpl__disclaimer" id="pdplDisclaimerTop" aria-label="Disclaimer"></div>
+        </div>
+      </section>
+
+      <!-- ---------------- Questions ---------------- -->
+      <section id="pdplQuestions" class="pdpl__step" hidden>
+        <div class="pdpl__wrap">
+          <div class="pdpl__progress">
+            <div class="pdpl__progressbar">
+              <div class="pdpl__progressfill" id="pdplProgressFill"></div>
+            </div>
+            <p class="pdpl__progresstext" id="pdplProgressText" role="status" aria-live="polite"></p>
+          </div>
+
+          <h2 class="pdpl__h2" id="pdplGroupTitle"></h2>
+          <p class="pdpl__groupintro" id="pdplGroupIntro" hidden></p>
+
+          <form id="pdplForm" novalidate>
+            <div id="pdplFields"></div>
+            <p class="pdpl__error" id="pdplScreenError" role="alert" hidden></p>
+            <div class="pdpl__actions">
+              <button type="button" class="pdpl__btn" id="pdplBack">Back</button>
+              <button type="submit" class="pdpl__btn pdpl__btn--primary" id="pdplNext">Continue</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ---------------- Screening exit ---------------- -->
+      <section id="pdplExit" class="pdpl__step" hidden>
+        <div class="pdpl__wrap">
+          <h2 class="pdpl__title" id="pdplExitTitle"></h2>
+          <p class="pdpl__lede" id="pdplExitBody"></p>
+          <p class="pdpl__note">
+            Nothing you entered has been saved, and no contact details were
+            collected.
+          </p>
+          <a class="pdpl__btn pdpl__btn--primary" href="/">Return to the site</a>
+          <div class="pdpl__disclaimer" id="pdplDisclaimerExit"></div>
+        </div>
+      </section>
+
+      <!-- ---------------- Contact gate ---------------- -->
+      <section id="pdplContact" class="pdpl__step" hidden>
+        <div class="pdpl__wrap">
+          <h2 class="pdpl__h2">Where should we send your result?</h2>
+          <p class="pdpl__lede">
+            We use these details to produce and deliver your assessment result.
+          </p>
+
+          <form id="pdplContactForm" novalidate>
+            <div class="pdpl__field">
+              <label for="pdplCompany">Company name</label>
+              <input type="text" id="pdplCompany" name="company" required minlength="2" maxlength="120" autocomplete="organization" />
+              <p class="pdpl__error" id="pdplCompanyError" hidden></p>
+            </div>
+            <div class="pdpl__field">
+              <label for="pdplName">Your full name and job title</label>
+              <input type="text" id="pdplName" name="fullName" required minlength="2" maxlength="120" autocomplete="name" />
+              <p class="pdpl__error" id="pdplNameError" hidden></p>
+            </div>
+            <div class="pdpl__field">
+              <label for="pdplEmail">Work email</label>
+              <input type="email" id="pdplEmail" name="email" required maxlength="160" autocomplete="email" />
+              <p class="pdpl__error" id="pdplEmailError" hidden></p>
+            </div>
+            <div class="pdpl__field">
+              <label for="pdplPhone">Phone number</label>
+              <input type="tel" id="pdplPhone" name="phone" required minlength="8" maxlength="20" autocomplete="tel" />
+              <p class="pdpl__error" id="pdplPhoneError" hidden></p>
+            </div>
+
+            <div class="pdpl__consent">
+              <input type="checkbox" id="pdplConsent" name="marketingConsent" />
+              <label for="pdplConsent">
+                I agree to receive occasional communications from Hamza &amp;
+                Partners Law Firm about Egypt&rsquo;s Personal Data Protection
+                Law and related services. Your result will be shown whether or
+                not you check this box.
+              </label>
+            </div>
+
+            <div id="pdplPrivacy"></div>
+
+            <p class="pdpl__error" id="pdplContactError" role="alert" hidden></p>
+            <div class="pdpl__actions">
+              <button type="button" class="pdpl__btn" id="pdplContactBack">Back</button>
+              <button type="submit" class="pdpl__btn pdpl__btn--primary" id="pdplSubmit">Show my result</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ---------------- Result ---------------- -->
+      <section id="pdplResult" class="pdpl__step" hidden>
+        <div class="pdpl__wrap" id="pdplResultBody"></div>
+      </section>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>

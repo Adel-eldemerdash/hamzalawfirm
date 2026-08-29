@@ -100,6 +100,9 @@ const paths = [
   {
     path:"/profile"
   },
+  {
+    path:"/pdpl-checklist"
+  },
   // Real service routes, replacing the "/service/TEST" placeholder that used
   // to sit here. The slugs come from src/data/service-routes.json, which is
   // generated from the database keys with slugify() in src/core/utils/slug.ts.
@@ -116,6 +119,7 @@ module.exports = {
     ourFirm: "./src/pages/ourFirm/ourFirm.ts",
     services: "./src/pages/services/services.ts",
     serviceDetails: "./src/pages/serviceDetails/serviceDetails.ts",
+    "pdpl-checklist": "./src/pages/pdpl-checklist/pdpl-checklist.ts",
   },
   output: {
     filename: "[name]/[contenthash].js",
@@ -263,6 +267,28 @@ module.exports = {
       templateContent: ({ htmlWebpackPlugin }) =>
         headerInjection("serviceDetails", htmlWebpackPlugin.options),
       scriptLoading: "defer",
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      // pdpl-checklist
+      title: "PDPL Self-Assessment | Hamza & Partners Law Firm",
+      description:
+        "Find out what Egypt's Personal Data Protection Law No. 151 of 2020 requires of your organization: your legal role, the license or permit you need and its official fee, and your document and obligation map.",
+      keywords:
+        "PDPL, Egypt data protection, Law 151 of 2020, data protection license, DPO registration, PDPC, compliance assessment",
+      filename: "./pdpl-checklist/index.html",
+      chunks: ["pdpl-checklist"],
+      scriptLoading: "defer",
+      templateContent: ({ htmlWebpackPlugin }) =>
+        headerInjection("pdpl-checklist", htmlWebpackPlugin.options),
       minify: {
         collapseWhitespace: true,
         keepClosingSlash: true,
