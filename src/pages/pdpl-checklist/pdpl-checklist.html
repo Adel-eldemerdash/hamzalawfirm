@@ -16,16 +16,31 @@
   <body>
     <nav></nav>
 
-    <main id="pdpl" class="pdpl">
+    <main id="pdpl" class="pdpl" dir="ltr" lang="en">
+      <!-- Language switch. Present on every screen, including the result. -->
+      <div class="pdpl__langbar">
+        <div class="pdpl__wrap pdpl__langwrap">
+          <span class="pdpl__langlabel" id="pdplLangLabel" data-i18n="langToggleLabel">Language</span>
+          <div class="pdpl__switch" role="group" aria-labelledby="pdplLangLabel">
+            <button type="button" class="pdpl__switchbtn pdpl__switchbtn--active" id="pdplLangEn" aria-pressed="true">
+              English
+            </button>
+            <button type="button" class="pdpl__switchbtn" id="pdplLangAr" aria-pressed="false" lang="ar">
+              العربية
+            </button>
+          </div>
+        </div>
+      </div>
+
       <!-- ---------------- Landing ---------------- -->
       <section id="pdplLanding" class="pdpl__step">
         <div class="pdpl__wrap">
-          <p class="pdpl__eyebrow">Self-assessment</p>
-          <h1 class="pdpl__title">
+          <p class="pdpl__eyebrow" data-i18n="eyebrow">Self-assessment</p>
+          <h1 class="pdpl__title" data-i18n="landingTitle">
             What does Egypt&rsquo;s Personal Data Protection Law require of your
             organization?
           </h1>
-          <p class="pdpl__lede">
+          <p class="pdpl__lede" data-i18n="landingLede">
             Answer factual questions about how your organization handles data.
             No legal knowledge is needed. This tool performs the legal
             characterization for you and shows the result on screen
@@ -33,21 +48,21 @@
           </p>
 
           <div class="pdpl__promise">
-            <h2 class="pdpl__h2">What you will get</h2>
+            <h2 class="pdpl__h2" data-i18n="promiseHeading">What you will get</h2>
             <ul class="pdpl__list">
-              <li>
+              <li data-i18n-html="promise1">
                 <strong>Your legal role</strong> under the law — controller,
                 processor, or both.
               </li>
-              <li>
+              <li data-i18n-html="promise2">
                 <strong>The primary license or permit you need</strong>, its
                 category, and its official fee band.
               </li>
-              <li>
+              <li data-i18n-html="promise3">
                 <strong>Every supplementary license or permit that applies</strong>,
                 with the fee percentage for each.
               </li>
-              <li>
+              <li data-i18n-html="promise4">
                 <strong>Your document and obligation map</strong> — what is
                 required, what you already have, and what needs verification.
               </li>
@@ -55,17 +70,17 @@
           </div>
 
           <dl class="pdpl__facts">
-            <div><dt>Time needed</dt><dd>10 to 15 minutes</dd></div>
-            <div><dt>Questions</dt><dd>Between 26 and 47, depending on your answers</dd></div>
-            <div><dt>Your result</dt><dd>Shown on this page, immediately</dd></div>
+            <div><dt data-i18n="factTime">Time needed</dt><dd data-i18n="factTimeValue">10 to 15 minutes</dd></div>
+            <div><dt data-i18n="factQuestions">Questions</dt><dd data-i18n="factQuestionsValue">Between 26 and 47, depending on your answers</dd></div>
+            <div><dt data-i18n="factResult">Your result</dt><dd data-i18n="factResultValue">Shown on this page, immediately</dd></div>
           </dl>
 
-          <p class="pdpl__note">
+          <p class="pdpl__note" data-i18n="landingNote">
             Contact details are required in order to produce your result. They
             are collected after the questions, and before the result is shown.
           </p>
 
-          <button type="button" class="pdpl__btn pdpl__btn--primary" id="pdplStart">
+          <button type="button" class="pdpl__btn pdpl__btn--primary" id="pdplStart" data-i18n="start">
             Begin the assessment
           </button>
 
@@ -90,8 +105,8 @@
             <div id="pdplFields"></div>
             <p class="pdpl__error" id="pdplScreenError" role="alert" hidden></p>
             <div class="pdpl__actions">
-              <button type="button" class="pdpl__btn" id="pdplBack">Back</button>
-              <button type="submit" class="pdpl__btn pdpl__btn--primary" id="pdplNext">Continue</button>
+              <button type="button" class="pdpl__btn" id="pdplBack" data-i18n="back">Back</button>
+              <button type="submit" class="pdpl__btn pdpl__btn--primary" id="pdplNext" data-i18n="next">Continue</button>
             </div>
           </form>
         </div>
@@ -102,11 +117,11 @@
         <div class="pdpl__wrap">
           <h2 class="pdpl__title" id="pdplExitTitle"></h2>
           <p class="pdpl__lede" id="pdplExitBody"></p>
-          <p class="pdpl__note">
+          <p class="pdpl__note" data-i18n="exitNote">
             Nothing you entered has been saved, and no contact details were
             collected.
           </p>
-          <a class="pdpl__btn pdpl__btn--primary" href="/">Return to the site</a>
+          <a class="pdpl__btn pdpl__btn--primary" href="/" data-i18n="exitReturn">Return to the site</a>
           <div class="pdpl__disclaimer" id="pdplDisclaimerExit"></div>
         </div>
       </section>
@@ -114,36 +129,36 @@
       <!-- ---------------- Contact gate ---------------- -->
       <section id="pdplContact" class="pdpl__step" hidden>
         <div class="pdpl__wrap">
-          <h2 class="pdpl__h2">Where should we send your result?</h2>
-          <p class="pdpl__lede">
+          <h2 class="pdpl__h2" data-i18n="contactHeading">Where should we send your result?</h2>
+          <p class="pdpl__lede" data-i18n="contactLede">
             We use these details to produce and deliver your assessment result.
           </p>
 
           <form id="pdplContactForm" novalidate>
             <div class="pdpl__field">
-              <label for="pdplCompany">Company name</label>
+              <label for="pdplCompany" data-i18n="fieldCompany">Company name</label>
               <input type="text" id="pdplCompany" name="company" required minlength="2" maxlength="120" autocomplete="organization" />
               <p class="pdpl__error" id="pdplCompanyError" hidden></p>
             </div>
             <div class="pdpl__field">
-              <label for="pdplName">Your full name and job title</label>
+              <label for="pdplName" data-i18n="fieldName">Your full name and job title</label>
               <input type="text" id="pdplName" name="fullName" required minlength="2" maxlength="120" autocomplete="name" />
               <p class="pdpl__error" id="pdplNameError" hidden></p>
             </div>
             <div class="pdpl__field">
-              <label for="pdplEmail">Work email</label>
+              <label for="pdplEmail" data-i18n="fieldEmail">Work email</label>
               <input type="email" id="pdplEmail" name="email" required maxlength="160" autocomplete="email" />
               <p class="pdpl__error" id="pdplEmailError" hidden></p>
             </div>
             <div class="pdpl__field">
-              <label for="pdplPhone">Phone number</label>
+              <label for="pdplPhone" data-i18n="fieldPhone">Phone number</label>
               <input type="tel" id="pdplPhone" name="phone" required minlength="8" maxlength="20" autocomplete="tel" />
               <p class="pdpl__error" id="pdplPhoneError" hidden></p>
             </div>
 
             <div class="pdpl__consent">
               <input type="checkbox" id="pdplConsent" name="marketingConsent" />
-              <label for="pdplConsent">
+              <label for="pdplConsent" data-i18n="consent">
                 I agree to receive occasional communications from Hamza &amp;
                 Partners Law Firm about Egypt&rsquo;s Personal Data Protection
                 Law and related services. Your result will be shown whether or
@@ -155,8 +170,8 @@
 
             <p class="pdpl__error" id="pdplContactError" role="alert" hidden></p>
             <div class="pdpl__actions">
-              <button type="button" class="pdpl__btn" id="pdplContactBack">Back</button>
-              <button type="submit" class="pdpl__btn pdpl__btn--primary" id="pdplSubmit">Show my result</button>
+              <button type="button" class="pdpl__btn" id="pdplContactBack" data-i18n="back">Back</button>
+              <button type="submit" class="pdpl__btn pdpl__btn--primary" id="pdplSubmit" data-i18n="submit">Show my result</button>
             </div>
           </form>
         </div>

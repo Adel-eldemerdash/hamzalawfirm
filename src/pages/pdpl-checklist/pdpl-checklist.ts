@@ -21,6 +21,8 @@ import {
 import { infer, screen as screenExclusion, RULE_SET_VERSION } from "./rules";
 import { privacyNoticeHtml, wirePrivacyTabs } from "./privacy";
 import { renderResult, disclaimerHtml } from "./result";
+import { t, setLang, getLang, isArabic, applyDirection, onLangChange, Lang } from "./i18n";
+import { qText, qHelper, qNote, oLabel, oExample, oFreeText, groupTitle, groupIntro, exclusionText } from "./resolve";
 
 initializeSideMenu();
 manualSplashScreen();
@@ -35,6 +37,10 @@ let screenIndex = 0;
 
 /** Exposed for diagnostics only; never read by the page. */
 let lastStorageError: unknown = null;
+
+/** Kept so the screens can be redrawn when the language changes. */
+let lastExclusion: { code: string; title: string; body: string } | null = null;
+let lastResult: { result: ReturnType<typeof infer>; contact: { company: string; fullName: string; email: string; phone: string } } | null = null;
 
 const RETENTION_MONTHS = 24;
 const CONSENT_RETENTION_YEARS = 3;
@@ -83,18 +89,19 @@ function optionHtml(q: Question, o: Option, idx: number): string {
     (selected ? " checked" : "") +
     (o.exclusive ? ' data-exclusive="true"' : "") +
     " />" +
-    '<span class="pdpl__optiontext">' + o.label +
-    (o.example ? '<span class="pdpl__example">' + o.example + "</span>" : "") +
+    '<span class="pdpl__optiontext">' + oLabel(q, o) +
+    (oExample(q, o) ? '<span class="pdpl__example">' + oExample(q, o) + "</span>" : "") +
     "</span></label>";
 
-  if (o.freeText) {
+  const freeText = oFreeText(q, o);
+  if (freeText) {
     const ftId = id + "_text";
     const stored = answers[q.id + ":" + o.value];
     html +=
       '<input type="text" class="pdpl__freetext" id="' + ftId + '" ' +
       'data-for="' + q.id + ':' + o.value + '" maxlength="160" ' +
-      'placeholder="' + escapeHtml(o.freeText) + '" ' +
-      'aria-label="' + escapeHtml(o.freeText) + '" ' +
+      'placeholder="' + escapeHtml(freeText) + '" ' +
+      'aria-label="' + escapeHtml(freeText) + '" ' +
       (selected ? "" : "hidden ") +
       'value="' + escapeHtml(typeof stored === "string" ? stored : "") + '" />';
   }
@@ -106,13 +113,13 @@ function questionHtml(q: Question): string {
   const opts = optionsFor(q, answers);
   return (
     '<fieldset class="pdpl__question" data-qid="' + q.id + '">' +
-    "<legend>" + q.text + "</legend>" +
-    (q.helper ? '<p class="pdpl__helper">' + q.helper + "</p>" : "") +
+    "<legend>" + qText(q) + "</legend>" +
+    (qHelper(q) ? '<p class="pdpl__helper">' + qHelper(q) + "</p>" : "") +
     '<div class="pdpl__options">' +
     opts.map(function (o, i) { return optionHtml(q, o, i); }).join("") +
     "</div>" +
-    (q.note ? '<p class="pdpl__qnote">' + q.note + "</p>" : "") +
-    '<p class="pdpl__error" data-error-for="' + q.id + '" hidden>Please choose an answer to continue.</p>' +
+    (qNote(q) ? '<p class="pdpl__qnote">' + qNote(q) + "</p>" : "") +
+    '<p class="pdpl__error" data-error-for="' + q.id + '" hidden>' + t("chooseAnswer") + "</p>" +
     "</fieldset>"
   );
 }
@@ -127,14 +134,11 @@ function renderScreen() {
   const current = list[screenIndex];
   const group = GROUPS[current.group];
 
-  $("pdplGroupTitle").textContent = group.title;
+  $("pdplGroupTitle").textContent = groupTitle(current.group, group.title);
   const intro = $("pdplGroupIntro");
-  if (group.intro) {
-    intro.textContent = group.intro;
-    intro.hidden = false;
-  } else {
-    intro.hidden = true;
-  }
+  const introText = groupIntro(current.group, group.intro || "");
+  intro.textContent = introText;
+  intro.hidden = !introText;
 
   $("pdplFields").innerHTML = current.questions.map(questionHtml).join("");
   ($("pdplScreenError") as HTMLElement).hidden = true;
@@ -152,7 +156,7 @@ function updateProgress() {
   const p = progress(answers);
   ($("pdplProgressFill") as HTMLElement).style.width = p.percent + "%";
   $("pdplProgressText").textContent =
-    "Question " + Math.min(p.answered + 1, p.total) + " of about " + p.total;
+    t("progress", { n: Math.min(p.answered + 1, p.total), total: p.total });
 }
 
 function wireFields() {
@@ -290,7 +294,7 @@ $("pdplBack").addEventListener("click", function () {
       }
     });
     const banner = $("pdplScreenError");
-    banner.textContent = "Every question on this page needs an answer.";
+    banner.textContent = t("screenError");
     banner.hidden = false;
     if (firstMissing) (firstMissing as HTMLElement).scrollIntoView({ block: "center" });
     return;
@@ -300,8 +304,10 @@ $("pdplBack").addEventListener("click", function () {
   if (current.group === 0) {
     const exclusion = screenExclusion(answers);
     if (exclusion) {
-      $("pdplExitTitle").textContent = exclusion.title;
-      $("pdplExitBody").textContent = exclusion.body;
+      lastExclusion = exclusion;
+      const copy = exclusionText(exclusion.code, exclusion);
+      $("pdplExitTitle").textContent = copy.title;
+      $("pdplExitBody").textContent = copy.body;
       $("pdplDisclaimerExit").innerHTML = disclaimerHtml();
       show("pdplExit");
       return;
@@ -325,15 +331,15 @@ $("pdplContactBack").addEventListener("click", function () {
 interface FieldSpec {
   input: string;
   error: string;
-  message: string;
+  messageKey: string;
   test: (v: string) => boolean;
 }
 
 const CONTACT_FIELDS: FieldSpec[] = [
-  { input: "pdplCompany", error: "pdplCompanyError", message: "Please enter your company name, 2 to 120 characters.", test: function (v) { return v.length >= 2 && v.length <= 120; } },
-  { input: "pdplName", error: "pdplNameError", message: "Please enter your full name and job title, 2 to 120 characters.", test: function (v) { return v.length >= 2 && v.length <= 120; } },
-  { input: "pdplEmail", error: "pdplEmailError", message: "Please enter a valid work email address.", test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) && v.length <= 160; } },
-  { input: "pdplPhone", error: "pdplPhoneError", message: "Please enter a phone number, 8 to 20 characters, digits and + only.", test: function (v) { return /^\+?[0-9\s-]{8,20}$/.test(v); } },
+  { input: "pdplCompany", error: "pdplCompanyError", messageKey: "errCompany", test: function (v) { return v.length >= 2 && v.length <= 120; } },
+  { input: "pdplName", error: "pdplNameError", messageKey: "errName", test: function (v) { return v.length >= 2 && v.length <= 120; } },
+  { input: "pdplEmail", error: "pdplEmailError", messageKey: "errEmail", test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) && v.length <= 160; } },
+  { input: "pdplPhone", error: "pdplPhoneError", messageKey: "errPhone", test: function (v) { return /^\+?[0-9\s-]{8,20}$/.test(v); } },
 ];
 
 function validateContact(): boolean {
@@ -343,7 +349,7 @@ function validateContact(): boolean {
     const input = $(f.input) as HTMLInputElement;
     const err = $(f.error);
     const good = f.test(input.value.trim());
-    err.textContent = good ? "" : f.message;
+    err.textContent = good ? "" : t(f.messageKey);
     err.hidden = good;
     input.setAttribute("aria-invalid", good ? "false" : "true");
     if (good) {
@@ -364,7 +370,7 @@ function validateContact(): boolean {
 
   const submit = $("pdplSubmit") as HTMLButtonElement;
   submit.disabled = true;
-  submit.textContent = "Preparing your result…";
+  submit.textContent = t("submitting");
 
   const result = infer(answers);
   const consent = ($("pdplConsent") as HTMLInputElement).checked;
@@ -382,6 +388,7 @@ function validateContact(): boolean {
 
   // The result is rendered from local state, so a failed write never costs the
   // visitor the answer they came for.
+  lastResult = { result: result, contact: contact };
   renderResult($("pdplResultBody"), result, answers, contact);
   show("pdplResult");
 
@@ -436,6 +443,55 @@ function validateContact(): boolean {
 
 import { NOTICE_VERSION } from "./content";
 
-$("pdplDisclaimerTop").innerHTML = disclaimerHtml();
-$("pdplPrivacy").innerHTML = privacyNoticeHtml();
-wirePrivacyTabs(document);
+/** Rewrites every element carrying a data-i18n hook. */
+function applyStaticCopy() {
+  document.querySelectorAll("[data-i18n]").forEach(function (node) {
+    const key = node.getAttribute("data-i18n");
+    if (key) node.textContent = t(key);
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(function (node) {
+    const key = node.getAttribute("data-i18n-html");
+    if (key) node.innerHTML = t(key);
+  });
+  $("pdplDisclaimerTop").innerHTML = disclaimerHtml();
+  $("pdplDisclaimerExit").innerHTML = disclaimerHtml();
+  $("pdplPrivacy").innerHTML = privacyNoticeHtml();
+  wirePrivacyTabs(document);
+}
+
+/**
+ * A language change redraws whichever screen is showing. Answers, the current
+ * position, and the computed result are all held in memory and untouched: the
+ * engine works in codes, so nothing has to be recomputed and nothing already
+ * stored changes meaning.
+ */
+function redrawForLanguage() {
+  applyStaticCopy();
+
+  if (!$("pdplQuestions").hidden) {
+    renderScreen();
+  } else if (!$("pdplExit").hidden && lastExclusion) {
+    const copy = exclusionText(lastExclusion.code, lastExclusion);
+    $("pdplExitTitle").textContent = copy.title;
+    $("pdplExitBody").textContent = copy.body;
+  } else if (!$("pdplResult").hidden && lastResult) {
+    renderResult($("pdplResultBody"), lastResult.result, answers, lastResult.contact);
+  }
+}
+
+function selectLanguage(lang: Lang) {
+  setLang(lang);
+  const en = $("pdplLangEn");
+  const ar = $("pdplLangAr");
+  en.setAttribute("aria-pressed", String(lang === "en"));
+  ar.setAttribute("aria-pressed", String(lang === "ar"));
+  en.className = "pdpl__switchbtn" + (lang === "en" ? " pdpl__switchbtn--active" : "");
+  ar.className = "pdpl__switchbtn" + (lang === "ar" ? " pdpl__switchbtn--active" : "");
+}
+
+$("pdplLangEn").addEventListener("click", function () { selectLanguage("en"); });
+$("pdplLangAr").addEventListener("click", function () { selectLanguage("ar"); });
+onLangChange(redrawForLanguage);
+
+applyDirection();
+applyStaticCopy();

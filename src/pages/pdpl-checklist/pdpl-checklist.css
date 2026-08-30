@@ -292,3 +292,54 @@
   margin: 0.75rem 0 0;
   max-width: 34rem;
 }
+
+/* ---- language switch ---- */
+.pdpl__langbar { border-bottom: 1px solid var(--pdpl-rule); margin-bottom: 24px; padding-bottom: 14px; }
+.pdpl__langwrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pdpl__langlabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pdpl-muted);
+}
+.pdpl__switch {
+  display: inline-flex;
+  border: 1px solid var(--pdpl-brand-line);
+  border-radius: 999px;
+  padding: 3px;
+  background: var(--pdpl-brand-soft);
+}
+.pdpl__switchbtn {
+  border: 0;
+  background: transparent;
+  color: var(--pdpl-brand);
+  border-radius: 999px;
+  padding: 7px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 38px;
+}
+.pdpl__switchbtn--active { background: var(--pdpl-brand); color: #fff; }
+.pdpl__switchbtn:focus-visible { outline: 3px solid var(--pdpl-brand); outline-offset: 2px; }
+
+/* ---- right-to-left ----
+   Applied to the tool's own container only. The site's nav and footer keep
+   their own direction. Logical properties handle most of the flip; these are
+   the few places that still name a physical side. */
+.pdpl[dir="rtl"] { text-align: right; }
+.pdpl[dir="rtl"] .pdpl__list { padding-left: 0; padding-right: 1.25rem; }
+.pdpl[dir="rtl"] .pdpl__qnote { border-left: 0; border-right: 3px solid var(--pdpl-rule); padding-left: 0; padding-right: 12px; }
+.pdpl[dir="rtl"] .pdpl__notice { border-left: 0; border-right: 3px solid var(--pdpl-brand); padding-left: 0; padding-right: 12px; }
+.pdpl[dir="rtl"] .pdpl__freetext { margin-left: 0; margin-right: 45px; }
+.pdpl[dir="rtl"] .pdpl__table th,
+.pdpl[dir="rtl"] .pdpl__table td { text-align: right; }
+.pdpl[dir="rtl"] .pdpl__privacybody--ar { text-align: right; }
+
+/* Arabic runs longer than English at the same size and needs more leading. */
+.pdpl[dir="rtl"] { line-height: 1.85; }
+.pdpl[dir="rtl"] .pdpl__eyebrow,
+.pdpl[dir="rtl"] .pdpl__label,
+.pdpl[dir="rtl"] .pdpl__noticesheading,
+.pdpl[dir="rtl"] .pdpl__langlabel,
+.pdpl[dir="rtl"] .pdpl__facts dt { text-transform: none; letter-spacing: 0; }
