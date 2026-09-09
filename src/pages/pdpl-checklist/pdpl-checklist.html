@@ -11,6 +11,70 @@
     <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>" />
     <meta name="twitter:title" content="<%= htmlWebpackPlugin.options.title %>" />
     <meta name="twitter:description" content="<%= htmlWebpackPlugin.options.description %>" />
+
+    <!--
+      Structured data for this page specifically. The site-wide graph in
+      base-seo.html describes the firm; this describes the tool, so a search
+      engine or an assistant can tell what it does, that it costs nothing, and
+      that it answers in either language.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://www.hamzalawfirm.com/pdpl-checklist#tool",
+            "name": "PDPL Self-Assessment",
+            "alternateName": "أداة التقييم الذاتي لقانون حماية البيانات الشخصية",
+            "url": "https://www.hamzalawfirm.com/pdpl-checklist",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any modern web browser",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": ["en", "ar"],
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EGP"
+            },
+            "provider": { "@id": "https://www.hamzalawfirm.com/#firm" },
+            "about": {
+              "@type": "Legislation",
+              "name": "Personal Data Protection Law No. 151 of 2020",
+              "alternateName": "قانون حماية البيانات الشخصية رقم 151 لسنة 2020",
+              "legislationJurisdiction": "Egypt",
+              "legislationDate": "2020-07-15"
+            },
+            "featureList": [
+              "Determines whether you are a controller, a processor, or both",
+              "Identifies the primary license or permit required and its official fee band",
+              "Lists every supplementary license or permit that applies",
+              "Produces a map of the documents, registrations, and obligations required",
+              "Flags the items that could not be determined from your answers"
+            ],
+            "description": "A free questionnaire that establishes what Egypt's Personal Data Protection Law No. 151 of 2020 and its Executive Regulations require of an organization, from factual answers about how it handles data."
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Hamza & Partners Law Firm",
+                "item": "https://www.hamzalawfirm.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "PDPL Self-Assessment",
+                "item": "https://www.hamzalawfirm.com/pdpl-checklist"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>

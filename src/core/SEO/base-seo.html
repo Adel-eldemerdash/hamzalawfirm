@@ -1,40 +1,106 @@
-<link rel="icon" type="image/x-icon" href="./assets/images/Logo.webp" />
-<meta property="og:image" content="./assets/images/Logo.webp" />
-<meta name="twitter:image" content="./assets/images/Logo.webp" />
-<meta name="robots" content="index, follow" />
+<!--
+  Shared head markup, injected into every page by headerInjection() in
+  webpack.config.js. The canonical placeholder is substituted per page, so
+  every absolute URL below resolves the same way from any depth of route.
+
+  Icons and the manifest use root-relative paths, which resolve from any
+  depth of route and on any host. og:image and the structured data keep
+  absolute URLs, which social scrapers and schema.org both require.
+
+  Route-relative paths must not appear here. This file is injected into pages served
+  from /, /ourFirm, /services/<slug>, and /pdpl-checklist alike, and a "./"
+  path resolves against the route, not the site root — which is how the
+  favicon and the social images came to 404 on every page but the home page.
+-->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="author" content="Hamza &amp; Partners Law Firm" />
+<meta name="theme-color" content="#6c5735" />
+
+<!-- Icons. Square tiles cropped from the firm's mark; the source logo is
+     519x821 and rendered as a browser tab icon it was squeezed thin. -->
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/images/icon-512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Hamza &amp; Partners Law Firm" />
 <meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="ar_EG" />
+<meta property="og:url" content="<%= htmlWebpackPlugin.options.canonical %>" />
+<meta property="og:image" content="https://www.hamzalawfirm.com/assets/images/icon-512.png" />
+<meta property="og:image:width" content="512" />
+<meta property="og:image:height" content="512" />
+<meta property="og:image:alt" content="Hamza &amp; Partners Law Firm" />
+
+<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="author" content="Hamza & Partners Law Firm" />
-<link property="og:url" href="https://www.hamzalawfirm.com" />
+<meta name="twitter:image" content="https://www.hamzalawfirm.com/assets/images/icon-512.png" />
+
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LegalService",
-    "name": "Hamza & Partners Law Firm",
-    "url": "https://www.hamzalawfirm.com",
-    "email": "ahmad.hamza@hamzalawfirm.com",
-    "telephone": "(+20)01001707074",
-    "logo": "https://www.hamzalawfirm.com/assets/images/Logo.webp",
-    "slogan": "One Stop Legal Shop",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.7",
-      "reviewCount": "560"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "EG",
-      "addressLocality": "cairo, egypt",
-      "postalCode": "4470601",
-      "streetAddress": "48 Fareed Semeika Street, Hegaz Square, Nozha"
-    },
-    "founder": {
-      "@type": "Person",
-      "email": "ahmad.hamza@hamzalawfirm.com",
-      "image": "./assets/images/ceo-img.webp",
-      "jobTitle": "ceo and Managing Partner",
-      "name": "Ahmad Hamza",
-      "telephone": "(+20)01001707074"
-    }
+    "@graph": [
+      {
+        "@type": "LegalService",
+        "@id": "https://www.hamzalawfirm.com/#firm",
+        "name": "Hamza & Partners Law Firm",
+        "alternateName": "حمزة وشركاه للمحاماة",
+        "url": "https://www.hamzalawfirm.com",
+        "email": "info@hamzalawfirm.com",
+        "telephone": "+201001707074",
+        "logo": "https://www.hamzalawfirm.com/assets/images/icon-512.png",
+        "image": "https://www.hamzalawfirm.com/assets/images/icon-512.png",
+        "slogan": "One Stop Legal Shop",
+        "areaServed": { "@type": "Country", "name": "Egypt" },
+        "availableLanguage": ["en", "ar"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "48 Fareed Semeika Street, Hegaz Square, Nozha",
+          "addressLocality": "Cairo",
+          "addressCountry": "EG",
+          "postalCode": "4470601"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Ahmad Hamza",
+          "jobTitle": "Chief Executive Officer and Managing Partner",
+          "image": "https://www.hamzalawfirm.com/assets/images/ceo-img.webp",
+          "email": "ahmad.hamza@hamzalawfirm.com",
+          "telephone": "+201001707074"
+        },
+        "knowsAbout": [
+          "Personal Data Protection Law No. 151 of 2020",
+          "Egypt data protection compliance",
+          "Data Protection Officer registration",
+          "Cross-border personal data transfer",
+          "Direct electronic marketing licensing",
+          "Corporate governance and mergers and acquisitions",
+          "Arbitration and dispute resolution",
+          "Banking and finance",
+          "Capital markets",
+          "Intellectual property",
+          "Real estate",
+          "Taxation"
+        ],
+        "makesOffer": {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Egypt PDPL compliance advisory",
+            "description": "Gap analysis, licensing and permits before the Personal Data Protection Center, Data Protection Officer registration, and the documentation required by Law No. 151 of 2020 and its Executive Regulations."
+          }
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.hamzalawfirm.com/#website",
+        "url": "https://www.hamzalawfirm.com",
+        "name": "Hamza & Partners Law Firm",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://www.hamzalawfirm.com/#firm" }
+      }
+    ]
   }
 </script>

@@ -10,6 +10,20 @@ const fs = require("fs");
 const SitemapPlugin = require("sitemap-webpack-plugin").default;
 const serviceRoutes = require("./src/data/service-routes.json");
 
+const SITE = "https://www.hamzalawfirm.com";
+
+/**
+ * The public URL of a page, derived from its folder name.
+ *
+ * The home page lives at the site root, not at /index. Deriving its canonical
+ * from the folder name pointed it at a URL that returns nothing, which tells a
+ * search engine that the home page is a duplicate of a page that does not
+ * exist.
+ */
+function canonicalFor(targetPage) {
+  return targetPage === "index" ? SITE + "/" : SITE + "/" + targetPage;
+}
+
 function headerInjection(targetPage, options = {}) {
   let template = fs.readFileSync(
     path.resolve(__dirname, `./src/pages/${targetPage}/${targetPage}.html`),
@@ -58,7 +72,7 @@ function headerInjection(targetPage, options = {}) {
     )
     .replace(
       /<%= htmlWebpackPlugin\.options\.canonical %>/g,
-      `https://www.hamzalawfirm.com/${targetPage}`
+      canonicalFor(targetPage)
     );
 
   return template;
@@ -179,9 +193,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       // index
-      title: "Hamza & Partners Law Firm | One Stop Legal Shop",
-      description: "Test Description",
-      keywords: "Test Keywords",
+      title: "Hamza & Partners Law Firm | Corporate and Data Protection Lawyers in Cairo",
+      description:
+        "A Cairo law firm advising Egyptian and international businesses on corporate law, litigation and arbitration, banking and finance, real estate, taxation, and compliance with Egypt's Personal Data Protection Law No. 151 of 2020. Includes a free PDPL self-assessment.",
+      keywords:
+        "law firm Egypt, Cairo law firm, corporate lawyer Egypt, PDPL, Personal Data Protection Law 151 of 2020, data protection Egypt, legal advisory Cairo, arbitration Egypt",
       filename: "./index.html",
       chunks: ["index"],
       scriptLoading: "defer",
@@ -199,9 +215,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // profile
-      title: "Hamza & Partners Law Firm | Profile",
-      description: "Test Description",
-      keywords: "Test Keywords",
+      title: "Firm Profile | Hamza & Partners Law Firm",
+      description:
+        "The profile of Hamza & Partners Law Firm: practice areas, experience, and the team advising Egyptian and international clients from Cairo.",
+      keywords:
+        "Hamza and Partners profile, law firm profile Egypt, Cairo legal practice, Egyptian lawyers",
       filename: "./profile/index.html",
       chunks: ["profile"],
       scriptLoading: "defer",
@@ -219,9 +237,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // our Firm
-      title: "Hamza & Partners Law Firm | Our Firm",
-      description: "Test Description",
-      keywords: "Test Keywords",
+      title: "Our Firm | Hamza & Partners Law Firm",
+      description:
+        "Who we are at Hamza & Partners: our vision and values, how we work, our data protection policy, and the lawyers advising businesses across Egypt and the region.",
+      keywords:
+        "about Hamza and Partners, Egyptian law firm, legal team Cairo, law firm values, legal advisory Egypt",
       filename: "./ourFirm/index.html",
       chunks: ["ourFirm"],
       scriptLoading: "defer",
@@ -239,9 +259,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // services
-      title: "Hamza & Partners Law Firm | Services",
-      description: "Test Description",
-      keywords: "Test Keywords",
+      title: "Legal Services | Hamza & Partners Law Firm",
+      description:
+        "Fifteen practice areas from a single Cairo firm: litigation, mediation and arbitration, corporate governance and mergers and acquisitions, banking and finance, capital markets, real estate, taxation, intellectual property, cybercrime, healthcare, hospitality, and restructuring.",
+      keywords:
+        "legal services Egypt, litigation Cairo, arbitration Egypt, mergers and acquisitions Egypt, banking and finance law, capital markets Egypt, intellectual property Egypt, tax law Egypt, cybercrime law Egypt",
       filename: "./services/index.html",
       chunks: ["services"],
       scriptLoading: "defer",
@@ -259,9 +281,10 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // serviceDetails
-      title: "Hamza & Partners Law Firm |Service Details",
-      description: "Test Description",
-      keywords: "Test Keywords",
+      title: "Service Details | Hamza & Partners Law Firm",
+      description:
+        "Detail of a practice area at Hamza & Partners Law Firm, Cairo.",
+      keywords: "legal service Egypt, practice area, Hamza and Partners",
       filename: "./serviceDetails/index.html",
       chunks: ["serviceDetails"],
       templateContent: ({ htmlWebpackPlugin }) =>
@@ -279,11 +302,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       // pdpl-checklist
-      title: "PDPL Self-Assessment | Hamza & Partners Law Firm",
+      title: "Free PDPL Self-Assessment | Egypt Data Protection Law 151 of 2020",
       description:
-        "Find out what Egypt's Personal Data Protection Law No. 151 of 2020 requires of your organization: your legal role, the license or permit you need and its official fee, and your document and obligation map.",
+        "Answer questions about how your organization handles data and find out what Egypt's Personal Data Protection Law No. 151 of 2020 requires of you: whether you are a controller or a processor, which license or permit you need and its official fee band, and the documents and registrations you must produce. Free, in Arabic and English, with the result on screen immediately.",
       keywords:
-        "PDPL, Egypt data protection, Law 151 of 2020, data protection license, DPO registration, PDPC, compliance assessment",
+        "PDPL checklist, PDPL self assessment, Egypt data protection law, Law 151 of 2020, Executive Regulations 816 of 2025, data protection license Egypt, PDPC, DPO registration Egypt, cross-border data transfer Egypt, تقييم ذاتي حماية البيانات, قانون حماية البيانات الشخصية",
       filename: "./pdpl-checklist/index.html",
       chunks: ["pdpl-checklist"],
       scriptLoading: "defer",
@@ -332,6 +355,18 @@ module.exports = {
           // Referenced by ErrorDocument in .htaccess.
           from: path.resolve(__dirname, "src/404.html"),
           to: path.resolve(__dirname, "dist/404.html"),
+          toType: "file",
+        },
+        {
+          // Square icon tiles. They sit alongside the other images so the
+          // absolute paths in base-seo.html resolve from any route.
+          from: path.resolve(__dirname, "src/img/icons"),
+          to: "assets/images/[name][ext][query]",
+          noErrorOnMissing: true,
+        },
+        {
+          from: path.resolve(__dirname, "src/site.webmanifest"),
+          to: path.resolve(__dirname, "dist/site.webmanifest"),
           toType: "file",
         },
       ],

@@ -1,4 +1,57 @@
+# https://www.hamzalawfirm.com
+
 User-agent: *
+Allow: /
+
+# The service detail template is a shell that the client fills from the
+# database. Its own URL carries no service and should not be indexed; the
+# real pages are /services/<slug>.
+Disallow: /serviceDetails
+Disallow: /serviceDetails/
+
+# Assistants that read pages to answer questions. Allowed deliberately: the
+# firm wants its PDPL material quotable, and the assessment tool findable
+# when someone asks what Egypt's data protection law requires of them.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: meta-externalagent
 Allow: /
 
 Sitemap: https://www.hamzalawfirm.com/sitemap.xml
