@@ -60,13 +60,13 @@ const UI: { [key: string]: { en: string; ar: string } } = {
     ar: "ما الذي يتطلبه قانون حماية البيانات الشخصية المصري من مؤسستكم؟",
   },
   landingLede: {
-    en: "Answer factual questions about how your organization handles data. No legal knowledge is needed. This tool performs the legal characterization for you and shows the result on screen immediately.",
-    ar: "أجيبوا عن أسئلة واقعية عن كيفية تعاملكم مع البيانات. لا تحتاجون معرفة قانونية؛ فالأداة تتولى التكييف القانوني وتعرض النتيجة على الشاشة فوراً.",
+    en: "Answer questions about how your organization handles data. No legal knowledge is needed. This tool performs the legal characterization for you and shows the result on screen immediately.",
+    ar: "أجيبوا عن أسئلة عن كيفية تعاملكم مع البيانات. لا تحتاجون معرفة قانونية؛ فالأداة تتولى التكييف القانوني وتعرض النتيجة على الشاشة فوراً.",
   },
   promiseHeading: { en: "What you will get", ar: "ما الذي ستحصلون عليه" },
   promise1: {
-    en: "<strong>Your legal role</strong> under the law — controller, processor, or both.",
-    ar: "<strong>صفتكم القانونية</strong> بموجب القانون — متحكم أم معالج أم الاثنان معاً.",
+    en: "<strong>Your legal role</strong> under the law  -  controller, processor, or both.",
+    ar: "<strong>صفتكم القانونية</strong> بموجب القانون  -  متحكم أم معالج أم الاثنان معاً.",
   },
   promise2: {
     en: "<strong>The primary license or permit you need</strong>, its category, and its official fee band.",
@@ -77,21 +77,8 @@ const UI: { [key: string]: { en: string; ar: string } } = {
     ar: "<strong>كل ترخيص أو تصريح تكميلي ينطبق عليكم</strong>، ونسبة رسوم كل منها.",
   },
   promise4: {
-    en: "<strong>Your document and obligation map</strong> — what is required, what you already have, and what needs verification.",
-    ar: "<strong>خريطة الوثائق والالتزامات</strong> — المطلوب، وما هو قائم لديكم فعلاً، وما يحتاج تحققاً.",
-  },
-  factTime: { en: "Time needed", ar: "الوقت اللازم" },
-  factTimeValue: { en: "10 to 15 minutes", ar: "من 10 إلى 15 دقيقة" },
-  factQuestions: { en: "Questions", ar: "عدد الأسئلة" },
-  factQuestionsValue: {
-    en: "Between 26 and 47, depending on your answers",
-    ar: "بين 26 و47 سؤالاً، بحسب إجاباتكم",
-  },
-  factResult: { en: "Your result", ar: "نتيجتكم" },
-  factResultValue: { en: "Shown on this page, immediately", ar: "تظهر على هذه الصفحة فوراً" },
-  landingNote: {
-    en: "Contact details are required in order to produce your result. They are collected after the questions, and before the result is shown.",
-    ar: "بيانات التواصل لازمة لإصدار نتيجتكم، وتُجمع بعد الأسئلة وقبل عرض النتيجة.",
+    en: "<strong>Your document and obligation map</strong>  -  what is required, what you already have, and what needs verification.",
+    ar: "<strong>خريطة الوثائق والالتزامات</strong>  -  المطلوب، وما هو قائم لديكم فعلاً، وما يحتاج تحققاً.",
   },
   start: { en: "Begin the assessment", ar: "ابدأ التقييم" },
 
@@ -206,8 +193,8 @@ const UI: { [key: string]: { en: string; ar: string } } = {
     ar: "يفتح رسالة إلى info@hamzalawfirm.com وبها بياناتكم وهذه النتيجة مُعبّأة سلفاً. اضغطوا إرسال، ونردّ عليكم بموعد مقترح.",
   },
   firmLine: {
-    en: "Hamza &amp; Partners Law Firm — 48 Fareed Semeika Street, Hegaz Square, Nozha, Cairo. +20 100 170 7074.",
-    ar: "حمزة وشركاه للمحاماة — 48 شارع فريد سميكة، ميدان الحجاز، النزهة، القاهرة. ‎+20 100 170 7074.",
+    en: "Hamza &amp; Partners Law Firm  -  48 Fareed Semeika Street, Hegaz Square, Nozha, Cairo. +20 100 170 7074.",
+    ar: "حمزة وشركاه للمحاماة  -  48 شارع فريد سميكة، ميدان الحجاز، النزهة، القاهرة. ‎+20 100 170 7074.",
   },
 };
 

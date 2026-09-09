@@ -64,16 +64,6 @@
 }
 .pdpl__promise .pdpl__list { margin-bottom: 0; }
 
-.pdpl__facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 16px;
-  margin: 0 0 1.5rem;
-  padding: 0;
-}
-.pdpl__facts dt { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pdpl-muted); }
-.pdpl__facts dd { margin: 0.15rem 0 0; font-weight: 600; }
-
 /* ---- buttons ---- */
 .pdpl__btn {
   display: inline-block;
@@ -341,5 +331,4 @@
 .pdpl[dir="rtl"] .pdpl__eyebrow,
 .pdpl[dir="rtl"] .pdpl__label,
 .pdpl[dir="rtl"] .pdpl__noticesheading,
-.pdpl[dir="rtl"] .pdpl__langlabel,
-.pdpl[dir="rtl"] .pdpl__facts dt { text-transform: none; letter-spacing: 0; }
+.pdpl[dir="rtl"] .pdpl__langlabel { text-transform: none; letter-spacing: 0; }
