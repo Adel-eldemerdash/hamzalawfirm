@@ -82,6 +82,8 @@ getServiceBySlug(requestedSlug)
     $("#serviceName_paragraph").text(data.name);
     $("#serviceDetails_paragraph").html(data.description);
     $("#serviceDetails_img").attr("src", data.image);
+    // The image illustrates the practice area, so it is named after it.
+    $("#serviceDetails_img").attr("alt", data.name);
     setTages(data.tages);
     $("#container").fadeIn();
     $("#footer").fadeIn();
