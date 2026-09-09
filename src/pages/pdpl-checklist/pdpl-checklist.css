@@ -391,25 +391,3 @@
 .pdpl__privacy[open] > .pdpl__privacysummary::before { content: "\2212"; }
 .pdpl__privacysummary:focus-visible { outline: 3px solid var(--pdpl-brand); outline-offset: 2px; }
 .pdpl__privacy[open] > .pdpl__privacysummary { margin-bottom: 1rem; }
-
-/* ---- alignment on tablet and laptop ----
-   The column is centered on phones, where it fills the width anyway, and
-   anchored to the left from tablet width up. Left in both directions, on the
-   client's instruction of September 9, 2026: in Arabic the block sits on the
-   left while its text still reads right-to-left. */
-@media (min-width: 768px) {
-  /* margin-right:auto absorbs the leftover space on the right, which anchors
-     the column to the left in both directions. Setting both margins to 0
-     would hand the choice back to the writing direction, and the Arabic
-     column would swing to the right. */
-  .pdpl__wrap,
-  .pdpl[dir="rtl"] .pdpl__wrap {
-    margin-left: 0;
-    margin-right: auto;
-  }
-  .pdpl,
-  .pdpl[dir="rtl"] {
-    padding-left: 40px;
-    padding-right: 16px;
-  }
-}
