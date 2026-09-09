@@ -71,7 +71,7 @@ export const GROUPS: Group[] = [
       "Two opposite directions. Data you control goes out to a vendor working for you, and data your clients control comes in to you to process on their behalf. The two are independent; either or both may apply — and your legal role differs in each direction." },
   { index: 9, title: "Data Protection Officer" },
   { index: 10, title: "Digital channels" },
-  { index: 11, title: "Existing governance",
+  { index: 11, title: "Existing governance and information security",
     intro:
       "The purpose is to deduct what already exists from the scope of work. Answering “No” does not in itself mean you are in breach." },
   { index: 12, title: "Providing data protection consultancy" },
@@ -88,8 +88,8 @@ export const QUESTIONS: Question[] = [
   {
     id: "Q0.1",
     group: 0,
-    text: "Is data about individuals processed at your organization by electronic or technical means, whether wholly or partly?",
-    helper: "Examples: spreadsheets, email, an HR system, a website, an app, an accounting system",
+    text: "Do you keep, store, or process data about individuals by electronic or technical means, whether wholly or partly?",
+    helper: "Examples: a spreadsheet of employee or customer details, payroll records, a customer database, website visitor data, email, an HR system, an accounting system, a mobile app, security cameras.",
     type: "single",
     options: [
       { value: "yes", label: "Yes" },
@@ -132,7 +132,7 @@ export const QUESTIONS: Question[] = [
     id: "Q0.4",
     group: 0,
     text: "Whose data do you process?",
-    helper: "Select all that apply",
+    helper: "“Process” here means any handling of the data: collecting, storing, using, amending, sharing, or erasing it. Select all that apply.",
     type: "multi",
     options: [
       { value: "egyptianInside", label: "Egyptian nationals residing inside Egypt" },
@@ -149,7 +149,7 @@ export const QUESTIONS: Question[] = [
     group: 1,
     text: "Do you process data about individuals on behalf of your clients and on their instructions?",
     helper:
-      "Examples: operating a system for a client, hosting their data, running a marketing campaign for them, accounting or HR services, call centers, or your team accessing data about a client’s employees or customers while delivering a project at their premises",
+      "That is, the data is not yours: a client hands it to you so you can do work for them. Examples: operating a system on the client’s behalf, hosting their data, running a marketing campaign for them, providing accounting or HR services, or running a call center in their name. It also covers your team seeing data about a client’s employees or customers while delivering a project at their premises.",
     type: "single",
     options: YES_NO_UNSURE,
   },
@@ -187,7 +187,6 @@ export const QUESTIONS: Question[] = [
     group: 2,
     text: "Do you handle any of the following?",
     helper: "Select all that apply",
-    note: "This list mirrors the definition of sensitive personal data in Article 1 of the PDPL. Children’s data is sensitive personal data in all cases.",
     type: "multi",
     options: [
       { value: "health", label: "Data revealing physical, mental, psychological, or genetic health", example: "Includes sick leave records and medical certificates, health insurance files for staff and their dependants, pre-employment medical examinations, occupational injury reports, and any disability accommodation on file." },
@@ -204,7 +203,7 @@ export const QUESTIONS: Question[] = [
   {
     id: "Q2.3",
     group: 2,
-    text: "If you handle data relating to children, which age band?",
+    text: "Which age band?",
     type: "single",
     options: [
       { value: "under15", label: "Under 15" },
@@ -217,7 +216,7 @@ export const QUESTIONS: Question[] = [
     id: "Q2.4",
     group: 2,
     text: "Do you carry out profiling, tracking, or behavioral monitoring of individuals?",
-    helper: "Examples: credit scoring, behavioral segmentation, targeted advertising, cross-site tracking",
+    helper: "This means analyzing a person’s data to build a picture of them, predict their behavior, or treat them differently on that basis. Examples: credit scoring, segmenting customers by purchasing behavior, advertising targeted on activity, tracking a visitor across pages or sites, and automated assessment of employee performance.",
     type: "single",
     options: YES_NO_UNSURE,
   },
@@ -292,8 +291,8 @@ export const QUESTIONS: Question[] = [
     type: "single",
     options: [
       { value: "d3", label: "Up to 3 months" },
-      { value: "d6", label: "More than 3 and up to 6 months" },
-      { value: "d9", label: "More than 6 and up to 9 months" },
+      { value: "d6", label: "More than 3 months and up to 6 months" },
+      { value: "d9", label: "More than 6 months and up to 9 months" },
       { value: "d12", label: "More than 9 months and up to 1 year" },
       { value: "over1y", label: "More than 1 year" },
       { value: "na", label: "Not applicable" },
@@ -411,7 +410,7 @@ export const QUESTIONS: Question[] = [
   {
     id: "Q6.6",
     group: 6,
-    text: "Do you keep electronic records of consents and any changes to them for three years from the date of the last message?",
+    text: "Do you keep electronic records of consents and any changes to them?",
     type: "single",
     options: YES_NO_UNSURE,
   },
@@ -434,7 +433,6 @@ export const QUESTIONS: Question[] = [
       { value: "publicAreas", label: "Areas the public enters (reception, branches, stores)" },
       { value: "staffAreas", label: "Internal staff-only areas" },
       { value: "perimeter", label: "External perimeter or parking" },
-      { value: "residential", label: "Residential units" },
       { value: "na", label: "Not applicable", exclusive: true },
     ],
   },
@@ -647,7 +645,7 @@ export const QUESTIONS: Question[] = [
   {
     id: "Q12.2",
     group: 12,
-    text: "If so, in what capacity?",
+    text: "In what capacity?",
     type: "single",
     options: [
       { value: "legalPerson", label: "In the company’s name (legal person)" },

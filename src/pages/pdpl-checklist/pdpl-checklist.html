@@ -69,6 +69,16 @@
             </ul>
           </div>
 
+          <div class="pdpl__primer">
+            <h3 class="pdpl__primerheading" data-i18n="primerDataHeading">What counts as personal data</h3>
+            <p data-i18n-html="primerData"></p>
+          </div>
+
+          <div class="pdpl__primer">
+            <h3 class="pdpl__primerheading" data-i18n="primerProcessingHeading">What counts as processing, and who is who</h3>
+            <p data-i18n-html="primerProcessing"></p>
+          </div>
+
           <button type="button" class="pdpl__btn pdpl__btn--primary" id="pdplStart" data-i18n="start">
             Begin the assessment
           </button>
@@ -130,12 +140,12 @@
               <p class="pdpl__error" id="pdplCompanyError" hidden></p>
             </div>
             <div class="pdpl__field">
-              <label for="pdplName" data-i18n="fieldName">Your full name and job title</label>
+              <label for="pdplName" data-i18n="fieldName">Your name and job title</label>
               <input type="text" id="pdplName" name="fullName" required minlength="2" maxlength="120" autocomplete="name" />
               <p class="pdpl__error" id="pdplNameError" hidden></p>
             </div>
             <div class="pdpl__field">
-              <label for="pdplEmail" data-i18n="fieldEmail">Work email</label>
+              <label for="pdplEmail" data-i18n="fieldEmail">Email address</label>
               <input type="email" id="pdplEmail" name="email" required maxlength="160" autocomplete="email" />
               <p class="pdpl__error" id="pdplEmailError" hidden></p>
             </div>

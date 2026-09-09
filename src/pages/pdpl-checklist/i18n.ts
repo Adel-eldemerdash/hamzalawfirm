@@ -80,6 +80,20 @@ const UI: { [key: string]: { en: string; ar: string } } = {
     en: "<strong>Your document and obligation map</strong>  -  what is required, what you already have, and what needs verification.",
     ar: "<strong>خريطة الوثائق والالتزامات</strong>  -  المطلوب، وما هو قائم لديكم فعلاً، وما يحتاج تحققاً.",
   },
+  // Two short primers on the landing screen. Visitors were reading "personal
+  // data" and "processing" more narrowly than the law does, which skewed their
+  // answers before the first question.
+  primerDataHeading: { en: "What counts as personal data", ar: "ما المقصود بالبيانات الشخصية" },
+  primerData: {
+    en: "Any information that identifies a living person, or could identify them when combined with other information you hold. A name, a phone number, an email address, a national ID number, a photograph, a salary figure, an IP address, a fingerprint. It does not have to be secret or sensitive to count.",
+    ar: "أي معلومة تُعرِّف بشخص طبيعي، أو يمكن أن تُعرِّف به إذا ضُمّت إلى معلومة أخرى لديكم. فالاسم، ورقم الهاتف، والبريد الإلكتروني، والرقم القومي، والصورة، وقيمة الراتب، وعنوان الـ IP، والبصمة — كلها بيانات شخصية. ولا يُشترط أن تكون المعلومة سرية أو حساسة حتى تُعد كذلك.",
+  },
+  primerProcessingHeading: { en: "What counts as processing, and who is who", ar: "ما المقصود بالمعالجة، ومَن المتحكم ومَن المعالج" },
+  primerProcessing: {
+    en: "Processing is any handling of the data at all: collecting it, storing it, looking at it, using it, amending it, sharing it, or erasing it. Keeping a staff list in a spreadsheet is processing. You are a <strong>controller</strong> when the data is yours and you decide why and how it is handled — your own employees, customers, and contacts. You are a <strong>processor</strong> when the data belongs to a client who hands it to you so you can do work for them, on their instructions. Many organizations are both.",
+    ar: "المعالجة هي أي تعامل مع البيانات مهما كان: جمعها، أو حفظها، أو الاطلاع عليها، أو استخدامها، أو تعديلها، أو مشاركتها، أو محوها. فمجرد الاحتفاظ بكشف بأسماء الموظفين على ملف إكسل معالجةٌ. وأنتم <strong>متحكم</strong> حين تكون البيانات بياناتكم وتقررون أنتم لماذا تُعالَج وكيف — كبيانات موظفيكم وعملائكم وجهات اتصالكم. وأنتم <strong>معالج</strong> حين تكون البيانات لعميل سلّمها لكم لتؤدوا بها عملاً له وبناءً على تعليماته. وكثير من المؤسسات تجمع الصفتين معاً.",
+  },
+
   start: { en: "Begin the assessment", ar: "ابدأ التقييم" },
 
   back: { en: "Back", ar: "السابق" },
@@ -106,20 +120,20 @@ const UI: { [key: string]: { en: string; ar: string } } = {
     ar: "نستخدم هذه البيانات لإعداد نتيجة التقييم وتسليمها لكم.",
   },
   fieldCompany: { en: "Company name", ar: "اسم الشركة" },
-  fieldName: { en: "Your full name and job title", ar: "اسمكم الكامل ومسماكم الوظيفي" },
-  fieldEmail: { en: "Work email", ar: "بريد العمل الإلكتروني" },
+  fieldName: { en: "Your name and job title", ar: "اسمك والمسمى الوظيفي" },
+  fieldEmail: { en: "Email address", ar: "البريد الإلكتروني" },
   fieldPhone: { en: "Phone number", ar: "رقم الهاتف" },
   errCompany: {
     en: "Please enter your company name, 2 to 120 characters.",
     ar: "يُرجى إدخال اسم الشركة، من حرفين إلى 120 حرفاً.",
   },
   errName: {
-    en: "Please enter your full name and job title, 2 to 120 characters.",
-    ar: "يُرجى إدخال الاسم الكامل والمسمى الوظيفي، من حرفين إلى 120 حرفاً.",
+    en: "Please enter your name and job title, 2 to 120 characters.",
+    ar: "يُرجى إدخال الاسم والمسمى الوظيفي، من حرفين إلى 120 حرفاً.",
   },
   errEmail: {
-    en: "Please enter a valid work email address.",
-    ar: "يُرجى إدخال بريد عمل إلكتروني صحيح.",
+    en: "Please enter a valid email address.",
+    ar: "يُرجى إدخال بريد إلكتروني صحيح.",
   },
   errPhone: {
     en: "Please enter a phone number, 8 to 20 characters, digits and + only.",

@@ -14,6 +14,7 @@
  */
 
 import { NOTICE_VERSION } from "./content";
+import { t } from "./i18n";
 
 interface Section {
   heading: string;
@@ -31,15 +32,11 @@ const EN: Section[] = [
   },
   {
     heading: "What we collect",
-    body: "Your company name, your full name and job title, your work email address, and your telephone number. Your answers to the assessment questions, and the result produced from them. This tool does not ask for any sensitive personal data, and we ask that you do not enter any in the free-text fields.",
+    body: "Your company name, your name and job title, your email address, and your telephone number. Your answers to the assessment questions, and the result produced from them. This tool does not ask for any sensitive personal data, and we ask that you do not enter any in the free-text fields.",
   },
   {
-    heading: "Why we collect it",
-    body: "To produce your assessment result and deliver it to you. And, if you give your explicit consent by checking a separate box that is not pre-checked, to send you subsequent communications about the Personal Data Protection Law and related services. Your result is shown to you whether or not you give that consent.",
-  },
-  {
-    heading: "Legal basis",
-    body: "Your explicit consent, under Article 6 of Law No. 151 of 2020 and Article 2 of its Executive Regulations.",
+    heading: "Why we collect it, and on what basis",
+    body: "To produce your assessment result and deliver it to you. If you give your explicit consent, we also send you subsequent communications about the Personal Data Protection Law and related services. Your result is shown to you whether or not you give that consent. In either case the basis for processing is your explicit consent.",
   },
   {
     heading: "Who sees your data",
@@ -47,7 +44,7 @@ const EN: Section[] = [
   },
   {
     heading: "Where it is held — cross-border transfer",
-    body: "On Google’s Firebase infrastructure, whose servers are located outside the Arab Republic of Egypt, in the United States of America. The basis for this transfer is your explicit consent to it, and submitting the form constitutes the giving of that consent.",
+    body: "With a cloud hosting provider outside the Arab Republic of Egypt, in the United States of America. The basis for this transfer is your explicit consent to it, and submitting the form constitutes the giving of that consent.",
   },
   {
     heading: "Retention period",
@@ -59,11 +56,7 @@ const EN: Section[] = [
   },
   {
     heading: "How to exercise your rights or withdraw your consent",
-    body: "By message to dpo@hamzalawfirm.com. We respond within six working days, in accordance with Article 32 of the Law. Withdrawing consent does not affect the lawfulness of processing carried out before the withdrawal.",
-  },
-  {
-    heading: "Complaints",
-    body: "You have the right to lodge a complaint with the Personal Data Protection Center concerning the processing of your data, in accordance with Article 33 of the Law.",
+    body: "By message to dpo@hamzalawfirm.com.",
   },
 ];
 
@@ -78,15 +71,11 @@ const AR: Section[] = [
   },
   {
     heading: "ما الذي نجمعه",
-    body: "اسم الشركة، واسمكم ومسمّاكم الوظيفي، وبريد العمل الإلكتروني، ورقم الهاتف. وإجاباتكم على أسئلة التقييم، والنتيجة الصادرة عنها. ولا نطلب في هذه الأداة أي بيانات شخصية حساسة، ونرجو عدم إدراجها في الحقول المفتوحة.",
+    body: "اسم الشركة، واسمك والمسمى الوظيفي، والبريد الإلكتروني، ورقم الهاتف. وإجاباتكم على أسئلة التقييم، والنتيجة الصادرة عنها. ولا نطلب في هذه الأداة أي بيانات شخصية حساسة، ونرجو عدم إدراجها في الحقول المفتوحة.",
   },
   {
-    heading: "لماذا نجمعه",
-    body: "لإعداد نتيجة التقييم وتسليمها لكم. وإذا منحتم موافقتكم الصريحة — بتأشير مربع مستقل غير مؤشَّر مسبقاً — فلإرسال مراسلات لاحقة عن قانون حماية البيانات الشخصية والخدمات المتصلة به. ونتيجة التقييم تظهر لكم سواء منحتم هذه الموافقة أو لم تمنحوها.",
-  },
-  {
-    heading: "الأساس القانوني",
-    body: "موافقتكم الصريحة، وفقاً للمادة 6 من القانون رقم 151 لسنة 2020 والمادة 2 من لائحته التنفيذية.",
+    heading: "لماذا نجمعه، وعلى أي أساس",
+    body: "نجمعها لإعداد نتيجة التقييم وتسليمها لكم. وإذا منحتم موافقتكم الصريحة، نرسل إليكم كذلك مراسلات لاحقة عن قانون حماية البيانات الشخصية والخدمات المتصلة به. ونتيجة التقييم تظهر لكم سواء منحتم هذه الموافقة أو لم تمنحوها. وأساس المعالجة في الحالين موافقتكم الصريحة.",
   },
   {
     heading: "من يطّلع على بياناتكم",
@@ -94,7 +83,7 @@ const AR: Section[] = [
   },
   {
     heading: "أين تُحفَظ — نقل عبر الحدود",
-    body: "تُحفَظ على بنية Firebase التابعة لشركة Google، وخوادمها كائنة خارج جمهورية مصر العربية، في الولايات المتحدة الأمريكية. وأساس هذا النقل موافقتكم الصريحة عليه، وإرسالكم للنموذج يُعد منحاً لها.",
+    body: "تُحفَظ لدى مقدّم خدمة استضافة سحابية خارج جمهورية مصر العربية، في الولايات المتحدة الأمريكية. وأساس هذا النقل موافقتكم الصريحة عليه، وإرسالكم للنموذج يُعد منحاً لها.",
   },
   {
     heading: "مدة الحفظ",
@@ -106,11 +95,7 @@ const AR: Section[] = [
   },
   {
     heading: "كيف تمارسون حقوقكم أو تسحبون موافقتكم",
-    body: "برسالة إلى dpo@hamzalawfirm.com. ونردّ خلال ستة أيام عمل وفقاً للمادة 32 من القانون. وسحب الموافقة لا يؤثر على مشروعية المعالجة السابقة عليه.",
-  },
-  {
-    heading: "الشكاوى",
-    body: "لكم تقديم شكوى إلى مركز حماية البيانات الشخصية بشأن معالجة بياناتكم، وفقاً للمادة 33 من القانون.",
+    body: "برسالة إلى dpo@hamzalawfirm.com.",
   },
 ];
 
@@ -134,8 +119,8 @@ function sections(list: Section[]): string {
  */
 export function privacyNoticeHtml(): string {
   return (
-    '<section class="pdpl__privacy" aria-labelledby="pdplPrivacyHeading">' +
-    '<h3 id="pdplPrivacyHeading" class="pdpl__h3">Privacy notice</h3>' +
+    '<details class="pdpl__privacy">' +
+    '<summary class="pdpl__privacysummary">' + t("privacyHeading") + "</summary>" +
     '<div class="pdpl__tabs" role="tablist" aria-label="Privacy notice language">' +
     '<button type="button" role="tab" id="pdplTabEn" aria-controls="pdplPanelEn" aria-selected="true" class="pdpl__tab pdpl__tab--active">English</button>' +
     '<button type="button" role="tab" id="pdplTabAr" aria-controls="pdplPanelAr" aria-selected="false" class="pdpl__tab">العربية</button>' +
@@ -146,10 +131,8 @@ export function privacyNoticeHtml(): string {
     '<div class="pdpl__privacybody pdpl__privacybody--ar" id="pdplPanelAr" role="tabpanel" aria-labelledby="pdplTabAr" dir="rtl" lang="ar" hidden>' +
     sections(AR) +
     "</div>" +
-    '<p class="pdpl__privacyversion">Version ' +
-    NOTICE_VERSION +
-    "</p>" +
-    "</section>"
+    '<p class="pdpl__privacyversion">' + t("version") + " " + NOTICE_VERSION + "</p>" +
+    "</details>"
   );
 }
 

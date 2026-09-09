@@ -332,3 +332,62 @@
 .pdpl[dir="rtl"] .pdpl__label,
 .pdpl[dir="rtl"] .pdpl__noticesheading,
 .pdpl[dir="rtl"] .pdpl__langlabel { text-transform: none; letter-spacing: 0; }
+
+/* ---- landing primers ----
+   Two short explanations of "personal data" and "processing", shown before
+   the first question because both terms were being read far more narrowly
+   than the law defines them. */
+.pdpl__primer {
+  border-left: 3px solid var(--pdpl-brand-line);
+  padding: 2px 0 2px 14px;
+  margin: 0 0 1.25rem;
+}
+.pdpl__primerheading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+}
+.pdpl__primer p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--pdpl-muted);
+}
+.pdpl[dir="rtl"] .pdpl__primer {
+  border-left: 0;
+  border-right: 3px solid var(--pdpl-brand-line);
+  padding: 2px 14px 2px 0;
+}
+
+/* ---- privacy notice as a disclosure ----
+   Collapsed by default so it does not push the contact fields off the screen;
+   still in the page, and still before the visitor submits anything. */
+.pdpl__privacysummary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  list-style: none;
+  padding: 4px 0;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pdpl__privacysummary::-webkit-details-marker { display: none; }
+.pdpl__privacysummary::before {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border: 1px solid var(--pdpl-brand-line);
+  border-radius: 50%;
+  color: var(--pdpl-brand);
+  font-weight: 700;
+  line-height: 1;
+}
+.pdpl__privacy[open] > .pdpl__privacysummary::before { content: "\2212"; }
+.pdpl__privacysummary:focus-visible { outline: 3px solid var(--pdpl-brand); outline-offset: 2px; }
+.pdpl__privacy[open] > .pdpl__privacysummary { margin-bottom: 1rem; }

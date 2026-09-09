@@ -234,6 +234,11 @@ export function infer(answers: Answers): Result {
       has(answers, "Q7.2", "publicAreas") || has(answers, "Q7.2", "perimeter");
     if (publicPlace) add(supplementary, "SUP-CCTV"); // V1
 
+    // V2 — residential units are excluded by the express text of ER Art. 31.
+    // The option that fed this rule was removed from Q7.2 on the client's
+    // instruction of September 9, 2026, so the rule can no longer fire. It is
+    // left here, inert, because the exclusion itself still stands in law and
+    // the rule becomes live again the moment the option returns.
     const only = values(answers, "Q7.2");
     if (only.length === 1 && only[0] === "residential") add(notices, "V2");
 

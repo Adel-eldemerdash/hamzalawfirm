@@ -26,12 +26,19 @@ export function disclaimerHtml(): string {
   );
 }
 
-function card(item: Item, extraClass?: string): string {
+/**
+ * Article citations are deliberately absent from the result. The client's
+ * instruction of September 9, 2026 is that no legal article is quoted to the
+ * visitor; the sources stay in content.ts, which remains the record.
+ *
+ * `titleOnly` renders the heading with no description, used for the
+ * supplementary, registration, and document lists.
+ */
+function card(item: Item, extraClass?: string, titleOnly?: boolean): string {
   return (
     '<article class="pdpl__card' + (extraClass ? " " + extraClass : "") + '">' +
     "<h3>" + item.title + "</h3>" +
-    (item.body ? "<p>" + item.body + "</p>" : "") +
-    (item.source ? '<p class="pdpl__source">' + item.source + "</p>" : "") +
+    (!titleOnly && item.body ? "<p>" + item.body + "</p>" : "") +
     "</article>"
   );
 }
@@ -54,7 +61,6 @@ function noticeBlock(codes: string[], heading: string): string {
       return (
         '<div class="pdpl__notice"><strong>' + i.title + "</strong>" +
         (i.body ? "<p>" + i.body + "</p>" : "") +
-        (i.source ? '<p class="pdpl__source">' + i.source + "</p>" : "") +
         "</div>"
       );
     }).join("") +
@@ -62,10 +68,19 @@ function noticeBlock(codes: string[], heading: string): string {
   );
 }
 
-function list(codes: string[], lookup: (c: string) => Item | undefined, cls?: string): string {
+function list(
+  codes: string[],
+  lookup: (c: string) => Item | undefined,
+  cls?: string,
+  titleOnly?: boolean
+): string {
   const items = codes.map(lookup).filter(function (i) { return !!i; }) as Item[];
   if (!items.length) return "";
-  return '<div class="pdpl__cards">' + items.map(function (i) { return card(i, cls); }).join("") + "</div>";
+  return (
+    '<div class="pdpl__cards">' +
+    items.map(function (i) { return card(i, cls, titleOnly); }).join("") +
+    "</div>"
+  );
 }
 
 export interface Contact {
@@ -136,7 +151,6 @@ export function renderResult(
     '<h2 class="pdpl__h2">' + t("sec1") + "</h2>" +
     '<p class="pdpl__headline">' + (r.roleQualified ? roleQualifier() : (role ? role.title : "")) + "</p>" +
     (role && role.body ? "<p>" + role.body + "</p>" : "") +
-    (role && role.source ? '<p class="pdpl__source">' + role.source + "</p>" : "") +
     "</section>";
 
   // 2 — primary instrument
@@ -153,10 +167,9 @@ export function renderResult(
       (band === "b1" && r.primary.indexOf("BAS-L") === 0
         ? "<p>" + exemptNote() + "</p>"
         : "") +
-      '<p class="pdpl__source">' + feeCeilings() + "</p>" +
       "</div>" +
       '<p class="pdpl__source">' + primaryExclusivity() + "</p>" +
-      noticeBlock(noticesFor(r.notices, ["B", "N3", "N6a"]), t("notesOnResult")) +
+      noticeBlock(noticesFor(r.notices, ["B", "N3", "N6a"]).filter(function (c) { return c !== "B7"; }), t("notesOnResult")) +
       "</section>";
   }
 
@@ -165,9 +178,7 @@ export function renderResult(
     html +=
       '<section class="pdpl__section">' +
       '<h2 class="pdpl__h2">' + t("sec3") + "</h2>" +
-      '<p class="pdpl__source">' + supplementaryPrerequisite() + "</p>" +
-      list(r.supplementary, suppItem) +
-      noticeBlock(noticesFor(r.notices, ["X", "M", "V", "S"]), t("conditionsAttach")) +
+      list(r.supplementary, suppItem, undefined, true) +
       "</section>";
   }
 
@@ -176,8 +187,7 @@ export function renderResult(
     html +=
       '<section class="pdpl__section">' +
       '<h2 class="pdpl__h2">' + t("sec4") + "</h2>" +
-      list(r.registrations, regItem) +
-      noticeBlock(noticesFor(r.notices, ["D", "A3"]), t("notesOnDpo")) +
+      list(r.registrations, regItem, undefined, true) +
       "</section>";
   }
 
@@ -186,16 +196,16 @@ export function renderResult(
     '<section class="pdpl__section pdpl__section--feature">' +
     '<h2 class="pdpl__h2">' + t("sec5") + "</h2>" +
     '<p class="pdpl__label">' + t("labelRequired") + "</p>" +
-    (r.documents.length ? list(r.documents, docItem) : "<p>" + t("nothingFurther") + "</p>");
+    (r.documents.length ? list(r.documents, docItem, undefined, true) : "<p>" + t("nothingFurther") + "</p>");
 
   if (r.alreadyInPlace.length) {
     html +=
       '<p class="pdpl__label">' + t("labelInPlace") + "</p>" +
       '<p class="pdpl__source">' + t("inPlaceNote") + "</p>" +
-      list(r.alreadyInPlace, docItem, "pdpl__card--done");
+      list(r.alreadyInPlace, docItem, "pdpl__card--done", true);
   }
 
-  html += noticeBlock(noticesFor(r.notices, ["W"]), t("obligationsNote")) + "</section>";
+  html += "</section>";
 
   // 6 — unresolved
   if (r.unresolved.length) {
@@ -216,9 +226,9 @@ export function renderResult(
     '<section class="pdpl__section">' +
     '<h2 class="pdpl__h2">' + t("sec7") + "</h2>" +
     '<div class="pdpl__tablewrap"><table class="pdpl__table">' +
-    "<thead><tr><th>" + t("colItem") + "</th><th>" + t("colPeriod") + "</th><th>" + t("colSource") + "</th></tr></thead><tbody>" +
-    timelines().map(function (t) {
-      return "<tr><td>" + t.label + "</td><td>" + t.period + "</td><td>" + t.source + "</td></tr>";
+    "<thead><tr><th>" + t("colItem") + "</th><th>" + t("colPeriod") + "</th></tr></thead><tbody>" +
+    timelines().map(function (row) {
+      return "<tr><td>" + row.label + "</td><td>" + row.period + "</td></tr>";
     }).join("") +
     "</tbody></table></div></section>";
 
