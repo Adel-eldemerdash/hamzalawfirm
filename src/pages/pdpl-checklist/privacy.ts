@@ -24,7 +24,7 @@ interface Section {
 const EN: Section[] = [
   {
     heading: "Who controls your data",
-    body: "Hamza &amp; Partners Law Firm — 48 Fareed Semeika Street, Hegaz Square, Nozha, Cairo, Arab Republic of Egypt. Telephone: +20 100 170 7074. Website: www.hamzalawfirm.com",
+    body: "Hamza &amp; Partners Law Firm - 48 Fareed Semeika Street, Hegaz Square, Nozha, Cairo, Arab Republic of Egypt. Telephone: +20 100 170 7074. Website: www.hamzalawfirm.com",
   },
   {
     heading: "To contact us about your data and exercise your rights",
@@ -43,7 +43,7 @@ const EN: Section[] = [
     body: "The firm’s public relations and marketing team. And Google, as the cloud hosting provider that processes the data on our behalf and on our instructions. We do not sell your data and we do not make it available to any third party for that party’s own purposes.",
   },
   {
-    heading: "Where it is held — cross-border transfer",
+    heading: "Where it is held - cross-border transfer",
     body: "With a cloud hosting provider outside the Arab Republic of Egypt, in the United States of America. The basis for this transfer is your explicit consent to it, and submitting the form constitutes the giving of that consent.",
   },
   {
@@ -63,7 +63,7 @@ const EN: Section[] = [
 const AR: Section[] = [
   {
     heading: "من يتحكم في بياناتكم",
-    body: "حمزة وشركاه للمحاماة — 48 شارع فريد سميكة، ميدان الحجاز، النزهة، القاهرة، جمهورية مصر العربية. هاتف: ‎+20 100 170 7074. الموقع: www.hamzalawfirm.com",
+    body: "حمزة وشركاه للمحاماة - 48 شارع فريد سميكة، ميدان الحجاز، النزهة، القاهرة، جمهورية مصر العربية. هاتف: ‎+20 100 170 7074. الموقع: www.hamzalawfirm.com",
   },
   {
     heading: "للتواصل بشأن بياناتكم وممارسة حقوقكم",
@@ -82,7 +82,7 @@ const AR: Section[] = [
     body: "فريق العلاقات العامة والتسويق بالمكتب. وشركة Google بوصفها مقدّم خدمة الاستضافة السحابية الذي يعالج البيانات لحسابنا ووفقاً لتعليماتنا. ولا نبيع بياناتكم ولا نتيحها لأي طرف ثالث لأغراضه الخاصة.",
   },
   {
-    heading: "أين تُحفَظ — نقل عبر الحدود",
+    heading: "أين تُحفَظ - نقل عبر الحدود",
     body: "تُحفَظ لدى مقدّم خدمة استضافة سحابية خارج جمهورية مصر العربية، في الولايات المتحدة الأمريكية. وأساس هذا النقل موافقتكم الصريحة عليه، وإرسالكم للنموذج يُعد منحاً لها.",
   },
   {

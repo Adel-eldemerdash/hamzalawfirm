@@ -65,8 +65,8 @@ const UI: { [key: string]: { en: string; ar: string } } = {
   },
   promiseHeading: { en: "What you will get", ar: "ما الذي ستحصلون عليه" },
   promise1: {
-    en: "<strong>Your legal role</strong> under the law  -  controller, processor, or both.",
-    ar: "<strong>صفتكم القانونية</strong> بموجب القانون  -  متحكم أم معالج أم الاثنان معاً.",
+    en: "<strong>Your legal role</strong> under the law - controller, processor, or both.",
+    ar: "<strong>صفتكم القانونية</strong> بموجب القانون - متحكم أم معالج أم الاثنان معاً.",
   },
   promise2: {
     en: "<strong>The primary license or permit you need</strong>, its category, and its official fee band.",
@@ -77,8 +77,8 @@ const UI: { [key: string]: { en: string; ar: string } } = {
     ar: "<strong>كل ترخيص أو تصريح تكميلي ينطبق عليكم</strong>، ونسبة رسوم كل منها.",
   },
   promise4: {
-    en: "<strong>Your document and obligation map</strong>  -  what is required, what you already have, and what needs verification.",
-    ar: "<strong>خريطة الوثائق والالتزامات</strong>  -  المطلوب، وما هو قائم لديكم فعلاً، وما يحتاج تحققاً.",
+    en: "<strong>Your document and obligation map</strong> - what is required, what you already have, and what needs verification.",
+    ar: "<strong>خريطة الوثائق والالتزامات</strong> - المطلوب، وما هو قائم لديكم فعلاً، وما يحتاج تحققاً.",
   },
   // Two short primers on the landing screen. Visitors were reading "personal
   // data" and "processing" more narrowly than the law does, which skewed their
@@ -86,12 +86,12 @@ const UI: { [key: string]: { en: string; ar: string } } = {
   primerDataHeading: { en: "What counts as personal data", ar: "ما المقصود بالبيانات الشخصية" },
   primerData: {
     en: "Any information that identifies a living person, or could identify them when combined with other information you hold. A name, a phone number, an email address, a national ID number, a photograph, a salary figure, an IP address, a fingerprint. It does not have to be secret or sensitive to count.",
-    ar: "أي معلومة تُعرِّف بشخص طبيعي، أو يمكن أن تُعرِّف به إذا ضُمّت إلى معلومة أخرى لديكم. فالاسم، ورقم الهاتف، والبريد الإلكتروني، والرقم القومي، والصورة، وقيمة الراتب، وعنوان الـ IP، والبصمة — كلها بيانات شخصية. ولا يُشترط أن تكون المعلومة سرية أو حساسة حتى تُعد كذلك.",
+    ar: "أي معلومة تُعرِّف بشخص طبيعي، أو يمكن أن تُعرِّف به إذا ضُمّت إلى معلومة أخرى لديكم. فالاسم، ورقم الهاتف، والبريد الإلكتروني، والرقم القومي، والصورة، وقيمة الراتب، وعنوان الـ IP، والبصمة - كلها بيانات شخصية. ولا يُشترط أن تكون المعلومة سرية أو حساسة حتى تُعد كذلك.",
   },
   primerProcessingHeading: { en: "What counts as processing, and who is who", ar: "ما المقصود بالمعالجة، ومَن المتحكم ومَن المعالج" },
   primerProcessing: {
-    en: "Processing is any handling of the data at all: collecting it, storing it, looking at it, using it, amending it, sharing it, or erasing it. Keeping a staff list in a spreadsheet is processing. You are a <strong>controller</strong> when the data is yours and you decide why and how it is handled — your own employees, customers, and contacts. You are a <strong>processor</strong> when the data belongs to a client who hands it to you so you can do work for them, on their instructions. Many organizations are both.",
-    ar: "المعالجة هي أي تعامل مع البيانات مهما كان: جمعها، أو حفظها، أو الاطلاع عليها، أو استخدامها، أو تعديلها، أو مشاركتها، أو محوها. فمجرد الاحتفاظ بكشف بأسماء الموظفين على ملف إكسل معالجةٌ. وأنتم <strong>متحكم</strong> حين تكون البيانات بياناتكم وتقررون أنتم لماذا تُعالَج وكيف — كبيانات موظفيكم وعملائكم وجهات اتصالكم. وأنتم <strong>معالج</strong> حين تكون البيانات لعميل سلّمها لكم لتؤدوا بها عملاً له وبناءً على تعليماته. وكثير من المؤسسات تجمع الصفتين معاً.",
+    en: "Processing is any handling of the data at all: collecting it, storing it, looking at it, using it, amending it, sharing it, or erasing it. Keeping a staff list in a spreadsheet is processing. You are a <strong>controller</strong> when the data is yours and you decide why and how it is handled - your own employees, customers, and contacts. You are a <strong>processor</strong> when the data belongs to a client who hands it to you so you can do work for them, on their instructions. Many organizations are both.",
+    ar: "المعالجة هي أي تعامل مع البيانات مهما كان: جمعها، أو حفظها، أو الاطلاع عليها، أو استخدامها، أو تعديلها، أو مشاركتها، أو محوها. فمجرد الاحتفاظ بكشف بأسماء الموظفين على ملف إكسل معالجةٌ. وأنتم <strong>متحكم</strong> حين تكون البيانات بياناتكم وتقررون أنتم لماذا تُعالَج وكيف - كبيانات موظفيكم وعملائكم وجهات اتصالكم. وأنتم <strong>معالج</strong> حين تكون البيانات لعميل سلّمها لكم لتؤدوا بها عملاً له وبناءً على تعليماته. وكثير من المؤسسات تجمع الصفتين معاً.",
   },
 
   start: { en: "Begin the assessment", ar: "ابدأ التقييم" },
@@ -207,8 +207,8 @@ const UI: { [key: string]: { en: string; ar: string } } = {
     ar: "يفتح رسالة إلى info@hamzalawfirm.com وبها بياناتكم وهذه النتيجة مُعبّأة سلفاً. اضغطوا إرسال، ونردّ عليكم بموعد مقترح.",
   },
   firmLine: {
-    en: "Hamza &amp; Partners Law Firm  -  48 Fareed Semeika Street, Hegaz Square, Nozha, Cairo. +20 100 170 7074.",
-    ar: "حمزة وشركاه للمحاماة  -  48 شارع فريد سميكة، ميدان الحجاز، النزهة، القاهرة. ‎+20 100 170 7074.",
+    en: "Hamza &amp; Partners Law Firm - 48 Fareed Semeika Street, Hegaz Square, Nozha, Cairo. +20 100 170 7074.",
+    ar: "حمزة وشركاه للمحاماة - 48 شارع فريد سميكة، ميدان الحجاز، النزهة، القاهرة. ‎+20 100 170 7074.",
   },
 };
 

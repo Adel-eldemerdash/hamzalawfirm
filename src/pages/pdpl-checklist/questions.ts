@@ -68,7 +68,7 @@ export const GROUPS: Group[] = [
   { index: 7, title: "Visual surveillance" },
   { index: 8, title: "Data leaving you, and data coming to you",
     intro:
-      "Two opposite directions. Data you control goes out to a vendor working for you, and data your clients control comes in to you to process on their behalf. The two are independent; either or both may apply — and your legal role differs in each direction." },
+      "Two opposite directions. Data you control goes out to a vendor working for you, and data your clients control comes in to you to process on their behalf. The two are independent; either or both may apply - and your legal role differs in each direction." },
   { index: 9, title: "Data Protection Officer" },
   { index: 10, title: "Digital channels" },
   { index: 11, title: "Existing governance and information security",
@@ -93,7 +93,7 @@ export const QUESTIONS: Question[] = [
     type: "single",
     options: [
       { value: "yes", label: "Yes" },
-      { value: "paper", label: "No — entirely on paper" },
+      { value: "paper", label: "No - entirely on paper" },
       { value: "unsure", label: "Not sure" },
     ],
   },
@@ -157,7 +157,7 @@ export const QUESTIONS: Question[] = [
     id: "Q1.2",
     group: 1,
     text: "Do your services involve a client uploading data to you on an ongoing basis, which you then process on an ongoing basis?",
-    helper: "A platform or subscription model — SaaS",
+    helper: "A platform or subscription model - SaaS",
     type: "single",
     options: YES_NO_UNSURE,
   },
@@ -239,8 +239,8 @@ export const QUESTIONS: Question[] = [
     group: 3,
     text: "In total, how many personal data records relating to individuals do you hold?",
     helper:
-      "An approximate estimate is sufficient — include employees, customers, contacts, marketing lists, and archives",
-    note: "The first band — up to 100,000 records — is exempt from license fees under Article 19 of the Executive Regulations. Exemption from the fee is not exemption from the license, nor from any other obligation.",
+      "An approximate estimate is sufficient - include employees, customers, contacts, marketing lists, and archives",
+    note: "The first band - up to 100,000 records - is exempt from license fees under Article 19 of the Executive Regulations. Exemption from the fee is not exemption from the license, nor from any other obligation.",
     type: "single",
     options: [
       { value: "b1", label: "1 to 100,000" },
@@ -320,8 +320,8 @@ export const QUESTIONS: Question[] = [
     text: "Do you know which country this data is stored in?",
     type: "single",
     options: [
-      { value: "inEgypt", label: "Yes — inside Egypt" },
-      { value: "outsideEgypt", label: "Yes — outside Egypt", freeText: "Country" },
+      { value: "inEgypt", label: "Yes - inside Egypt" },
+      { value: "outsideEgypt", label: "Yes - outside Egypt", freeText: "Country" },
       { value: "distributed", label: "Distributed across more than one country" },
       { value: "unknown", label: "Not known" },
     ],
@@ -337,11 +337,11 @@ export const QUESTIONS: Question[] = [
   {
     id: "Q5.4",
     group: 5,
-    text: "If the recipient is outside Egypt, is it within your group — a parent, sister company, or branch?",
+    text: "If the recipient is outside Egypt, is it within your group - a parent, sister company, or branch?",
     type: "single",
     options: [
       { value: "yes", label: "Yes" },
-      { value: "independent", label: "No — an independent party" },
+      { value: "independent", label: "No - an independent party" },
       { value: "both", label: "Both" },
       { value: "na", label: "Not applicable" },
     ],
@@ -463,7 +463,7 @@ export const QUESTIONS: Question[] = [
   {
     id: "Q8.1",
     group: 8,
-    text: "Direction one — data going out: Do you make data about individuals that you control — your employees or your customers — available to any external party that provides a service to you?",
+    text: "Direction one - data going out: Do you make data about individuals that you control - your employees or your customers - available to any external party that provides a service to you?",
     helper: "Cloud hosting, HR system, accounting firm, marketing agency, security company, courier, call center",
     type: "single",
     options: YES_NO_UNSURE,
@@ -490,7 +490,7 @@ export const QUESTIONS: Question[] = [
   {
     id: "Q8.4",
     group: 8,
-    text: "Direction two — data coming in: Do your clients entrust you with data about individuals that they control, for you to process on their behalf? If so, what governs the relationship?",
+    text: "Direction two - data coming in: Do your clients entrust you with data about individuals that they control, for you to process on their behalf? If so, what governs the relationship?",
     type: "single",
     options: [
       { value: "contractWithClauses", label: "Yes, governed by a written contract that contains data protection clauses" },
@@ -577,8 +577,8 @@ export const QUESTIONS: Question[] = [
       "Being informed of and accessing or obtaining their data; withdrawing prior consent; correction, amendment, erasure, addition, or updating; restricting processing to a defined scope; objecting to processing",
     type: "single",
     options: [
-      { value: "dedicatedForm", label: "Yes — a dedicated form or page for individuals’ requests" },
-      { value: "controlPanel", label: "Yes — a control panel inside the user’s account" },
+      { value: "dedicatedForm", label: "Yes - a dedicated form or page for individuals’ requests" },
+      { value: "controlPanel", label: "Yes - a control panel inside the user’s account" },
       { value: "emailOnly", label: "There is a contact email address only" },
       { value: "none", label: "None of the above" },
       { value: "unsure", label: "Not sure" },
@@ -634,7 +634,7 @@ export const QUESTIONS: Question[] = [
   {
     id: "Q12.1",
     group: 12,
-    text: "Do you provide — or plan to provide — data protection or privacy consultancy or services to clients in Egypt?",
+    text: "Do you provide - or plan to provide - data protection or privacy consultancy or services to clients in Egypt?",
     type: "single",
     options: [
       { value: "yes", label: "Yes" },

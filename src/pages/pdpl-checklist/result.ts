@@ -126,7 +126,7 @@ function consultationMailto(r: Result, contact: Contact): string {
 
   return (
     "mailto:info@hamzalawfirm.com" +
-    "?subject=" + encodeURIComponent("Consultation request — PDPL assessment — " + contact.company) +
+    "?subject=" + encodeURIComponent("Consultation request - PDPL assessment - " + contact.company) +
     "&body=" + encodeURIComponent(lines.join("\n"))
   );
 }
@@ -216,7 +216,7 @@ export function renderResult(
       "<ul class=\"pdpl__list\">" +
       r.unresolved.map(function (id) {
         const q = QUESTIONS_BY_ID[id];
-        return "<li><strong>" + id + "</strong> — " + (q ? qText(q) : "") + "</li>";
+        return "<li><strong>" + id + "</strong> - " + (q ? qText(q) : "") + "</li>";
       }).join("") +
       "</ul></section>";
   }

@@ -66,7 +66,7 @@ export const PRIMARY: { [code: string]: Item } = {
   },
   "BAS-P": {
     title: "Controller or processor permit",
-    body: "A permit covers processing for a defined, temporary purpose not exceeding one calendar year. A natural person  -  a sole trader or an individual professional practice with no registered company  -  may hold a permit only, and may not hold a license.",
+    body: "A permit covers processing for a defined, temporary purpose not exceeding one calendar year. A natural person - a sole trader or an individual professional practice with no registered company - may hold a permit only, and may not hold a license.",
     source: "ER Arts. 20 and 22; Licenses and Permits Guideline, item 3",
   },
   "BAS-SPECIAL": {
@@ -86,21 +86,21 @@ export const PRIMARY_EXCLUSIVITY =
 export const SUPPLEMENTARY: { [code: string]: Item } = {
   SENS: {
     title: "License or permit to handle sensitive personal data",
-    body: "Issued according to your capacity  -  a license where you are eligible for one, a permit otherwise. It sits alongside your primary instrument.",
+    body: "Issued according to your capacity - a license where you are eligible for one, a permit otherwise. It sits alongside your primary instrument.",
     source: "PDPL Arts. 12 and 26(6); ER Art. 14",
   },
   "SUP-XB": {
-    title: "Cross-border transfer of personal data  -  50% of the primary fee",
+    title: "Cross-border transfer of personal data - 50% of the primary fee",
     body: "Covers transfer, storage, sharing, processing, and making data available outside Egypt. Cloud hosting on foreign servers falls within it, and so does making data available to another controller or processor within your own group.",
     source: "PDPL Art. 14; ER Arts. 23 to 27",
   },
   "SUP-MKT-SELF": {
-    title: "Direct electronic marketing, own account  -  10% of the primary fee",
+    title: "Direct electronic marketing, own account - 10% of the primary fee",
     body: "Required where you send promotional messages for your own products and services.",
     source: "ER Art. 29",
   },
   "SUP-MKT-3P": {
-    title: "Direct electronic marketing, third party  -  25% of the primary fee",
+    title: "Direct electronic marketing, third party - 25% of the primary fee",
     body: "Required where you send promotional messages on behalf of other clients.",
     source: "ER Art. 29",
   },
@@ -125,17 +125,17 @@ export const REGISTRATIONS: { [code: string]: Item } = {
     source: "PDPL Art. 8; ER Arts. 7 to 12",
   },
   "DPO-A": {
-    title: "DPO Category A  -  Lead",
+    title: "DPO Category A - Lead",
     body: "For 2,000,001 records and above.",
     source: "DPOC Guideline, Section I",
   },
   "DPO-B": {
-    title: "DPO Category B  -  Advanced",
+    title: "DPO Category B - Advanced",
     body: "For 100,001 up to 2,000,000 records.",
     source: "DPOC Guideline, Section I",
   },
   "DPO-C": {
-    title: "DPO Category C  -  Entry level",
+    title: "DPO Category C - Entry level",
     body: "For up to 100,000 records.",
     source: "DPOC Guideline, Section I",
   },
@@ -150,12 +150,12 @@ export const REGISTRATIONS: { [code: string]: Item } = {
     source: "ER Arts. 3(First)(6) and 4(First)(5)",
   },
   "ACC-NAT": {
-    title: "Data protection consultancy accreditation  -  natural person",
+    title: "Data protection consultancy accreditation - natural person",
     body: "EGP 5,000 per year for each consultant.",
     source: "ER Arts. 32 and 34",
   },
   "ACC-LEG": {
-    title: "Data protection consultancy accreditation  -  legal person",
+    title: "Data protection consultancy accreditation - legal person",
     body: "EGP 50,000 per year. The certificate is valid for three years.",
     source: "ER Arts. 33 and 34",
   },
@@ -176,7 +176,7 @@ export const REGISTRATIONS: { [code: string]: Item } = {
 // ---------------------------------------------------------------------------
 
 export const DOCUMENTS: { [code: string]: Item } = {
-  "DOC-POLICY": { title: "Data protection policy", body: "In two parts: governance  -  principles, roles and responsibilities, oversight body, segregation of duties, and a privacy risk management process; and operations  -  staff instructions on collecting, using, retaining, and sharing data.", source: "PDPL Arts. 4 and 5; ER Arts. 3 and 4" },
+  "DOC-POLICY": { title: "Data protection policy", body: "In two parts: governance - principles, roles and responsibilities, oversight body, segregation of duties, and a privacy risk management process; and operations - staff instructions on collecting, using, retaining, and sharing data.", source: "PDPL Arts. 4 and 5; ER Arts. 3 and 4" },
   "DOC-WEBPRIV": { title: "Website and application privacy notice", body: "Published where individuals can read it before their data is collected.", source: "PDPL Art. 3; ER Art. 2" },
   "DOC-COOKIE": { title: "Cookie policy", body: "With a consent mechanism that allows refusal as readily as acceptance.", source: "PDPL Art. 6; ER Art. 2" },
   "DOC-CONSENT": { title: "Consent management guidelines and mechanisms", body: "How consent is obtained, recorded, and withdrawn.", source: "PDPL Art. 6; ER Art. 2" },
@@ -194,8 +194,8 @@ export const DOCUMENTS: { [code: string]: Item } = {
   "DOC-TRAIN": { title: "Training and awareness program", body: "", source: "PDPL Art. 13; ER Art. 12" },
   "DOC-DPO-CHART": { title: "DPO charter, compliance monitoring procedure, and annual report", body: "", source: "PDPL Art. 9; ER Art. 12(1)" },
   "DOC-MKT-REC": { title: "Marketing consent records", body: "Kept for three years from the date of the last message sent.", source: "PDPL Art. 18; ER Art. 18(Second)(4)" },
-  "DOC-DPIA": { title: "Data protection impact assessment methodology and template", body: "Interpretive: there is no express provision requiring it. It is inferred from ER Art. 3.", source: "Interpretive  -  inferred from ER Art. 3" },
-  "DOC-TIA": { title: "Transfer impact assessment", body: "Interpretive: drawn from the PDPC compliance plan checklist rather than from an express provision.", source: "Interpretive  -  PDPC Compliance Plan Checklist, Section VI(h)" },
+  "DOC-DPIA": { title: "Data protection impact assessment methodology and template", body: "Interpretive: there is no express provision requiring it. It is inferred from ER Art. 3.", source: "Interpretive - inferred from ER Art. 3" },
+  "DOC-TIA": { title: "Transfer impact assessment", body: "Interpretive: drawn from the PDPC compliance plan checklist rather than from an express provision.", source: "Interpretive - PDPC Compliance Plan Checklist, Section VI(h)" },
   "DOC-AI": { title: "Controls on using personal data to train artificial intelligence and emerging technologies", body: "", source: "ER Art. 4(First)(7)" },
   "SENS-CONSENT": { title: "Written explicit consent for sensitive personal data", body: "On paper or electronic.", source: "PDPL Art. 12; ER Art. 14" },
   "SENS-REG": { title: "Secured electronic records of consents and of erasure, amendment, and suspension requests", body: "", source: "PDPL Art. 12; ER Art. 14" },
@@ -206,7 +206,7 @@ export const DOCUMENTS: { [code: string]: Item } = {
 // ---------------------------------------------------------------------------
 
 export const NOTICES: { [code: string]: Item } = {
-  B7: { title: "If you already hold a license or permit", body: "If you already hold a valid license or permit from the PDPC, what is required is a review of whether its scope covers your actual activity and data volume  -  not a new application. You may apply to amend it when the nature of the activity, the scope of processing, or the data volume changes.", source: "PDPL Art. 28; Licenses and Permits Guideline, item 5.2" },
+  B7: { title: "If you already hold a license or permit", body: "If you already hold a valid license or permit from the PDPC, what is required is a review of whether its scope covers your actual activity and data volume - not a new application. You may apply to amend it when the nature of the activity, the scope of processing, or the data volume changes.", source: "PDPL Art. 28; Licenses and Permits Guideline, item 5.2" },
   N3: { title: "You are in scope, with dual subjection", body: "Money transfer and currency exchange companies are carved out of the exclusion that applies to entities under Central Bank supervision. The PDPL applies to you, and the rules laid down by the Central Bank on handling personal data are also to be observed in your regard.", source: "Promulgation Art. 3(6)" },
   N6a: { title: "Scope extends beyond Egypt’s borders", body: "Because you process data relating to Egyptian nationals residing abroad or foreign nationals residing in Egypt, the law reaches that data even where the processing itself occurs outside Egypt.", source: "Promulgation Art. 2" },
   B5b: { title: "A permit cannot cover your duration", body: "A permit may not exceed one calendar year. Because the period you expect is longer, the result above is presented as a license rather than a permit.", source: "ER Art. 20; PDPL Art. 1" },
@@ -223,7 +223,7 @@ export const NOTICES: { [code: string]: Item } = {
   M5: { title: "Lists obtained from public sources or purchased", body: "A marketing intermediary must verify that consent was obtained and retain evidence of its source. Failing that, it must immediately cease using the data.", source: "ER Art. 18(Second)(3)" },
   M6: { title: "Message content requirements", body: "Every marketing message must identify its originator and its sender, give a valid contact address, and state expressly that its purpose is marketing.", source: "PDPL Art. 17; ER Art. 18(Second)(2)" },
   M7: { title: "A refusal and withdrawal mechanism is required", body: "There must be a clear and easily accessible way to refuse further messages and to withdraw consent.", source: "PDPL Art. 17" },
-  M9: { title: "Two cases require erasure", body: "Withdrawal of consent, or expiry of the retention period or the marketing purpose ceasing  -  whichever comes first.", source: "ER Art. 18(First)(3)" },
+  M9: { title: "Two cases require erasure", body: "Withdrawal of consent, or expiry of the retention period or the marketing purpose ceasing - whichever comes first.", source: "ER Art. 18(First)(3)" },
   V2: { title: "Residential units are excluded", body: "Provided the cameras do not exceed the boundaries of the premises.", source: "ER Art. 31, final paragraph" },
   V3: { title: "Notices must be displayed", body: "Individuals must be informed that surveillance is in operation, by notices in visible locations.", source: "ER Art. 31(2)" },
   V4: { title: "Facial recognition is prohibited by default", body: "Except in cases prescribed by law, or with the data subject’s explicit consent.", source: "ER Art. 31(4)" },
@@ -245,7 +245,7 @@ export const NOTICES: { [code: string]: Item } = {
   W7: { title: "Breach notification timelines", body: "Notify the PDPC within 72 hours of becoming aware, and immediately where the breach touches national security considerations. Notify the affected individual within three working days of notifying the PDPC. Record the event in a secured electronic register.", source: "PDPL Art. 7; ER Arts. 5 and 6" },
   W8: { title: "Six working days is the statutory limit", body: "You do not currently have a mechanism to receive individuals’ requests and respond within six working days.", source: "PDPL Art. 32" },
   W9: { title: "Certifications do not displace the license", body: "An ISO or SOC certification may cover part of the technical controls, but it does not displace the license, the registrations, or the legal documentation.", source: "" },
-  W11: { title: "Existing GDPR documentation reduces scope", body: "A substantial part of GDPR compliance documentation  -  records of processing, privacy notices, data protection addenda in vendor contracts, data subject request procedures, and impact assessments  -  can be adapted to Egyptian requirements rather than created anew. This is the single largest factor reducing scope, duration, and cost. It does not displace the license or permit, the DPO registration, or PDPC approval of the mechanisms.", source: "" },
+  W11: { title: "Existing GDPR documentation reduces scope", body: "A substantial part of GDPR compliance documentation - records of processing, privacy notices, data protection addenda in vendor contracts, data subject request procedures, and impact assessments - can be adapted to Egyptian requirements rather than created anew. This is the single largest factor reducing scope, duration, and cost. It does not displace the license or permit, the DPO registration, or PDPC approval of the mechanisms.", source: "" },
   A3: { title: "Personnel must themselves be accredited", body: "A legal person’s accreditation requires its personnel to hold PDPC accreditation and a valid permit to practice.", source: "ER Art. 33(3)" },
 };
 
@@ -262,7 +262,7 @@ const LICENSE_FEE: { [band: string]: string } = {
   b5: "EGP 60,000 to EGP 150,000 per year",
   b6: "EGP 165,000 to EGP 300,000 per year",
   b7: "EGP 320,000 to EGP 500,000 per year",
-  b8: "EGP 666,666 per year  -  the statutory maximum, totaling EGP 2,000,000 across the three-year term",
+  b8: "EGP 666,666 per year - the statutory maximum, totaling EGP 2,000,000 across the three-year term",
 };
 
 /** ER Art. 20  -  permit fee. Q3.2 refines the first two Q3.1 bands. */
@@ -279,7 +279,7 @@ const PERMIT_FEE_BY_BAND: { [band: string]: string } = {
   b5: "EGP 75,000 to EGP 300,000, by duration",
   b6: "EGP 100,000 to EGP 400,000, by duration",
   b7: "EGP 125,000 to EGP 500,000, by duration",
-  b8: "EGP 500,000  -  the statutory maximum for any period",
+  b8: "EGP 500,000 - the statutory maximum for any period",
 };
 
 export interface FeeLine {

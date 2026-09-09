@@ -50,7 +50,7 @@ export function screen(answers: Answers): Exclusion | null {
       code: "N1",
       title: "On these answers, the PDPL does not apply to this data.",
       body:
-        "The law governs personal data processed by electronic or technical means, wholly or partly. Data held entirely on paper falls outside it. Note that digitizing those records later — scanning them, entering them into a system, or putting them in a spreadsheet — brings them into scope from that point.",
+        "The law governs personal data processed by electronic or technical means, wholly or partly. Data held entirely on paper falls outside it. Note that digitizing those records later - scanning them, entering them into a system, or putting them in a spreadsheet - brings them into scope from that point.",
     };
   }
 
