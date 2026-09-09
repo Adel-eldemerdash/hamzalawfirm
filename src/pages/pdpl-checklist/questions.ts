@@ -276,7 +276,7 @@ export const QUESTIONS: Question[] = [
   {
     id: "Q4.1",
     group: 4,
-    text: "Is your processing of personal data an ongoing and permanent part of your business, or is it temporary and for a defined purpose?",
+    text: "Is your handling of data about individuals an ongoing and permanent part of your business, or is it temporary and for a defined purpose?",
     type: "single",
     options: [
       { value: "ongoing", label: "Ongoing and permanent" },
@@ -483,7 +483,7 @@ export const QUESTIONS: Question[] = [
   {
     id: "Q8.3",
     group: 8,
-    text: "Do you assess a vendor’s privacy and security risk before contracting?",
+    text: "Do you assess a service provider’s privacy and security risk before contracting?",
     type: "single",
     options: YES_NO_UNSURE,
   },
