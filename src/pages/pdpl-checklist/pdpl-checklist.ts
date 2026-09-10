@@ -429,7 +429,6 @@ function validateContact(): boolean {
       // Silent to the visitor — the result is already on screen and a storage
       // failure is ours to solve, not theirs. Not silent to us: swallowing
       // this entirely is how a write that never succeeded went unnoticed.
-      // eslint-disable-next-line no-console
       console.error("PDPL assessment was not stored:", error);
       lastStorageError = error;
       (window as unknown as { __pdplStored?: boolean; __pdplError?: string }).__pdplStored = false;
