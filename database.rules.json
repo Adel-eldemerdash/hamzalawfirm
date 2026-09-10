@@ -88,7 +88,10 @@
         },
 
         "result": {
-          "//": "Only role and primary are required. An empty array is stored as null by the Realtime Database, which removes the key entirely, so requiring supplementary, registrations, documents, or unresolved would reject every assessment that happens to have none of one of them.",
+          // Only role and primary are required. An empty array is stored as
+          // null by the Realtime Database, which removes the key entirely, so
+          // requiring supplementary, registrations, documents, or unresolved
+          // would reject every assessment that happens to have none of them.
           ".validate": "newData.hasChildren(['role','primary'])",
           "role": { ".validate": "newData.isString() && newData.val().length <= 16" },
           "primary": { ".validate": "newData.isString() && newData.val().length <= 16" },
