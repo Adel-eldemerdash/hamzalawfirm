@@ -24,6 +24,21 @@ function canonicalFor(targetPage) {
   return targetPage === "index" ? SITE + "/" : SITE + "/" + targetPage;
 }
 
+/**
+ * The Google Analytics 4 tag, Google's snippet verbatim, placed immediately
+ * after <head> as Google's installation guide specifies.
+ *
+ * Production builds only. The dev server would otherwise report every local
+ * page load to the live property as real traffic from localhost.
+ */
+const GOOGLE_TAG = isProduction
+  ? fs.readFileSync(path.resolve(__dirname, "./src/core/SEO/google-tag.html"), "utf8")
+  : "";
+
+function withGoogleTag(html) {
+  return GOOGLE_TAG ? html.replace("<head>", "<head>\n" + GOOGLE_TAG) : html;
+}
+
 function headerInjection(targetPage, options = {}) {
   let template = fs.readFileSync(
     path.resolve(__dirname, `./src/pages/${targetPage}/${targetPage}.html`),
@@ -54,6 +69,7 @@ function headerInjection(targetPage, options = {}) {
   );
   const footerMarkup = fs.readFileSync(FOOTER_MARKUP_PATH, "utf8");
 
+  template = withGoogleTag(template);
   template = template.replace("</head>", `${seoMarkup}${splashMarkup}</head>`);
   template = template.replace("<nav></nav>", `${navMarkup}`);
   template = template.replace("<footer></footer>", `${footerMarkup}`);
@@ -352,10 +368,15 @@ module.exports = {
           toType: "file",
         },
         {
-          // Referenced by ErrorDocument in .htaccess.
+          // Referenced by ErrorDocument in .htaccess. It carries the Google
+          // tag too, so the pages report shows which missing URLs visitors
+          // actually reach.
           from: path.resolve(__dirname, "src/404.html"),
           to: path.resolve(__dirname, "dist/404.html"),
           toType: "file",
+          transform(content) {
+            return withGoogleTag(content.toString());
+          },
         },
         {
           // Square icon tiles. They sit alongside the other images so the

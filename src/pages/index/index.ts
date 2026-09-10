@@ -7,6 +7,7 @@ import { handleSplashScreen, initAos } from "../../core/utils/global-init";
 // Component Imports
 import { dialog_confirm, dialog_progress } from "../../core/utils/dialog";
 import { sentContactData } from "../../core/utils/fb_api";
+import { track } from "../../core/utils/analytics";
 import "../../styles/components/buttons/dialogButton.css";
 import "../../styles/components/buttons/mainButton.css";
 import "../../styles/components/inputs/mainInput.css";
@@ -77,6 +78,10 @@ $("#submitContact_btn").on("click", (event) => {
 
   sentContactData(name, email, message, subject, phone)
     .then(() => {
+      // Sent only once the message is stored, so the count is of leads
+      // actually received. The button is not a form submit, so Google's
+      // automatic form tracking does not see it.
+      track("generate_lead", { lead_source: "contact_form" });
       dialog_progress.dialog!.hide();
       dialog_confirm.show("Message Sent Successfully");
       $("#submitContact_name_input").val("");

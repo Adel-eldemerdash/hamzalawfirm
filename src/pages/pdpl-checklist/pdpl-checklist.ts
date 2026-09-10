@@ -8,6 +8,7 @@ import "../../styles/components/inputs/mainInput.css";
 import "./pdpl-checklist.css";
 
 import { getTsysUID } from "../../core/utils/T_sys";
+import { track } from "../../core/utils/analytics";
 import { saveAssessment, AssessmentRecord } from "../../core/utils/fb_api";
 import { Question, Option, QUESTION_SET_VERSION, GROUPS } from "./questions";
 import {
@@ -260,9 +261,13 @@ function syncFreeText(container: HTMLElement, qid: string) {
 // Navigation
 // ---------------------------------------------------------------------------
 
+// Analytics events carry codes and positions only. The answers and the
+// contact details stay in this page and in the database; see analytics.ts.
+
 $("pdplStart").addEventListener("click", function () {
   screenIndex = 0;
   renderScreen();
+  track("pdpl_assessment_start", { assessment_language: getLang() });
 });
 
 $("pdplBack").addEventListener("click", function () {
@@ -310,6 +315,7 @@ $("pdplBack").addEventListener("click", function () {
       $("pdplExitBody").textContent = copy.body;
       $("pdplDisclaimerExit").innerHTML = disclaimerHtml();
       show("pdplExit");
+      track("pdpl_screening_exit", { exit_code: exclusion.code, assessment_language: getLang() });
       return;
     }
   }
@@ -317,6 +323,19 @@ $("pdplBack").addEventListener("click", function () {
   answers = pruneUnreachable(answers);
   screenIndex++;
   renderScreen();
+
+  // One event per screen reached, so the funnel shows where visitors stop.
+  // The group number is stable; the step number varies with the path taken.
+  const next = screens(answers);
+  if (screenIndex < next.length) {
+    track("pdpl_assessment_step", {
+      step_number: screenIndex + 1,
+      step_group: next[screenIndex].group,
+      assessment_language: getLang(),
+    });
+  } else {
+    track("pdpl_contact_gate", { assessment_language: getLang() });
+  }
 });
 
 $("pdplContactBack").addEventListener("click", function () {
@@ -392,6 +411,14 @@ function validateContact(): boolean {
   renderResult($("pdplResultBody"), result, answers, contact);
   show("pdplResult");
 
+  track("generate_lead", {
+    lead_source: "pdpl_checklist",
+    assessment_role: result.role,
+    assessment_primary: result.primary,
+    marketing_consent: consent,
+    assessment_language: getLang(),
+  });
+
   getTsysUID()
     .then(function (uid) {
       const record: AssessmentRecord = {
@@ -434,6 +461,20 @@ function validateContact(): boolean {
       (window as unknown as { __pdplStored?: boolean; __pdplError?: string }).__pdplStored = false;
       (window as unknown as { __pdplError?: string }).__pdplError = String(error);
     });
+});
+
+// The consultation button is a mailto: link, which Google's automatic
+// outbound-click tracking does not report. The result is redrawn on a
+// language change, so the listener sits on the container, not the link.
+$("pdplResultBody").addEventListener("click", function (e) {
+  const target = e.target as Element | null;
+  const link = target && target.closest ? target.closest('a[href^="mailto:"]') : null;
+  if (!link || !lastResult) return;
+  track("pdpl_consultation_click", {
+    assessment_role: lastResult.result.role,
+    assessment_primary: lastResult.result.primary,
+    assessment_language: getLang(),
+  });
 });
 
 // ---------------------------------------------------------------------------

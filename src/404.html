@@ -9,6 +9,9 @@
       Deliberately self-contained: no web fonts, no scripts, no stylesheet
       requests. This page is what the server falls back to when something has
       already gone wrong, so it must not depend on anything that can fail.
+      The one exception is the Google tag the production build adds after
+      the opening head tag. It loads asynchronously and the page renders
+      without it.
     -->
     <style>
       :root {

@@ -6,7 +6,6 @@ import {
 } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCfKtqAL5qSjjO9DEB1AqogdkALqtW8_Ys",
@@ -18,8 +17,9 @@ const firebaseConfig = {
   measurementId: "G-TJH0LMLYQQ",
 };
 
+// Analytics does not go through the Firebase SDK. The Google tag in each
+// page's head reports to the same measurement ID; see core/utils/analytics.ts.
 let app = initializeApp(firebaseConfig);
-// getAnalytics(app);
 const auth = getAuth();
 const database = getDatabase();
 let currentScrollDepth = 0;

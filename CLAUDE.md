@@ -13,7 +13,8 @@ The public website of **Hamza & Partners Law Firm** (Cairo, Egypt), served at `h
 | Build | Webpack 5 — one entry per page, `ts-loader`, one `HtmlWebpackPlugin` per page |
 | Language | TypeScript 5.8 |
 | UI | Bootstrap 5.3 (SCSS), jQuery 3.7, AOS 2.3, Ionicons via CDN |
-| Backend | Firebase 12 — Realtime Database, Anonymous Auth, Analytics (currently disabled) |
+| Backend | Firebase 12 — Realtime Database, Anonymous Auth |
+| Analytics | Google Analytics 4 (`G-TJH0LMLYQQ`) via the Google tag, injected into every page by production builds only; events in `src/core/utils/analytics.ts` |
 | Hosting | Firebase Hosting, project `hamza-lawfirm`, serving `dist/` |
 
 Pages live in `src/pages/<name>/` as `<name>.html` + `<name>.ts`. Shared markup is injected at build time by `headerInjection()` in `webpack.config.js`: SEO head, splash screen, nav, footer.
@@ -122,7 +123,8 @@ Separate from the mandatory contact fields, never pre-checked, and never a condi
 |---|---|
 | All five pages ship `description: "Test Description"` and `keywords: "Test Keywords"` | Placeholder text live in production. Worth fixing, as its own reviewed change |
 | `paths` array contains `{ path: "/service/TEST" }` | Placeholder route in the sitemap |
-| Telemetry in `T_sys.ts` and `getAnalytics()` are commented out | Decide whether this ships; do not leave it ambiguous |
+| Telemetry in `T_sys.ts` (the `vistors/` writer) is commented out | Decide whether this ships; do not leave it ambiguous. Google Analytics is separate and live |
+| Google Analytics runs without a consent banner | The firm's decision of September 10, 2026, during the compliance period, while the privacy and cookie policy is prepared. The checklist's own `W4-cookie` item tells visitors analytics needs consent, so a banner with Consent Mode is expected to follow |
 | No `database.rules.json` in the repository | Rules are console-managed, unversioned, unreviewed. Export and commit them |
 | Three separate Google Fonts requests plus a CDN Ionicons module on every page | Render-blocking third-party requests |
 | Splash screen sets `body { overflow: hidden }` until `window.load`, with a 10-second fallback | Measure its effect on perceived load and CLS |
