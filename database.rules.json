@@ -23,6 +23,13 @@
         "message": { ".validate": "newData.isString() && newData.val().length <= 5000" },
         "subject": { ".validate": "newData.isString() && newData.val().length <= 200" },
         "phone": { ".validate": "newData.isString() && newData.val().length <= 20" },
+        // The send time is validated when present but not required, so these
+        // rules can be deployed before or after the client that sends it
+        // without breaking the form. `now` is the server's clock, and a
+        // serverTimestamp() value equals it exactly, so a client cannot
+        // backdate or forward-date sentAt.
+        "sentAt": { ".validate": "newData.isNumber() && newData.val() === now" },
+        "sentAtCairo": { ".validate": "newData.isString() && newData.val().length <= 60" },
         "$other": { ".validate": false }
       }
     },

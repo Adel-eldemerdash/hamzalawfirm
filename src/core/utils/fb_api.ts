@@ -1,4 +1,4 @@
-import { getDatabase, ref, set, push, onValue, get } from "firebase/database";
+import { getDatabase, ref, set, push, onValue, get, serverTimestamp } from "firebase/database";
 import { findNameBySlug } from "./slug";
 import { getTsysUID } from "./T_sys";
 const db = getDatabase();
@@ -19,6 +19,35 @@ function authenticatedWrite(path: string, value: object): Promise<void> {
   });
 }
 
+/**
+ * The current moment in Cairo time, written out for a person to read, e.g.
+ * "September 10, 2026 at 8:15 PM GMT+3". It comes from the visitor's clock.
+ */
+function cairoTime(): string {
+  try {
+    return new Date().toLocaleString("en-US", {
+      timeZone: "Africa/Cairo",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      timeZoneName: "short",
+    });
+  } catch (e) {
+    return new Date().toISOString();
+  }
+}
+
+/**
+ * A message is stored with the time it was sent, in two forms.
+ *
+ * `sentAt` is stamped by the database server, so a wrong clock on the
+ * visitor's device cannot skew it. It is milliseconds since 1970, for sorting
+ * and filtering. `sentAtCairo` is the same moment written out, so the firm can
+ * read it in the Firebase console without converting. If the two disagree,
+ * `sentAt` is the one to trust.
+ */
 export function sentContactData(
   name: string,
   email: string,
@@ -32,6 +61,8 @@ export function sentContactData(
     message: message,
     subject: subject,
     phone: phone,
+    sentAt: serverTimestamp(),
+    sentAtCairo: cairoTime(),
   });
 }
 
