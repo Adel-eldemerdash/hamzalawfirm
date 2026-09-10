@@ -26,6 +26,53 @@ ErrorDocument 404 /404.html
   RewriteBase /
 
   # -------------------------------------------------------------------------
+  # Canonical host.
+  #
+  # The apex and the www host both served the site, which split ranking
+  # signals between two hostnames. Every canonical tag, the sitemap, and
+  # robots.txt name the www host, so the apex is sent there. It runs first so
+  # that any other redirect below happens on the www host in a single hop.
+  #
+  # The host is named explicitly rather than matched as "anything without
+  # www", which would also catch a staging or temporary hostname.
+  # -------------------------------------------------------------------------
+  RewriteCond %{HTTP_HOST} ^hamzalawfirm\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.hamzalawfirm.com/$1 [R=301,L]
+
+  # -------------------------------------------------------------------------
+  # Page URLs have no trailing slash.
+  #
+  # Each page is a folder holding index.html, so by default Apache answers
+  # /pdpl-checklist with a 301 to /pdpl-checklist/. The canonical tags and the
+  # sitemap name the form without the slash, which meant the canonical URL
+  # itself redirected. DirectorySlash is switched off, the slashed form is
+  # redirected to the bare one, and the bare one is served directly.
+  #
+  # DirectorySlash sits inside the mod_rewrite block on purpose: without the
+  # rewrite that serves a folder's index.html, turning it off would leave every
+  # page answering 403.
+  #
+  # Conditions on THE_REQUEST read the line the browser actually sent. The
+  # rewrite to index.html triggers an internal second pass through these
+  # rules, and matching on the rewritten path instead would redirect in a loop.
+  # -------------------------------------------------------------------------
+  <IfModule mod_dir.c>
+    DirectorySlash Off
+  </IfModule>
+
+  # /index and /index.html are the home page. The index/ folder holds only
+  # scripts and would otherwise answer 403.
+  RewriteCond %{THE_REQUEST} ^\S+\s/index(\.html)?/?(\?\S*)?\s
+  RewriteRule ^ / [R=301,L]
+
+  RewriteCond %{THE_REQUEST} ^\S+\s/[^?\s]*/(\?\S*)?\s
+  RewriteRule ^(.+?)/+$ /$1 [R=301,L]
+
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.+)$ /$1/index.html [L]
+
+  # -------------------------------------------------------------------------
   # 301 redirects from the legacy service URLs.
   #
   # Those URLs carried raw spaces and commas, encoded as %20 and %2C. Apache
@@ -67,18 +114,6 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule "^services/(banking-and-finance|capital-markets|corporate-and-project-services|corporate-governance-and-mergers-acquisitions|cybercrimes|drafting-of-agreements-in-light-of-investment-flows-and-their-administration|financial-and-corporate-crimes|healthcare-sector|hospitality-and-tourism|intellectual-property|litigation|mediation-arbitration-and-dispute-resolution|real-estate-sector|restructuring-and-insolvency|tax-transactions)/?$" "/serviceDetails/index.html" [L]
-
-  # -------------------------------------------------------------------------
-  # Canonical host.
-  #
-  # The apex and the www host both serve the site today, which splits ranking
-  # signals between two hostnames. Every canonical tag on the site already
-  # names the www host, so enabling this only enforces what the pages claim.
-  # Left commented because it changes host behavior and cannot be tested from
-  # the repository. Enable deliberately, then verify.
-  # -------------------------------------------------------------------------
-  # RewriteCond %{HTTP_HOST} !^www\. [NC]
-  # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 </IfModule>
 
 # ---------------------------------------------------------------------------
