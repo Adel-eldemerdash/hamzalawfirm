@@ -8,6 +8,7 @@ import { handleSplashScreen, initAos } from "../../core/utils/global-init";
 import { dialog_confirm, dialog_progress } from "../../core/utils/dialog";
 import { sentContactData } from "../../core/utils/fb_api";
 import { track } from "../../core/utils/analytics";
+import { isValidEmail, isValidPhoneNumber } from "../../core/utils/validation";
 import "../../styles/components/buttons/dialogButton.css";
 import "../../styles/components/buttons/mainButton.css";
 import "../../styles/components/inputs/mainInput.css";
@@ -25,24 +26,6 @@ import "./imgSlider.js";
 handleSplashScreen();
 initAos();
 initializeSideMenu();
-
-function isValidEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
-function isValidPhoneNumber(phoneNum: string): boolean {
-  if (!phoneNum) {
-    return false;
-  }
-  const cleanedNum = phoneNum.replace(/[\s()\-]/g, "");
-  const phoneRegex = /^\+?\d{7,15}$/;
-
-  if (!phoneRegex.test(cleanedNum)) {
-    return false;
-  }
-  return true;
-}
 
 $("#submitContact_btn").on("click", (event) => {
   const name = $("#submitContact_name_input").val() as string;
