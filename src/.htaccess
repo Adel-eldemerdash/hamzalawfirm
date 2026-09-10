@@ -117,6 +117,18 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # ---------------------------------------------------------------------------
+# Character set for plain-text files
+#
+# The host sends .txt files as text/plain with no charset, so a client may
+# read them as Latin-1. llms.txt carries the firm's Arabic name, which would
+# arrive garbled. HTML declares its own charset in a meta tag and XML in its
+# prolog; these two formats have nowhere to declare it but the header.
+# ---------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .txt .webmanifest
+</IfModule>
+
+# ---------------------------------------------------------------------------
 # Compression
 #
 # The host already gzips, but at a low level. The compression level itself is

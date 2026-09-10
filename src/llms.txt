@@ -1,0 +1,42 @@
+# Hamza & Partners Law Firm
+
+> Hamza & Partners Law Firm (حمزة وشركاه للمحاماة) is a law firm in Cairo, Egypt, advising Egyptian and international businesses on corporate law, disputes, banking and finance, capital markets, real estate, tax, and compliance with Egypt's Personal Data Protection Law No. 151 of 2020 ("PDPL") and its Executive Regulations. The site offers a free PDPL self-assessment in English and Arabic.
+
+- Address: 48 Fareed Semeika Street, Hegaz Square, Nozha, Cairo, Egypt
+- Telephone: +20 100 170 7074
+- Email: info@hamzalawfirm.com
+- Personal data requests and marketing opt-outs: dpo@hamzalawfirm.com
+- Languages: English and Arabic
+
+## PDPL self-assessment
+
+- [PDPL Self-Assessment](https://www.hamzalawfirm.com/pdpl-checklist): A free questionnaire that establishes what Egypt's Personal Data Protection Law No. 151 of 2020 and its Executive Regulations require of an organization, from factual answers about how it handles data. No legal knowledge is needed. The result appears on screen immediately and covers: whether the organization is a controller, a processor, or both; the primary license or permit it needs and its official fee band; any supplementary licenses or permits that apply; the documents, registrations, and obligations required; and the points its answers leave open. Available in English and Arabic; requires JavaScript. The result is a preliminary scoping tool based on the visitor's own answers and does not constitute legal advice. The fees it shows are the official fees payable to the Personal Data Protection Center, not professional fees.
+
+## The firm
+
+- [Home](https://www.hamzalawfirm.com/): Overview of the firm, its practice areas, its clients, and a contact form.
+- [Our Firm](https://www.hamzalawfirm.com/ourFirm): The firm's vision, mission, values, and policies, the team of partners and associates, and applications to join the firm.
+- [Firm Profile](https://www.hamzalawfirm.com/profile): The firm profile: practice areas, associations, clients, and contact details.
+- [Legal Services](https://www.hamzalawfirm.com/services): Index of the fifteen practice areas listed below.
+
+## Practice areas
+
+- [Banking and Finance](https://www.hamzalawfirm.com/services/banking-and-finance): Banks and non-bank financial institutions: syndicated loans, credit facilities, guarantees, project and acquisition finance, bond issuances, Central Bank of Egypt regulation, fintech, and licensing of non-banking financial activities.
+- [Capital Markets](https://www.hamzalawfirm.com/services/capital-markets): Bond and sukuk issuances, public offerings and listings, fund management, privatizations, and venture capital, including representation before the Financial Regulatory Authority and the Egyptian Exchange.
+- [Corporate Governance and Mergers & Acquisitions](https://www.hamzalawfirm.com/services/corporate-governance-and-mergers-acquisitions): Board powers and committees, executive incentive policies, general meetings, internal investigations, and mergers and acquisitions from initial assessment to closing.
+- [Corporate and Project Services](https://www.hamzalawfirm.com/services/corporate-and-project-services): Company incorporation and liquidation, branches of foreign companies, free zone and investment zone entities, industrial land allocation, commercial licensing, and public-private partnerships.
+- [Cybercrimes](https://www.hamzalawfirm.com/services/cybercrimes): Hacking, online financial fraud, identity theft, cyber extortion, online defamation, and cyber espionage affecting individuals and companies, and related e-commerce and fintech disputes.
+- [Drafting of Agreements in Light of Investment Flows and Their Administration](https://www.hamzalawfirm.com/services/drafting-of-agreements-in-light-of-investment-flows-and-their-administration): Negotiating, drafting, and reviewing commercial and civil agreements, from letters of intent to executed contracts: technology transfer, joint venture, franchise, distribution, agency, supply, FIDIC, and employment agreements.
+- [Financial and Corporate Crimes](https://www.hamzalawfirm.com/services/financial-and-corporate-crimes): White-collar crime, fraud, Interpol and extradition matters, challenges to Red Notices, internal investigations, financial crime compliance policies, and asset recovery.
+- [Healthcare Sector](https://www.hamzalawfirm.com/services/healthcare-sector): Contracts and licensing for hospitals, medical centers, pharmaceuticals, cosmetics, and pharmacies; matters before the Ministry of Health and Population and the Egyptian Drug Authority; medical advertising; and malpractice cases.
+- [Hospitality and Tourism](https://www.hamzalawfirm.com/services/hospitality-and-tourism): Hotel accommodation agreements, tourism transport contracts, and tourism licenses for resorts, hotels, vessels, cruise ships, and yachts.
+- [Intellectual Property](https://www.hamzalawfirm.com/services/intellectual-property): Registration, licensing, protection, and litigation of trademarks, patents, utility models, industrial designs, copyrights, and software.
+- [Litigation](https://www.hamzalawfirm.com/services/litigation): Commercial and civil litigation, arbitration, white-collar and corporate criminal matters, intellectual property, real estate, labor and employment disputes, and compensation claims.
+- [Mediation, Arbitration, and Dispute Resolution](https://www.hamzalawfirm.com/services/mediation-arbitration-and-dispute-resolution): Mediation, arbitration, and litigation strategy, with advice across jurisdictions in the Middle East and North Africa.
+- [Real Estate Sector](https://www.hamzalawfirm.com/services/real-estate-sector): Developers, lenders, and real estate funds: development partnerships, financing, title searches, zoning and construction permits, and structuring transactions through to registration of ownership.
+- [Restructuring and Insolvency](https://www.hamzalawfirm.com/services/restructuring-and-insolvency): Formal and informal debt restructuring, judicial reorganization, liquidation, and distressed debt, representing companies, boards, creditors, and investors.
+- [Tax Transactions](https://www.hamzalawfirm.com/services/tax-transactions): Tax compliance and planning in the Middle East and North Africa, double taxation treaties, corporate profit tax and withholding tax disputes, customs duties, and the tax effects of mergers and cross-border transactions.
+
+## Optional
+
+- [Sitemap](https://www.hamzalawfirm.com/sitemap.xml): Every public page on the site.

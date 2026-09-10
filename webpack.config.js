@@ -390,6 +390,14 @@ module.exports = {
           to: path.resolve(__dirname, "dist/site.webmanifest"),
           toType: "file",
         },
+        {
+          // A Markdown summary of the site for AI assistants, following the
+          // llms.txt proposal (llmstxt.org). Written by hand: update it when
+          // a page or a service is added, removed, or renamed.
+          from: path.resolve(__dirname, "src/llms.txt"),
+          to: path.resolve(__dirname, "dist/llms.txt"),
+          toType: "file",
+        },
       ],
     }),
     new SitemapPlugin({

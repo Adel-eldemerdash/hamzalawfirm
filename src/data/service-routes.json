@@ -1,5 +1,5 @@
 {
-  "_comment": "Slugs of the services under serviceData/ in the Realtime Database. Generated with slugify() from src/core/utils/slug.ts, which is the only implementation. Regenerate whenever a service is added, removed, or renamed in the database; the sitemap is built from this list.",
+  "_comment": "Slugs of the services under serviceData/ in the Realtime Database. Generated with slugify() from src/core/utils/slug.ts, which is the only implementation. Regenerate whenever a service is added, removed, or renamed in the database; the sitemap is built from this list. Update the rewrite list in src/.htaccess and the practice areas in src/llms.txt at the same time.",
   "_generated": "2026-08-29",
   "slugs": [
     "banking-and-finance",
